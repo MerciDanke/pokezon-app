@@ -7,18 +7,26 @@ Project to gather useful information from PokeAPI
 - type
 - version-group
 - pokemon-form
+- version-group
 ## Elements
 - pokemon
+    - id
     - abilities/ability
     - height(m)
-    - species
+    - name
     - types
     - weight(kg)
+    - version-group
 - pokemon-species
     - color
     - flavor_text_entries
     - genera
+    - habitat
+    - id
+    - name
 - pokemon-form
+    - id
+    - name
     - sprites
     - version_group
 - version_group
@@ -38,6 +46,7 @@ Project to gather useful information from PokeAPI
 - Pokemon
 - Pokemon-species
 - Pokemon-form
-- Version_group
+- Version-group
 - Ability
 - Type
+- Evolution-chain
