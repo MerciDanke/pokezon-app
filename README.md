@@ -1,23 +1,43 @@
 # soa2020
-Project to gather useful information from Youtube API (v3)
+Project to gather useful information from PokeAPI
 ## Resourses
-- Videos
-- CommentsThreads
+- pokemon
+- ability
+- pokemon-species
+- type
+- version-group
+- pokemon-form
 ## Elements
-- videos/snippet
-    - publishedAt
-    - channelId
-    - title
-    - description
-    - channelTitle
-    - tags
-- commentsThreads/snippet/snippet
-    - textDisplay
-    - authorDisplayName
-    - authorProfileImageUrl
-    - authorChannelUrl
-    - likeCount
-    - publishedAt
+- pokemon
+    - abilities/ability
+    - height(m)
+    - species
+    - types
+    - weight(kg)
+- pokemon-species
+    - color
+    - flavor_text_entries
+    - genera
+- pokemon-form
+    - sprites
+    - version_group
+- version_group
+    - name
+    - regions
+- ability
+    - flavor_text_entries
+    - name
+    - pokemon
+- type
+    - damage_relations
+    - name
+    - pokemon
+- evolution-chain(optional)
+    - species
 ## Entities
-- Project (aka Youtube Video)
-- Contributors(aka Youtuber & Netizen) 
+- Pokemon
+- Pokemon-species
+- Pokemon-form
+- Version_group
+- Ability
+- Type
