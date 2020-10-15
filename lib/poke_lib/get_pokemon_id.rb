@@ -27,7 +27,10 @@ poke_results['weight'] = poke_obj['weight']
 
 forms_url = poke_obj['forms'][0]['url']
 forms_obj = call_poke_url(forms_url)
-poke_results['sprites'] = forms_obj['sprites']
+poke_results['back_default'] = forms_obj['sprites']['back_default']
+poke_results['back_shiny'] = forms_obj['sprites']['back_shiny']
+poke_results['front_default'] = forms_obj['sprites']['front_default']
+poke_results['front_shiny'] = forms_obj['sprites']['front_shiny']
 
 # put the pokemon1's abilities, height, weight into the yaml file
 File.write('spec/fixtures/poke_data/poke1_results.yml', poke_results.to_yaml)
