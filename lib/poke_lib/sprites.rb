@@ -9,22 +9,22 @@ module PokemonInf
 
     # back default picture
     def back_default
-      @sprites['back_default']
+      @sprites['sprites']['back_default']
     end
 
     # back shiny picture
     def back_shiny
-      @sprites['back_shiny']
+      @sprites['sprites']['back_shiny']
     end
 
     # front default picture
     def front_default
-      @sprites['front_default']
+      @sprites['sprites']['front_default']
     end
 
     # front shiny picture
     def front_shiny
-      @sprites['front_shiny']
+      @sprites['sprites']['front_shiny']
     end
   end
 end
