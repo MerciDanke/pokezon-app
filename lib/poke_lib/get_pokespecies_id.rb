@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# merge into get_pokemon_api.rb
 require 'net/http'
 require 'yaml'
 require 'json'
