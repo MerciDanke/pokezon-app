@@ -16,19 +16,20 @@ module PokemonInf
     end
 
     HTTP_ERROR = {
-      401 => Errors::Unauthorized,
       404 => Errors::NotFound
     }.freeze
 
     def pokemon(pokemon_id)
       # pokemon api url
-      pokemon_req_url = pk_api_path([pokemon_id])
+      pokemon_req_url = pk_api_path(pokemon_id)
       pokemon_data = call_pk_url(pokemon_req_url)
+    #   # species api url
+    #   species_req_url = pksp_api_path(pokemon_id)
+    #   puts species_req_url
+    #   species_data = call_pk_url(species_req_url)
+    #   Pokemon.new(pokemon_data, species_data, self)
 
-      # species api url
-      species_req_url = pksp_api_path([pokemon_id])
-      species_data = call_pk_url(species_req_url)
-      Pokemon.new(pokemon_data, species_data, self)
+      Pokemon.new(pokemon_data, self)
     end
 
     def sprites(sprites_url)
@@ -39,7 +40,7 @@ module PokemonInf
     private
 
     def pk_api_path(path)
-      "#{API_PROJECT_ROOT}/#{path}"
+      "#{API_POKEMON_ROOT}/#{path}"
     end
 
     def pksp_api_path(path)

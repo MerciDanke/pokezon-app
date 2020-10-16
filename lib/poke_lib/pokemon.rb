@@ -6,9 +6,13 @@ require_relative 'species'
 module PokemonInf
   # Model for Pokemon
   class Pokemon
-    def initialize(pokemon_data, species_data, sprites_source)
+    # def initialize(pokemon_data, species_data, sprites_source)
+    #   @pokemon = pokemon_data
+    #   @species = species_data
+    #   @sprites_source = sprites_source
+    # end
+    def initialize(pokemon_data, sprites_source)
       @pokemon = pokemon_data
-      @species = species_data
       @sprites_source = sprites_source
     end
 
