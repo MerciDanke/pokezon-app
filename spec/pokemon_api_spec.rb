@@ -7,7 +7,6 @@ require_relative '../lib/poke_lib/pokemon_api'
 
 ID = '1'.freeze
 CORRECT = YAML.safe_load(File.read('spec/fixtures/poke_data/poke1_results.yml'))
-pokemontest = PokemonInf::PokemonApi.new.pokemon(ID)
 describe 'Tests Pokemon API library' do
   describe 'Pokemon information' do
     it 'HAPPY: should provide correct pokemon attributes' do
@@ -16,17 +15,17 @@ describe 'Tests Pokemon API library' do
       _(pokemontest.id).must_equal CORRECT['id']
       _(pokemontest.name).must_equal CORRECT['name']
       _(pokemontest.type).must_equal CORRECT['type']
-      _(pokemon.abilities).must_equal CORRECT['abilities']
+      _(pokemontest.abilities).must_equal CORRECT['abilities']
       _(pokemontest.height).must_equal CORRECT['height']
       _(pokemontest.weight).must_equal CORRECT['weight']
-      _(pokemontest.back_defult).must_equal CORRECT['back_defult']
-      _(pokemontest.back_shiny).must_equal CORRECT['back_shiny']
-      _(pokemontest.front_defult).must_equal CORRECT['front_defult']
-      _(pokemontest.front_shiny).must_equal CORRECT['front_shiny']
       _(pokemontest.habitat).must_equal CORRECT['habitat']
       _(pokemontest.color).must_equal CORRECT['color']
       _(pokemontest.flavor_text_entries).must_equal CORRECT['flavor_text_entries']
       _(pokemontest.genera).must_equal CORRECT['genera']
+      _(pokemontest.back_default).must_equal CORRECT['back_default']
+      _(pokemontest.back_shiny).must_equal CORRECT['back_shiny']
+      _(pokemontest.front_default).must_equal CORRECT['front_default']
+      _(pokemontest.front_shiny).must_equal CORRECT['front_shiny']
     end
 
     # it 'SAD: should raise exception on incorrect id' do
@@ -36,24 +35,24 @@ describe 'Tests Pokemon API library' do
     # end
   end
 
-  describe 'Sprites information' do
-    before do
-      @pokemon = PokemonInf::PokemonApi.new.pokemon(ID)
-    end
+  # describe 'Sprites information' do
+  #   before do
+  #     @pokemon = PokemonInf::PokemonApi.new.pokemon(ID)
+  #   end
 
-    it 'HAPPY: should recognize sprites' do
-      _(@pokemon.sprites).must_be_kind_of PokemonInf::Sprites
-    end
+  #   it 'HAPPY: should recognize sprites' do
+  #     _(@pokemon.sprites).must_be_kind_of PokemonInf::Sprites
+  #   end
 
-    it 'HAPPY: should identify sprites' do
-      _(@pokemon.sprites.back_default).wont_be_nil
-      _(@pokemon.sprites.back_default).must_equal CORRECT['sprites']['back_default']
-      _(@pokemon.sprites.back_shiny).wont_be_nil
-      _(@pokemon.sprites.back_shiny).must_equal CORRECT['sprites']['back_shiny']
-      _(@pokemon.sprites.front_default).wont_be_nil
-      _(@pokemon.sprites.front_default).must_equal CORRECT['sprites']['front_default']
-      _(@pokemon.sprites.front_shiny).wont_be_nil
-      _(@pokemon.sprites.front_shiny).must_equal CORRECT['sprites']['front_shiny']
-    end
-  end
+  #   it 'HAPPY: should identify sprites' do
+  #     _(@pokemon.sprites.back_default).wont_be_nil
+  #     _(@pokemon.sprites.back_default).must_equal CORRECT['sprites']['back_default']
+  #     _(@pokemon.sprites.back_shiny).wont_be_nil
+  #     _(@pokemon.sprites.back_shiny).must_equal CORRECT['sprites']['back_shiny']
+  #     _(@pokemon.sprites.front_default).wont_be_nil
+  #     _(@pokemon.sprites.front_default).must_equal CORRECT['sprites']['front_default']
+  #     _(@pokemon.sprites.front_shiny).wont_be_nil
+  #     _(@pokemon.sprites.front_shiny).must_equal CORRECT['sprites']['front_shiny']
+  #   end
+  # end
 end

@@ -6,15 +6,15 @@ require_relative 'species'
 module PokemonInf
   # Model for Pokemon
   class Pokemon
-    # def initialize(pokemon_data, species_data, sprites_source)
-    #   @pokemon = pokemon_data
-    #   @species = species_data
-    #   @sprites_source = sprites_source
-    # end
-    def initialize(pokemon_data, sprites_source)
+    def initialize(pokemon_data, species_data, sprites_data)
       @pokemon = pokemon_data
-      @sprites_source = sprites_source
+      @species = species_data
+      @sprites = sprites_data
     end
+    # def initialize(pokemon_data, sprites_data)
+    #   @pokemon = pokemon_data
+    #   @sprites_data = sprites_data
+    # end
 
     # pokemon data
     def id
@@ -58,13 +58,33 @@ module PokemonInf
       @species['genera'][7]['genus']
     end
 
-    def sprites
-      @sprites ||= Sprites.new(@sprites_form['sprites'])
+    # back default picture
+    def back_default
+      @sprites['sprites']['back_default']
     end
 
-    # sprites_form save pokemon-form url's data
-    def sprites_form
-      @sprites_form ||= @sprites_source.sprites_form(@pokemon['forms'][0]['url'])
+    # back shiny picture
+    def back_shiny
+      @sprites['sprites']['back_shiny']
     end
+
+    # front default picture
+    def front_default
+      @sprites['sprites']['front_default']
+    end
+
+    # front shiny picture
+    def front_shiny
+      @sprites['sprites']['front_shiny']
+    end
+
+    # def sprites
+    #   @sprites ||= Sprites.new(@sprites_form['sprites'])
+    # end
+
+    # # sprites_form save pokemon-form url's data
+    # def sprites_form
+    #   @sprites_form ||= @sprites_data.sprites_form(@pokemon['forms'][0]['url'])
+    # end
   end
 end
