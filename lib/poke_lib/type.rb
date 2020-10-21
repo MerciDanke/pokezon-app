@@ -16,8 +16,9 @@ module TypeInf
     end
 
     def double_damage_from
-      ddf = @type['damage_relations']['double_damage_from']
-      ddf[0].nil? ? nil : ddf.map { |num| num['name'] }
+      # ddf = @type['damage_relations']['double_damage_from']
+      # ddf[0].nil? ? nil : ddf.map { |num| num['name'] }
+      ddf.map { |num| num['name'] } if ddf[0]
     end
 
     def double_damage_to

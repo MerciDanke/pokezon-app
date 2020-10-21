@@ -5,7 +5,7 @@ require 'yaml'
 require 'json'
 
 def poke_api_path(type_id)
-  'https://pokeapi.co/api/v2/type/' + type_id
+  "https://pokeapi.co/api/v2/type/#{type_id}"
 end
 
 # after call_poke_url we get the json object
@@ -24,7 +24,8 @@ hdf = poke_obj['damage_relations']['half_damage_from']
 hdto = poke_obj['damage_relations']['half_damage_to']
 ndf = poke_obj['damage_relations']['no_damage_from']
 ndto = poke_obj['damage_relations']['no_damage_to']
-type_results['double_damage_from'] = ddf[0].nil? ? nil : ddf.map { |num| num['name'] }
+type_results['double_damage_from'] = ddf.map { |num| num['name'] } if ddf[0]
+# type_results['double_damage_from'] = ddf[0].nil? ? nil : ddf.map { |num| num['name'] }
 type_results['double_damage_to'] = ddto[0].nil? ? nil : ddto.map { |num| num['name'] }
 type_results['half_damage_from'] = hdf[0].nil? ? nil : hdf.map { |num| num['name'] }
 type_results['half_damage_to'] = hdto[0].nil? ? nil : hdto.map { |num| num['name'] }

@@ -5,7 +5,7 @@ require 'yaml'
 require 'json'
 
 def poke_api_path(poke_id)
-  'https://pokeapi.co/api/v2/pokemon' + poke_id
+  "https://pokeapi.co/api/v2/pokemon/#{poke_id}"
 end
 
 # after call_poke_url we get the json object
