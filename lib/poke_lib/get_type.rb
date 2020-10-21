@@ -18,7 +18,18 @@ type_results = {}
 url = poke_api_path('1')
 poke_obj = call_poke_url(url)
 
-type_results['damage_relations'] = poke_obj['damage_relations']
+ddf = poke_obj['damage_relations']['double_damage_from']
+ddto = poke_obj['damage_relations']['double_damage_to']
+hdf = poke_obj['damage_relations']['half_damage_from']
+hdto = poke_obj['damage_relations']['half_damage_to']
+ndf = poke_obj['damage_relations']['no_damage_from']
+ndto = poke_obj['damage_relations']['no_damage_to']
+type_results['double_damage_from'] = ddf[0].nil? ? nil : ddf.map { |num| num['name'] }
+type_results['double_damage_to'] = ddto[0].nil? ? nil : ddto.map { |num| num['name'] }
+type_results['half_damage_from'] = hdf[0].nil? ? nil : hdf.map { |num| num['name'] }
+type_results['half_damage_to'] = hdto[0].nil? ? nil : hdto.map { |num| num['name'] }
+type_results['no_damage_from'] = ndf[0].nil? ? nil : ndf.map { |num| num['name'] }
+type_results['no_damage_to'] = ndto[0].nil? ? nil : ndto.map { |num| num['name'] }
 type_results['name'] = poke_obj['name']
 type_results['pokemon'] = poke_obj['pokemon'].map { |num| num['pokemon']['name'] }
 
