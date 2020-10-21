@@ -1,0 +1,20 @@
+---
+id: 1
+name: bulbasaur
+type:
+- grass
+- poison
+abilities:
+- overgrow
+- chlorophyll
+height: 7
+weight: 69
+back_default: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png
+back_shiny: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png
+front_default: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png
+front_shiny: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png
+habitat: grassland
+color: green
+flavor_text_entries: "A strange seed was\nplanted on its\nback at birth.\fThe plant
+  sprouts\nand grows with\nthis POKéMON."
+genera: Seed Pokémon

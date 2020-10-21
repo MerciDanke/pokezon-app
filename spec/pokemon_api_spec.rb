@@ -1,13 +1,22 @@
 # frozen_string_literal: false
 
-require 'minitest/autorun'
-require 'minitest/rg'
-require 'yaml'
-require_relative '../lib/poke_lib/pokemon_api'
+require_relative 'spec_helper'
 
-ID = '1'.freeze
-CORRECT = YAML.safe_load(File.read('spec/fixtures/poke_data/poke1_results.yml'))
 describe 'Tests Pokemon API library' do
+  VCR.configure do |c|
+    c.cassette_library_dir = CASSETTES_FOLDER
+    c.hook_into :webmock
+  end
+
+  before do
+    VCR.insert_cassette CASSETTE_FILE,
+                        record: :new_episodes,
+                        match_requests_on: %i[method uri headers]
+  end
+
+  after do
+    VCR.eject_cassette
+  end
   describe 'Pokemon information' do
     it 'HAPPY: should provide correct pokemon attributes' do
       pokemontest = PokemonInf::PokemonApi.new
