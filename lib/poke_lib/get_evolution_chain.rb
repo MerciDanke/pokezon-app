@@ -5,7 +5,7 @@ require 'yaml'
 require 'json'
 
 def poke_api_path(evolu_chain_id)
-  'https://pokeapi.co/api/v2/evolution-chain/' + evolu_chain_id
+  "https://pokeapi.co/api/v2/evolution-chain/#{evolu_chain_id}"
 end
 
 # after call_poke_url we get the json object
