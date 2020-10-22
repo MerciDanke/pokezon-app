@@ -20,8 +20,7 @@ describe 'Tests Pokemon API library' do
 
   describe 'Pokemon information' do
     it 'HAPPY: should provide correct pokemon attributes' do
-      pokemontest = PokemonInf::PokemonApi.new
-      pokemontest = pokemontest.pokemon(ID)
+      pokemontest = PokemonInf::PokemonApi.new.pokemon(ID)
       _(pokemontest.id).must_equal CORRECT['id']
       _(pokemontest.name).must_equal CORRECT['name']
       _(pokemontest.type).must_equal CORRECT['type']
@@ -37,11 +36,11 @@ describe 'Tests Pokemon API library' do
       # _(pokemontest.front_default).must_equal CORRECT['front_default']
       # _(pokemontest.front_shiny).must_equal CORRECT['front_shiny']
     end
-    # it 'SAD: should raise exception on incorrect id' do
-    #   _(proc do
-    #     PokemonInf::PokemonApi.new.pokemon('foobar')
-    #   end).must_raise PokemonInf::PokemonApi::Errors::NotFound
-    # end
+    it 'SAD: should raise exception on incorrect id' do
+      _(proc do
+        PokemonInf::PokemonApi.new.pokemon('foobar')
+      end).must_raise PokemonInf::PokemonApi::Errors::NotFound
+    end
   end
 
   # describe 'Sprites information' do

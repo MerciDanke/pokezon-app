@@ -51,7 +51,7 @@ module PokemonInf
 
     def call_pk_url(url)
       result = HTTP.get(url)
-      successful?(result) ? JSON.parse(result) : raise(HTTP_ERROR)
+      successful?(result) ? JSON.parse(result) : raise(HTTP_ERROR[result.code])
     end
 
     def successful?(result)

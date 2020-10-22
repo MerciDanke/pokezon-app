@@ -953,4 +953,73 @@ http_interactions:
       encoding: UTF-8
       string: Not Found
   recorded_at: Thu, 22 Oct 2020 10:17:51 GMT
+- request:
+    method: get
+    uri: https://pokeapi.co/api/v2/pokemon/foobar
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - pokeapi.co
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Thu, 22 Oct 2020 16:13:22 GMT
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '9'
+      Connection:
+      - close
+      Set-Cookie:
+      - __cfduid=d69c436a7d0a9410ad6f13b9fe49bb66f1603383201; expires=Sat, 21-Nov-20
+        16:13:21 GMT; path=/; domain=.pokeapi.co; HttpOnly; SameSite=Lax; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - public, max-age=86400, s-maxage=86400
+      Etag:
+      - W/"9-0gXL1ngzMqISxa6S1zx3F4wtLyg"
+      Function-Execution-Id:
+      - ph09rjrxg1l7
+      X-Cloud-Trace-Context:
+      - f76fca3327b4b4e4c9c92df23d271609
+      X-Powered-By:
+      - Express
+      X-Served-By:
+      - cache-hnd18720-HND
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1603383202.751287,VS0,VE914
+      Vary:
+      - Accept-Encoding, x-fh-requested-host, accept-encoding
+      Cf-Cache-Status:
+      - MISS
+      Cf-Request-Id:
+      - 05f2af27c200001d93500a7000000001
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?lkg-colo=22&lkg-time=1603383203"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5e648152ce091d93-NRT
+    body:
+      encoding: UTF-8
+      string: Not Found
+  recorded_at: Thu, 22 Oct 2020 16:13:22 GMT
 recorded_with: VCR 6.0.0
