@@ -1,8 +1,6 @@
 ---
 double_damage_from:
 - fighting
-double_damage_to:
-half_damage_from:
 half_damage_to:
 - rock
 - steel

@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/lindaya/soa2020/soa2020/lib/poke_lib/pokemon_api.rb": {
+      "/home/shelly/soa/soa2020/lib/poke_lib/pokemon_api.rb": {
         "lines": [
           null,
           null,
@@ -18,20 +18,21 @@
           1,
           1,
           null,
+          1,
+          1,
           null,
           null,
+          1,
           null,
           null,
           1,
           null,
           1,
           null,
-          1,
+          0,
           null,
-          1,
-          1,
-          null,
-          null,
+          0,
+          0,
           null,
           null,
           1,
@@ -46,27 +47,26 @@
           null,
           null,
           1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          1,
           1,
           null,
           null,
           1,
           1,
-          null,
-          null,
-          1,
-          3,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null,
           null,
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/lib/poke_lib/pokemon.rb": {
+      "/home/shelly/soa/soa2020/lib/poke_lib/pokemon.rb": {
         "lines": [
           null,
           null,
@@ -77,9 +77,9 @@
           null,
           1,
           1,
-          1,
-          1,
-          1,
+          0,
+          0,
+          0,
           null,
           null,
           null,
@@ -88,32 +88,32 @@
           null,
           null,
           1,
-          1,
+          0,
           null,
           null,
           1,
-          1,
+          0,
           null,
           null,
           1,
-          3,
+          0,
           null,
           null,
           1,
-          3,
+          0,
           null,
           null,
           1,
-          1,
+          0,
           null,
           null,
           1,
-          1,
+          0,
           null,
           null,
           null,
           1,
-          1,
+          0,
           null,
           null,
           1,
@@ -160,7 +160,7 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/lib/poke_lib/sprites.rb": {
+      "/home/shelly/soa/soa2020/lib/poke_lib/sprites.rb": {
         "lines": [
           null,
           null,
@@ -194,7 +194,7 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/lib/poke_lib/species.rb": {
+      "/home/shelly/soa/soa2020/lib/poke_lib/species.rb": {
         "lines": [
           null,
           null,
@@ -225,6 +225,6 @@
         ]
       }
     },
-    "timestamp": 1603289544
+    "timestamp": 1603361871
   }
 }
