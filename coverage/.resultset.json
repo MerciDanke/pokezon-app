@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/shelly/soa/soa2020/lib/poke_lib/pokemon_api.rb": {
+      "/home/lindaya/soa2020/soa2020/lib/poke_lib/pokemon_api.rb": {
         "lines": [
           null,
           null,
@@ -66,7 +66,7 @@
           null
         ]
       },
-      "/home/shelly/soa/soa2020/lib/poke_lib/pokemon.rb": {
+      "/home/lindaya/soa2020/soa2020/lib/poke_lib/pokemon.rb": {
         "lines": [
           null,
           null,
@@ -160,7 +160,7 @@
           null
         ]
       },
-      "/home/shelly/soa/soa2020/lib/poke_lib/sprites.rb": {
+      "/home/lindaya/soa2020/soa2020/lib/poke_lib/sprites.rb": {
         "lines": [
           null,
           null,
@@ -194,7 +194,7 @@
           null
         ]
       },
-      "/home/shelly/soa/soa2020/lib/poke_lib/species.rb": {
+      "/home/lindaya/soa2020/soa2020/lib/poke_lib/species.rb": {
         "lines": [
           null,
           null,
@@ -225,6 +225,6 @@
         ]
       }
     },
-    "timestamp": 1603385140
+    "timestamp": 1603538954
   }
 }
