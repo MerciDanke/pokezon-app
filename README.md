@@ -1,52 +1,24 @@
-# soa2020
-Project to gather useful information from PokeAPI
-## Resourses
-- pokemon
-- ability
-- pokemon-species
-- type
-- version-group
-- pokemon-form
-- version-group
-## Elements
-- pokemon
-    - id
-    - abilities/ability
-    - height(m)
-    - name
-    - types
-    - weight(kg)
-    - version-group
-- pokemon-species
-    - color
-    - flavor_text_entries
-    - genera
-    - habitat
-    - id
-    - name
-- pokemon-form
-    - id
-    - name
-    - sprites
-    - version_group
-- version_group
-    - name
-    - regions
-- ability
-    - flavor_text_entries
-    - name
-    - pokemon
-- type
-    - damage_relations
-    - name
-    - pokemon
-- evolution-chain(optional)
-    - species
-## Entities
-- Pokemon
-- Pokemon-species
-- Pokemon-form
-- Version-group
-- Ability
-- Type
-- Evolution-chain
+# Pokémon Psychology Analysis
+Currently, there are more than 800 types of Pokemon.
+Everyone has their own personality, and they have different strengths and nigates. Answer some questions and diagnose which Pokemon you will be!
+
+After the diagnosis is over, not only the personality and attributes of the Pokémon will be displayed, but also Pokémon pictures of different designs.
+
+## Language of the Domain
+original JSON description -> **our YAML description**
+
+- id -> **id**
+- name -> **name**
+- abilities/ability -> **abilities**
+- height(m) -> **height**
+- weight(kg) -> **weight**
+- types -> **types**
+- forms-url -> **back_default**
+            -> **back_shiny**
+            -> **front_default**
+            -> **front_shiny**
+- speices   -> **color**
+            -> **flavor_text_entries**
+            -> **genera**
+            -> **habitat**
+
