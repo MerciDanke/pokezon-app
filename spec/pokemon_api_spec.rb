@@ -28,13 +28,13 @@ describe 'Tests Pokemon API library' do
       _(pokemontest.height).must_equal CORRECT['height']
       _(pokemontest.weight).must_equal CORRECT['weight']
       _(pokemontest.habitat).must_equal CORRECT['habitat']
-      # _(pokemontest.color).must_equal CORRECT['color']
-      # _(pokemontest.flavor_text_entries).must_equal CORRECT['flavor_text_entries']
-      # _(pokemontest.genera).must_equal CORRECT['genera']
-      # _(pokemontest.back_default).must_equal CORRECT['back_default']
-      # _(pokemontest.back_shiny).must_equal CORRECT['back_shiny']
-      # _(pokemontest.front_default).must_equal CORRECT['front_default']
-      # _(pokemontest.front_shiny).must_equal CORRECT['front_shiny']
+      _(pokemontest.color).must_equal CORRECT['color']
+      _(pokemontest.flavor_text_entries).must_equal CORRECT['flavor_text_entries']
+      _(pokemontest.genera).must_equal CORRECT['genera']
+      _(pokemontest.back_default).must_equal CORRECT['back_default']
+      _(pokemontest.back_shiny).must_equal CORRECT['back_shiny']
+      _(pokemontest.front_default).must_equal CORRECT['front_default']
+      _(pokemontest.front_shiny).must_equal CORRECT['front_shiny']
     end
     it 'SAD: should raise exception on incorrect id' do
       _(proc do
