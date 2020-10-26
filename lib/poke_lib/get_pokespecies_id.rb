@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # merge into get_pokemon_api.rb
-require 'net/http'
+require 'http'
 require 'yaml'
 require 'json'
 
@@ -11,7 +11,10 @@ end
 
 # after call_poke_url we get the json object
 def call_poke_url(url)
-  JSON.parse(Net::HTTP.get(URI(url)))
+  JSON.parse(
+    HTTP
+      .get(URI(url))
+  )
 end
 
 poke_results = {}

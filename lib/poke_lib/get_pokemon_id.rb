@@ -10,7 +10,10 @@ end
 
 # after call_poke_url we get the json object
 def call_poke_url(url)
-  JSON.parse(Net::HTTP.get(URI(url)))
+  JSON.parse(
+    HTTP
+      .get(URI(url))
+  )
 end
 
 poke_results = {}
@@ -20,8 +23,8 @@ poke_obj = call_poke_url(url)
 
 poke_results['id'] = poke_obj['id']
 poke_results['name'] = poke_obj['name']
-poke_results['type'] = poke_obj['types'].map { |num| num['type']['name'] }
-poke_results['abilities'] = poke_obj['abilities'].map { |num| num['ability']['name'] }
+poke_results['type'] = poke_obj['types'].map { |element| element['type']['name'] }
+poke_results['abilities'] = poke_obj['abilities'].map { |element| element['ability']['name'] }
 poke_results['height'] = poke_obj['height']
 poke_results['weight'] = poke_obj['weight']
 

@@ -33,12 +33,6 @@ type_results['half_damage_from'] = hdf.map { |num| num['name'] } if hdf[0]
 type_results['half_damage_to'] = hdto.map { |num| num['name'] } if hdto[0]
 type_results['no_damage_from'] = ndf.map { |num| num['name'] } if ndf[0]
 type_results['no_damage_to'] = ndto.map { |num| num['name'] } if ndto[0]
-# type_results['double_damage_from'] = ddf[0].nil? ? nil : ddf.map { |num| num['name'] }
-# type_results['double_damage_to'] = ddto[0].nil? ? nil : ddto.map { |num| num['name'] }
-# type_results['half_damage_from'] = hdf[0].nil? ? nil : hdf.map { |num| num['name'] }
-# type_results['half_damage_to'] = hdto[0].nil? ? nil : hdto.map { |num| num['name'] }
-# type_results['no_damage_from'] = ndf[0].nil? ? nil : ndf.map { |num| num['name'] }
-# type_results['no_damage_to'] = ndto[0].nil? ? nil : ndto.map { |num| num['name'] }
 type_results['name'] = poke_obj['name']
 type_results['pokemon'] = poke_obj['pokemon'].map { |num| num['pokemon']['name'] }
 
