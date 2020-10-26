@@ -4,7 +4,7 @@
   title: Pokémon 8" Plush - Pikachu
   asin: B07RBBCZZ1
   link: https://amazon.com/dp/B07RBBCZZ1
-  image: https://m.media-amazon.com/images/I/71s4RtUum3L._AC_UY218_.jpg
+  image: https://m.media-amazon.com/images/I/71s4RtUum3L._AC_UL320_.jpg
   isPrime: false
   rating: 4.8
   ratingsTotal: 1389
@@ -18,79 +18,10 @@
     rawPrice: "$12.98"
 2:
   position: 2
-  title: Rubies Pokémon Pikachu Ears and Tail Dress Up Kit (Discontinued by manufacturer)
-  asin: B00CFFASSW
-  link: https://amazon.com/dp/B00CFFASSW
-  image: https://m.media-amazon.com/images/I/81vWQ1Tu44L._AC_UY218_.jpg
-  isPrime: false
-  rating: 4.2
-  ratingsTotal: 380
-  sponsored: false
-  categories:
-  - name: All Departments
-  prices:
-  - currencySymbol: "$"
-    price: 17.95
-    currency: USD
-    rawPrice: "$17.95"
-3:
-  position: 3
-  title: Disguise Pikachu Pokemon Classic Costume
-  asin: B07NF2BYJS
-  link: https://amazon.com/dp/B07NF2BYJS
-  image: https://m.media-amazon.com/images/I/71NuJ9ztwcL._AC_UY218_.jpg
-  isPrime: false
-  rating: 4.6
-  ratingsTotal: 269
-  sponsored: false
-  categories:
-  - name: All Departments
-  prices:
-  - currencySymbol: "$"
-    price: 28.12
-    currency: USD
-    rawPrice: "$28.12"
-4:
-  position: 4
-  title: Pokémon Pikachu Plush Stuffed Animal - Winking - Large 12"
-  asin: B07SPGG292
-  link: https://amazon.com/dp/B07SPGG292
-  image: https://m.media-amazon.com/images/I/81QWKId4ONL._AC_UY218_.jpg
-  isPrime: false
-  rating: 4.7
-  ratingsTotal: 251
-  sponsored: false
-  categories:
-  - name: All Departments
-  prices:
-  - currencySymbol: "$"
-    price: 18.99
-    currency: USD
-    rawPrice: "$18.99"
-5:
-  position: 5
-  title: 3D crystal LED Night Light,7 Colors Gradual Changing Table Lamp for Holiday
-    Gifts or Home …
-  asin: B078BMJW27
-  link: https://amazon.com/dp/B078BMJW27
-  image: https://m.media-amazon.com/images/I/6170mP5+BgL._AC_UY218_.jpg
-  isPrime: false
-  rating: 4.3
-  ratingsTotal: 115
-  sponsored: true
-  categories:
-  - name: All Departments
-  prices:
-  - currencySymbol: "$"
-    price: 20.99
-    currency: USD
-    rawPrice: "$20.99"
-6:
-  position: 6
   title: Pokémon Electronic & Interactive My Partner Pikachu
   asin: B07HYWVLK7
   link: https://amazon.com/dp/B07HYWVLK7
-  image: https://m.media-amazon.com/images/I/6196+Z5YgZL._AC_UY218_.jpg
+  image: https://m.media-amazon.com/images/I/6196+Z5YgZL._AC_UL320_.jpg
   isPrime: false
   rating: 4.5
   ratingsTotal: 2901
@@ -102,29 +33,29 @@
     price: 14.99
     currency: USD
     rawPrice: "$14.99"
-7:
-  position: 7
-  title: Pokemon Plush, Large 12" Inch Plush Pikachu
-  asin: B078W3NPVN
-  link: https://amazon.com/dp/B078W3NPVN
-  image: https://m.media-amazon.com/images/I/81aZ0KtrfVL._AC_UY218_.jpg
+3:
+  position: 3
+  title: Rubies Pokémon Pikachu Ears and Tail Dress Up Kit (Discontinued by manufacturer)
+  asin: B00CFFASSW
+  link: https://amazon.com/dp/B00CFFASSW
+  image: https://m.media-amazon.com/images/I/81vWQ1Tu44L._AC_UL320_.jpg
   isPrime: false
-  rating: 4.8
-  ratingsTotal: 1338
+  rating: 4.2
+  ratingsTotal: 380
   sponsored: false
   categories:
   - name: All Departments
   prices:
   - currencySymbol: "$"
-    price: 19.99
+    price: 17.95
     currency: USD
-    rawPrice: "$19.99"
-8:
-  position: 8
+    rawPrice: "$17.95"
+4:
+  position: 4
   title: Pokemon Pikachu 8" Plush - Officially Licensed and Stuffed Animal Material
   asin: B078W3Q73P
   link: https://amazon.com/dp/B078W3Q73P
-  image: https://m.media-amazon.com/images/I/71qeNzidkkL._AC_UY218_.jpg
+  image: https://m.media-amazon.com/images/I/71qeNzidkkL._AC_UL320_.jpg
   isPrime: false
   rating: 4.8
   ratingsTotal: 1704
@@ -136,12 +67,50 @@
     price: 12.87
     currency: USD
     rawPrice: "$12.87"
-9:
-  position: 9
+5:
+  position: 5
+  title: Kids Wireless Headphones, Boys Bluetooth Headset Adjustable Headband with
+    Mic, Stereo Sound Childrens Bluetooth Headphones Over Ear for School Home, Travel
+    (3.5mm Jack Audio Cable Included)
+  asin: B085L6J1BP
+  link: https://amazon.com/dp/B085L6J1BP
+  image: https://m.media-amazon.com/images/I/51N017gDMOL._AC_UL320_.jpg
+  isPrime: true
+  rating: 4.2
+  ratingsTotal: 274
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 28.99
+    currency: USD
+    rawPrice: "$28.99"
+6:
+  position: 6
+  title: Pokemon Clip 'N' Go Poké Ball Belt Set, Wave 5 Ultra Ball, Quick Ball, and
+    2” Pikachu - Feat. Detailed Pikachu Figure, a Clip ‘N’ Go Belt, 2 Clip ‘N’ Go
+    Poké Balls- Perfect for Any Trainer!
+  asin: B0856TVCYY
+  link: https://amazon.com/dp/B0856TVCYY
+  image: https://m.media-amazon.com/images/I/71QT3wxHYoL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.7
+  ratingsTotal: 12
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 21.99
+    currency: USD
+    rawPrice: "$21.99"
+7:
+  position: 7
   title: Pokemon Boys' Pikachu Costume Hoodie
   asin: B07VSSP542
   link: https://amazon.com/dp/B07VSSP542
-  image: https://m.media-amazon.com/images/I/511Ecu5CI4L._AC_UY218_.jpg
+  image: https://m.media-amazon.com/images/I/511Ecu5CI4L._AC_UL320_.jpg
   isPrime: false
   rating: 4.7
   ratingsTotal: 163
@@ -153,48 +122,49 @@
     price: 29.95
     currency: USD
     rawPrice: "$29.95"
-10:
-  position: 10
-  title: Pokémon Pikachu Halloween Plush Stuffed Animal, 8" - Pikachu with Witch Hat
-    - Age 2+
-  asin: B0868XNJHS
-  link: https://amazon.com/dp/B0868XNJHS
-  image: https://m.media-amazon.com/images/I/81QmiVIWFfL._AC_UY218_.jpg
+8:
+  position: 8
+  title: Pokemon Pikachu Holiday Seasonal Plush, 8 Plush Toy, Includes Santa Hat Accessory
+    - Super Soft Plush, Authentic Details - Perfect for Playing, Displaying & Gifting
+    - Gotta Catch ‘Em All
+  asin: B07YSR25SN
+  link: https://amazon.com/dp/B07YSR25SN
+  image: https://m.media-amazon.com/images/I/71GbRP4jxaL._AC_UL320_.jpg
   isPrime: false
   rating: 5.0
-  ratingsTotal: 8
-  sponsored: true
-  categories:
-  - name: All Departments
-  prices:
-  - currencySymbol: "$"
-    price: 17.99
-    currency: USD
-    rawPrice: "$17.99"
-11:
-  position: 11
-  title: Beauty Shine Unisex Child Pikachu Costume Halloween Cosplay Pajamas
-  asin: B07X48PCL4
-  link: https://amazon.com/dp/B07X48PCL4
-  image: https://m.media-amazon.com/images/I/51+c-vXO40L._AC_UY218_.jpg
-  isPrime: false
-  rating: 4.6
-  ratingsTotal: 206
+  ratingsTotal: 15
   sponsored: false
   categories:
   - name: All Departments
   prices:
   - currencySymbol: "$"
-    price: 29.99
+    price: 14.99
     currency: USD
-    rawPrice: "$29.99"
-12:
-  position: 12
+    rawPrice: "$14.99"
+9:
+  position: 9
+  title: 'Funko Pop! Games: Pokemon - Grumpy Pikachu'
+  asin: B084R4WCNT
+  link: https://amazon.com/dp/B084R4WCNT
+  image: https://m.media-amazon.com/images/I/5197X9MoxZL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.9
+  ratingsTotal: 770
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 10.99
+    currency: USD
+    rawPrice: "$10.99"
+10:
+  position: 10
   title: Pokemon Pikachu Plush, 18" Plush Toy - Adorable Sleeping Pikachu - Ultra-Soft
     Plush Material, Perfect for Playing, Cuddling & Sleeping - Gotta Catch ‘Em All
   asin: B085QLF44V
   link: https://amazon.com/dp/B085QLF44V
-  image: https://m.media-amazon.com/images/I/71NgHJS3XPL._AC_UY218_.jpg
+  image: https://m.media-amazon.com/images/I/71NgHJS3XPL._AC_UL320_.jpg
   isPrime: true
   rating: 4.9
   ratingsTotal: 79
@@ -206,158 +176,48 @@
     price: 29.99
     currency: USD
     rawPrice: "$29.99"
+11:
+  position: 11
+  title: COOLINKO Anime Face Mouth Muffle Cover Head Accessory Mask with Ear Loops
+    for Kids Adults Anime Pokemon Cosplay Costume Halloween - Reusable Washable Breathable
+  asin: B08741Z14Q
+  link: https://amazon.com/dp/B08741Z14Q
+  image: https://m.media-amazon.com/images/I/61-8sYaWjgL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.3
+  ratingsTotal: 910
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 9.99
+    currency: USD
+    rawPrice: "$9.99"
+12:
+  position: 12
+  title: Pokemon Movies for Kids:What Does the Fox Say
+  asin: B01MPWQ83K
+  link: https://amazon.com/dp/B01MPWQ83K
+  image: https://m.media-amazon.com/images/I/71AW5Ccux5L._AC_UL320_.jpg
+  isPrime: false
+  rating: 3.1
+  ratingsTotal: 5
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 1.99
+    currency: USD
+    rawPrice: "$1.99"
 13:
   position: 13
-  title: Disguise The Pokemon Toddler Pikachu Classic Costume 3T/4T
-  asin: B07NDZWZ8R
-  link: https://amazon.com/dp/B07NDZWZ8R
-  image: https://m.media-amazon.com/images/I/71kODPsAYkL._AC_UY218_.jpg
-  isPrime: false
-  rating: 4.7
-  ratingsTotal: 144
-  sponsored: false
-  categories:
-  - name: All Departments
-  prices:
-  - currencySymbol: "$"
-    price: 25.8
-    currency: USD
-    rawPrice: "$25.80"
-14:
-  position: 14
-  title: Pokemon Pikachu Plush Stuffed Animals Large Pillow Toy, 11" Inch, for Kids
-    Over Age1+
-  asin: B07WR73NCL
-  link: https://amazon.com/dp/B07WR73NCL
-  image: https://m.media-amazon.com/images/I/61N8HUn59OL._AC_UY218_.jpg
-  isPrime: false
-  rating: 4.1
-  ratingsTotal: 123
-  sponsored: false
-  categories:
-  - name: All Departments
-  prices:
-  - currencySymbol: "$"
-    price: 16.0
-    currency: USD
-    rawPrice: "$16.00"
-15:
-  position: 15
-  title: Fujifilm Instax Mini 9 Camera Yellow Pikachu + Instant Camera Set+Fuji +
-    Instax Mini 9 Case + Instax Accessories Kit Bundle, （Scarce Styles）-Pokémon Detective
-    Pikachu
-  asin: B0836R7M5Y
-  link: https://amazon.com/dp/B0836R7M5Y
-  image: https://m.media-amazon.com/images/I/71iNqlWmUsL._AC_UY218_.jpg
-  isPrime: true
-  rating: 4.9
-  ratingsTotal: 6
-  sponsored: true
-  categories:
-  - name: All Departments
-  prices:
-  - currencySymbol: "$"
-    price: 156.0
-    currency: USD
-    rawPrice: "$156.00"
-16:
-  position: 16
-  title: Kitchen Designers Franco Kids Bath and Beach Soft Cotton Terry Hooded Towel
-    Wrap, 24" x 50", Pokemon Pikachu
-  asin: B07QDKBVGQ
-  link: https://amazon.com/dp/B07QDKBVGQ
-  image: https://m.media-amazon.com/images/I/71RcVjYhSFL._AC_UY218_.jpg
-  isPrime: false
-  rating: 4.8
-  ratingsTotal: 6980
-  sponsored: false
-  categories:
-  - name: All Departments
-  prices:
-  - currencySymbol: "$"
-    price: 17.91
-    currency: USD
-    rawPrice: "$17.91"
-17:
-  position: 17
-  title: Pokemon Pikachu Boys Sherpa Fleece Costume Hoodie
-  asin: B07TK15X9K
-  link: https://amazon.com/dp/B07TK15X9K
-  image: https://m.media-amazon.com/images/I/8143hewaPGL._AC_UY218_.jpg
-  isPrime: true
-  rating: 4.9
-  ratingsTotal: 139
-  sponsored: false
-  categories:
-  - name: All Departments
-  prices:
-  - currencySymbol: "$"
-    price: 39.99
-    currency: USD
-    rawPrice: "$39.99"
-18:
-  position: 18
-  title: Pokemon Pikachu Halloween Seasonal Plush, 8 Plush Toy, Includes Plush Pumpkin
-    Accessory- Super Soft, Authentic Details- Perfect for The Holidays, Playing &
-    Displaying- Gotta Catch ‘Em All
-  asin: B085QLK44V
-  link: https://amazon.com/dp/B085QLK44V
-  image: https://m.media-amazon.com/images/I/7179IfZKYpL._AC_UY218_.jpg
-  isPrime: false
-  rating: 4.9
-  ratingsTotal: 68
-  sponsored: false
-  categories:
-  - name: All Departments
-  prices:
-  - currencySymbol: "$"
-    price: 14.99
-    currency: USD
-    rawPrice: "$14.99"
-19:
-  position: 19
-  title: Pokemon Pikachu Kids Headphones, Adjustable Headband, Stereo Sound, 3.5Mm
-    Jack, Wired Headphones for Kids, Tangle-Free, Volume Control, Childrens Headphones
-    Over Ear for School Home, Travel
-  asin: B07CB2C2TK
-  link: https://amazon.com/dp/B07CB2C2TK
-  image: https://m.media-amazon.com/images/I/81Qo1fwjEGL._AC_UY218_.jpg
-  isPrime: false
-  rating: 4.6
-  ratingsTotal: 1231
-  sponsored: false
-  categories:
-  - name: All Departments
-  prices:
-  - currencySymbol: "$"
-    price: 19.99
-    currency: USD
-    rawPrice: "$19.99"
-20:
-  position: 20
-  title: Spooktacular Creations Inflatable Halloween Costume Full Body Sloth Inflatable
-    Costume - Adult Unisex One Size (Sloth) Brown
-  asin: B08C2DVKY2
-  link: https://amazon.com/dp/B08C2DVKY2
-  image: https://m.media-amazon.com/images/I/81se6+ueC4L._AC_UY218_.jpg
-  isPrime: true
-  rating: 5.0
-  ratingsTotal: 10
-  sponsored: true
-  categories:
-  - name: All Departments
-  prices:
-  - currencySymbol: "$"
-    price: 44.95
-    currency: USD
-    rawPrice: "$44.95"
-21:
-  position: 21
   title: NIDEZON Pikachu Toss Games with 4 Bean Bags， Pokemon Party Games Fun Indoor
     Outdoor Games，Birthday Party Decoration Supplies
   asin: B08FDH9HTC
   link: https://amazon.com/dp/B08FDH9HTC
-  image: https://m.media-amazon.com/images/I/71XI39c1n9L._AC_UY218_.jpg
+  image: https://m.media-amazon.com/images/I/71XI39c1n9L._AC_UL320_.jpg
   isPrime: false
   rating: 4.6
   ratingsTotal: 12
@@ -369,17 +229,225 @@
     price: 12.99
     currency: USD
     rawPrice: "$12.99"
-22:
-  position: 22
-  title: Spooktacular Creations Koala Inflatable Halloween Costume Full Body Animal
-    Adult Unisex Inflatable Costume - One Size (Koala) Gray
-  asin: B08C264L6J
-  link: https://amazon.com/dp/B08C264L6J
-  image: https://m.media-amazon.com/images/I/71keQL-d1nL._AC_UY218_.jpg
+14:
+  position: 14
+  title: 'Billie Shark Huggy Adventure Hooded Beach Towel: 100% Cotton Super Absorbent
+    Ultimate Playing Freedom Super Stylish, Grows with Your Child (Blue Stripe, 4-6)'
+  asin: B084G5TY9M
+  link: https://amazon.com/dp/B084G5TY9M
+  image: https://m.media-amazon.com/images/I/818+s5gwTaL._AC_UL320_.jpg
+  isPrime: true
+  rating: 5.0
+  ratingsTotal: 1
+  sponsored: true
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 48.0
+    currency: USD
+    rawPrice: "$48.00"
+15:
+  position: 15
+  title: 3D crystal LED Night Light,7 Colors Gradual Changing Table Lamp for Holiday
+    Gifts or Home …
+  asin: B078BMJW27
+  link: https://amazon.com/dp/B078BMJW27
+  image: https://m.media-amazon.com/images/I/6170mP5+BgL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.3
+  ratingsTotal: 115
+  sponsored: true
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 20.99
+    currency: USD
+    rawPrice: "$20.99"
+16:
+  position: 16
+  title: Pikachu 6 Inch Pokemon Plush
+  asin: B0012AWX66
+  link: https://amazon.com/dp/B0012AWX66
+  image: https://m.media-amazon.com/images/I/71sZ+Bkj9hL._AC_UL320_.jpg
   isPrime: false
   rating: 4.5
-  ratingsTotal: 2
-  sponsored: true
+  ratingsTotal: 197
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 10.44
+    currency: USD
+    rawPrice: "$10.44"
+17:
+  position: 17
+  title: Kitchen Designers Franco Kids Bath and Beach Soft Cotton Terry Hooded Towel
+    Wrap, 24" x 50", Pokemon Pikachu
+  asin: B07QDKBVGQ
+  link: https://amazon.com/dp/B07QDKBVGQ
+  image: https://m.media-amazon.com/images/I/71RcVjYhSFL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.8
+  ratingsTotal: 6981
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 17.91
+    currency: USD
+    rawPrice: "$17.91"
+18:
+  position: 18
+  title: Pokemon Pikachu Boys Sherpa Fleece Costume Hoodie
+  asin: B07TK15X9K
+  link: https://amazon.com/dp/B07TK15X9K
+  image: https://m.media-amazon.com/images/I/8143hewaPGL._AC_UL320_.jpg
+  isPrime: true
+  rating: 4.9
+  ratingsTotal: 139
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 39.99
+    currency: USD
+    rawPrice: "$39.99"
+19:
+  position: 19
+  title: ToyFactory Pokémon Pikachu 10" Plush
+  asin: B01EO8SVN6
+  link: https://amazon.com/dp/B01EO8SVN6
+  image: https://m.media-amazon.com/images/I/31O8RQFWYkL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.6
+  ratingsTotal: 722
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 11.99
+    currency: USD
+    rawPrice: "$11.99"
+20:
+  position: 20
+  title: Disguise Pikachu Pokemon Classic Costume
+  asin: B07NF2BYJS
+  link: https://amazon.com/dp/B07NF2BYJS
+  image: https://m.media-amazon.com/images/I/71NuJ9ztwcL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.6
+  ratingsTotal: 269
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 28.12
+    currency: USD
+    rawPrice: "$28.12"
+21:
+  position: 21
+  title: Pokémon Pikachu Plush Headband - Pikachu Ears For Accessory, Dress Up and
+    More - One size
+  asin: B07HPF7K75
+  link: https://amazon.com/dp/B07HPF7K75
+  image: https://m.media-amazon.com/images/I/71o3VutEycL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.8
+  ratingsTotal: 193
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 12.99
+    currency: USD
+    rawPrice: "$12.99"
+22:
+  position: 22
+  title: Itazura New Pokemon-Go inspired Electronic Coin Money Piggy Bank box Limited
+    Edition (Pickachu Coin Bank)
+  asin: B01LA6171I
+  link: https://amazon.com/dp/B01LA6171I
+  image: https://m.media-amazon.com/images/I/612PXIB5+cL._AC_UL320_.jpg
+  isPrime: true
+  rating: 4.6
+  ratingsTotal: 758
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 29.87
+    currency: USD
+    rawPrice: "$29.87"
+23:
+  position: 23
+  title: Pokémon Eevee and Pikachu 2 Pack Plush Stuffed Animals 8 Inch
+  asin: B07K6W76LH
+  link: https://amazon.com/dp/B07K6W76LH
+  image: https://m.media-amazon.com/images/I/81WGZPXO5+L._AC_UL320_.jpg
+  isPrime: true
+  rating: 4.7
+  ratingsTotal: 493
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 29.99
+    currency: USD
+    rawPrice: "$29.99"
+24:
+  position: 24
+  title: Mega Construx Pokemon Jumbo Pikachu
+  asin: B079KNH886
+  link: https://amazon.com/dp/B079KNH886
+  image: https://m.media-amazon.com/images/I/811YU+Scf5L._AC_UL320_.jpg
+  isPrime: true
+  rating: 4.5
+  ratingsTotal: 803
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 43.01
+    currency: USD
+    rawPrice: "$43.01"
+25:
+  position: 25
+  title: Pikachu amiibo (Super Smash Bros Series)
+  asin: B00N4ABSLS
+  link: https://amazon.com/dp/B00N4ABSLS
+  image: https://m.media-amazon.com/images/I/61C3CCYf+vL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.8
+  ratingsTotal: 11072
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 23.47
+    currency: USD
+    rawPrice: "$23.47"
+26:
+  position: 26
+  title: Pokémon, "Glitch Pikachu" Micro Raschel Throw Blanket, 46" x 60", Multi Color
+  asin: B01G8UO7S6
+  link: https://amazon.com/dp/B01G8UO7S6
+  image: https://m.media-amazon.com/images/I/91ZMzz3DXIL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.8
+  ratingsTotal: 357
+  sponsored: false
   categories:
   - name: All Departments
   prices:
@@ -387,3 +455,599 @@
     price: 24.95
     currency: USD
     rawPrice: "$24.95"
+27:
+  position: 27
+  title: Pokemon Boys Pikachu Pajamas
+  asin: B07XXXJ946
+  link: https://amazon.com/dp/B07XXXJ946
+  image: https://m.media-amazon.com/images/I/81y0MXaSp8L._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.0
+  ratingsTotal: 117
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 18.95
+    currency: USD
+    rawPrice: "$18.95"
+28:
+  position: 28
+  title: Pokémon Pikachu Halloween Plush Stuffed Animal, 8" - Pikachu with Witch Hat
+    - Age 2+
+  asin: B0868XNJHS
+  link: https://amazon.com/dp/B0868XNJHS
+  image: https://m.media-amazon.com/images/I/81QmiVIWFfL._AC_UL320_.jpg
+  isPrime: false
+  rating: 5.0
+  ratingsTotal: 8
+  sponsored: true
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 17.99
+    currency: USD
+    rawPrice: "$17.99"
+29:
+  position: 29
+  title: Rubie's Costume Pokémon Female Pikachu Costume
+  asin: B00DMDHZZK
+  link: https://amazon.com/dp/B00DMDHZZK
+  image: https://m.media-amazon.com/images/I/710grqYi6fL._AC_UL320_.jpg
+  isPrime: false
+  rating: 3.9
+  ratingsTotal: 48
+  sponsored: true
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 36.99
+    currency: USD
+    rawPrice: "$36.99"
+30:
+  position: 30
+  title: Inked and Screened Set of 144pcs 2-3CM Collectable Poke Mini Action Figures
+    mon Heroic Figure Combination
+  asin: B08HYNL5P8
+  link: https://amazon.com/dp/B08HYNL5P8
+  image: https://m.media-amazon.com/images/I/71v3FKsE8aL._AC_UL320_.jpg
+  isPrime: true
+  rating: 3.9
+  ratingsTotal: 4
+  sponsored: true
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 29.99
+    currency: USD
+    rawPrice: "$29.99"
+31:
+  position: 31
+  title: RoomMates Pokemon Pikachu Peel And Stick Wall Decals - RMK2536GM,Multi
+  asin: B00K1FW4GC
+  link: https://amazon.com/dp/B00K1FW4GC
+  image: https://m.media-amazon.com/images/I/61OS-0LpuCL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.8
+  ratingsTotal: 2180
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 9.65
+    currency: USD
+    rawPrice: "$9.65"
+32:
+  position: 32
+  title: Pokemon Pikachu Giant Plush, 24" - Adorable, Ultra-Soft, Life Size Plush
+    Toy, Perfect for Playing & Displaying - Gotta Catch ‘Em All
+  asin: B085QLBMDY
+  link: https://amazon.com/dp/B085QLBMDY
+  image: https://m.media-amazon.com/images/I/81K3S50IPdL._AC_UL320_.jpg
+  isPrime: true
+  rating: 4.9
+  ratingsTotal: 49
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 39.99
+    currency: USD
+    rawPrice: "$39.99"
+33:
+  position: 33
+  title: PowerA Pokemon Wireless GameCube Style Controller for Nintendo Switch - Pikachu
+  asin: B07PQD2MG2
+  link: https://amazon.com/dp/B07PQD2MG2
+  image: https://m.media-amazon.com/images/I/71DTYL8ZpNL._AC_UL320_.jpg
+  isPrime: true
+  rating: 4.6
+  ratingsTotal: 2100
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 29.75
+    currency: USD
+    rawPrice: "$29.75"
+34:
+  position: 34
+  title: 'Pikachu: Anime Lover Notebook, 120 Squared Pages, Gift, School&Office, Pokemon,
+    Pikachu'
+  asin: '1709091290'
+  link: https://amazon.com/dp/1709091290
+  image: https://m.media-amazon.com/images/I/41Z9G2ZRdvL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.5
+  ratingsTotal: 2
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 5.99
+    currency: USD
+    rawPrice: "$5.99"
+35:
+  position: 35
+  title: Beauty Shine Unisex Child Pikachu Costume Halloween Cosplay Pajamas
+  asin: B07X48PCL4
+  link: https://amazon.com/dp/B07X48PCL4
+  image: https://m.media-amazon.com/images/I/51+c-vXO40L._AC_UL320_.jpg
+  isPrime: true
+  rating: 4.6
+  ratingsTotal: 206
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 33.99
+    currency: USD
+    rawPrice: "$33.99"
+36:
+  position: 36
+  title: Pika Pika Luxury 3D Plush Fronted Pikachu Backpack School Bag
+  asin: B07VXVR15R
+  link: https://amazon.com/dp/B07VXVR15R
+  image: https://m.media-amazon.com/images/I/71AoQShmJ2L._AC_UL320_.jpg
+  isPrime: true
+  rating: 4.7
+  ratingsTotal: 11
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 26.99
+    currency: USD
+    rawPrice: "$26.99"
+37:
+  position: 37
+  title: Jasenv Pikachu Action Figure Cosplay Uchiha Obito Actions Figures Statues
+    Collectible Birthday Gifts PVC 4"
+  asin: B08JHXR3HG
+  link: https://amazon.com/dp/B08JHXR3HG
+  image: https://m.media-amazon.com/images/I/71EQysNntJL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.7
+  ratingsTotal: 438
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 18.99
+    currency: USD
+    rawPrice: "$18.99"
+38:
+  position: 38
+  title: Pikachu Plush Toys Cartoon Anime Stuffed Doll Animal Toy Cloth Print Pillow
+  asin: B07T97S4KN
+  link: https://amazon.com/dp/B07T97S4KN
+  image: https://m.media-amazon.com/images/I/711yUTXJi7L._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.6
+  ratingsTotal: 319
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 13.99
+    currency: USD
+    rawPrice: "$13.99"
+39:
+  position: 39
+  title: HAOORYX 62Pcs Pikachu Party Favors, Anime Theme Party Surprise Gift Bag-
+    Drawstring Backpack, Mobile Phone Straps and Ring Holder, Slicone Bracelet, Keychain,
+    Brooch, Stickers for Kids Adult Gift
+  asin: B08DCZ2Y9Y
+  link: https://amazon.com/dp/B08DCZ2Y9Y
+  image: https://m.media-amazon.com/images/I/91AIZs2BwjL._AC_UL320_.jpg
+  isPrime: false
+  rating: 3.9
+  ratingsTotal: 4
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 16.99
+    currency: USD
+    rawPrice: "$16.99"
+40:
+  position: 40
+  title: Pokemon Plush, Large 12" Inch Plush Pikachu
+  asin: B078W3NPVN
+  link: https://amazon.com/dp/B078W3NPVN
+  image: https://m.media-amazon.com/images/I/81aZ0KtrfVL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.8
+  ratingsTotal: 1338
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 19.99
+    currency: USD
+    rawPrice: "$19.99"
+41:
+  position: 41
+  title: Pokemon V Power Tin Featuring Pikachu V
+  asin: B08D6V44RC
+  link: https://amazon.com/dp/B08D6V44RC
+  image: https://m.media-amazon.com/images/I/619RemOfmXL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.2
+  ratingsTotal: 25
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 21.7
+    currency: USD
+    rawPrice: "$21.70"
+42:
+  position: 42
+  title: Pokémon Pikachu Plush Stuffed Animal - Winking - Large 12"
+  asin: B07SPGG292
+  link: https://amazon.com/dp/B07SPGG292
+  image: https://m.media-amazon.com/images/I/81QWKId4ONL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.7
+  ratingsTotal: 251
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 18.99
+    currency: USD
+    rawPrice: "$18.99"
+43:
+  position: 43
+  title: Throw 'N' Pop Pikachu and Poké Ball Toy
+  asin: B01C49MHK0
+  link: https://amazon.com/dp/B01C49MHK0
+  image: https://m.media-amazon.com/images/I/71Y0i8YxlVL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.5
+  ratingsTotal: 492
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 12.05
+    currency: USD
+    rawPrice: "$12.05"
+44:
+  position: 44
+  title: Controller Gear Nintendo Switch Skin & Screen Protector Set - Pokemon - Pikachu
+    Set 1 - Nintendo Switch
+  asin: B07T9JWKMN
+  link: https://amazon.com/dp/B07T9JWKMN
+  image: https://m.media-amazon.com/images/I/81u-T2lZjVL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.7
+  ratingsTotal: 2202
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 19.99
+    currency: USD
+    rawPrice: "$19.99"
+45:
+  position: 45
+  title: Star Wars Boys' Ugly Christmas Crew Sweatshirt
+  asin: B07VKC7JF8
+  link: https://amazon.com/dp/B07VKC7JF8
+  image: https://m.media-amazon.com/images/I/81gr-IEKrzL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.7
+  ratingsTotal: 38
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 17.5
+    currency: USD
+    rawPrice: "$17.50"
+46:
+  position: 46
+  title: Set of 65 Pcs Pokemons Birthday Party Supplies for Kids and Boys Pikachu
+    Party Favor Includes Birthday Cake Decorations Plates Table Cloth
+  asin: B08LNP4WZL
+  link: https://amazon.com/dp/B08LNP4WZL
+  image: https://m.media-amazon.com/images/I/71b1h1oZZGL._AC_UL320_.jpg
+  isPrime: false
+  rating: 0.0
+  ratingsTotal: 0
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 15.99
+    currency: USD
+    rawPrice: "$15.99"
+47:
+  position: 47
+  title: Pikachu 2019 Pro-Binder
+  asin: B07NTP2DD6
+  link: https://amazon.com/dp/B07NTP2DD6
+  image: https://m.media-amazon.com/images/I/71RPfnndjML._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.6
+  ratingsTotal: 129
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 22.99
+    currency: USD
+    rawPrice: "$22.99"
+48:
+  position: 48
+  title: Hallmark Keepsake Christmas Ornament 2020, Pokémon Pikachu
+  asin: B07QBB7P2D
+  link: https://amazon.com/dp/B07QBB7P2D
+  image: https://m.media-amazon.com/images/I/71QQc+JHH0L._AC_UL320_.jpg
+  isPrime: false
+  rating: 5.0
+  ratingsTotal: 5
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 15.84
+    currency: USD
+    rawPrice: "$15.84"
+49:
+  position: 49
+  title: Pokémon Clip and Carry Poké Ball Adjustable Belt with 2 inch Pikachu Figure,
+    Poké Ball, and Grass Type Nest Ball - Assorted colors
+  asin: B01C49MHQY
+  link: https://amazon.com/dp/B01C49MHQY
+  image: https://m.media-amazon.com/images/I/61mrBRj-KwL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.5
+  ratingsTotal: 2549
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 17.95
+    currency: USD
+    rawPrice: "$17.95"
+50:
+  position: 50
+  title: COOLINKO Anime Face Covering with Activated Carbon PM2.5 Filter - Reusable
+    Washable Anti Dust Cotton Mouth Protector Mask - Cartoon Fashion Cosplay Muffle
+    Guard (Yellow)
+  asin: B089QZBH3W
+  link: https://amazon.com/dp/B089QZBH3W
+  image: https://m.media-amazon.com/images/I/61Dr6ACUeJL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.5
+  ratingsTotal: 205
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 11.99
+    currency: USD
+    rawPrice: "$11.99"
+51:
+  position: 51
+  title: Disguise Pokemon Pikachu Headband and Tail Kit
+  asin: B07KXJ7DG5
+  link: https://amazon.com/dp/B07KXJ7DG5
+  image: https://m.media-amazon.com/images/I/81GT0mgfWgL._AC_UL320_.jpg
+  isPrime: false
+  rating: 5.0
+  ratingsTotal: 1
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 21.99
+    currency: USD
+    rawPrice: "$21.99"
+52:
+  position: 52
+  title: Acekar Pokemon Stickers for Hydro Flask, | 50 PCS | Vinyl Waterproof Stickers
+    for Laptop,Skateboard,Water Bottles,Computer,Phone, Cute Anime Stickers (Pokemon)
+  asin: B083J4159T
+  link: https://amazon.com/dp/B083J4159T
+  image: https://m.media-amazon.com/images/I/81FvJAV1ihL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.8
+  ratingsTotal: 874
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 6.99
+    currency: USD
+    rawPrice: "$6.99"
+53:
+  position: 53
+  title: HAOORYX 105Pcs Pikachu Party Favors-Make a Face Stickers, Party Masks, Rubber
+    Bracelet Wristband, Cute Stickers, Mini Action Figures, Squishy Toys for Themed
+    Birthday Party Supplies Birthday Gifts
+  asin: B08GKG7RYS
+  link: https://amazon.com/dp/B08GKG7RYS
+  image: https://m.media-amazon.com/images/I/91i+BzPKPCL._AC_UL320_.jpg
+  isPrime: false
+  rating: 5.0
+  ratingsTotal: 3
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 24.99
+    currency: USD
+    rawPrice: "$24.99"
+54:
+  position: 54
+  title: Disguise The Pokemon Toddler Pikachu Classic Costume 3T/4T
+  asin: B07NDZWZ8R
+  link: https://amazon.com/dp/B07NDZWZ8R
+  image: https://m.media-amazon.com/images/I/71kODPsAYkL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.7
+  ratingsTotal: 144
+  sponsored: false
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 25.8
+    currency: USD
+    rawPrice: "$25.80"
+55:
+  position: 55
+  title: NEWCOSPLAY Unisex Children Pikachu Onesies Halloween Cosplay Costume
+  asin: B07BKVDFHH
+  link: https://amazon.com/dp/B07BKVDFHH
+  image: https://m.media-amazon.com/images/I/61UYbVxMu8L._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.8
+  ratingsTotal: 107
+  sponsored: true
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 30.99
+    currency: USD
+    rawPrice: "$30.99"
+56:
+  position: 56
+  title: Littleforbig Cotton Romper Onesie Pajamas Bodysuit - I Choose You Onesie
+  asin: B07MP2S8MK
+  link: https://amazon.com/dp/B07MP2S8MK
+  image: https://m.media-amazon.com/images/I/61VfubBXeaL._AC_UL320_.jpg
+  isPrime: true
+  rating: 4.4
+  ratingsTotal: 486
+  sponsored: true
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 37.99
+    currency: USD
+    rawPrice: "$37.99"
+57:
+  position: 57
+  title: Pokemon Pikachu Giant Plush, 24" - Adorable, Ultra-Soft, Life Size Plush
+    Toy, Perfect for Playing & Displaying - Gotta Catch ‘Em All
+  asin: B085QLBMDY
+  link: https://amazon.com/dp/B085QLBMDY
+  image: https://m.media-amazon.com/images/I/81K3S50IPdL._AC_UL320_.jpg
+  isPrime: true
+  rating: 4.9
+  ratingsTotal: 49
+  sponsored: true
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 39.99
+    currency: USD
+    rawPrice: "$39.99"
+58:
+  position: 58
+  title: Lshuqing 9pcs/Set 12cm (4.7 inch) - 9Pcs/Lot Anime Vaporeon Jolteon Flareon
+    Espeon Umbreon Leafeon Glaceon Sylveon Eevee Plush Toys
+  asin: B082LS77HK
+  link: https://amazon.com/dp/B082LS77HK
+  image: https://m.media-amazon.com/images/I/51InMI45B7L._AC_UL320_.jpg
+  isPrime: true
+  rating: 4.3
+  ratingsTotal: 152
+  sponsored: true
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 46.99
+    currency: USD
+    rawPrice: "$46.99"
+59:
+  position: 59
+  title: PERYOUN 100% Cotton Kids Hooded Poncho Bath/Beach/Pool Towel (Dinosaurs)
+  asin: B089RGMFWB
+  link: https://amazon.com/dp/B089RGMFWB
+  image: https://m.media-amazon.com/images/I/81x1v9jgKPL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.7
+  ratingsTotal: 9
+  sponsored: true
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 15.9
+    currency: USD
+    rawPrice: "$15.90"
+60:
+  position: 60
+  title: Bioworld Pokemon Pikachu Laplander Cosplay Beanie Cap Hat One Size Licensed
+    New Yellow
+  asin: B08518C72Y
+  link: https://amazon.com/dp/B08518C72Y
+  image: https://m.media-amazon.com/images/I/61-cwcl8ZcL._AC_UL320_.jpg
+  isPrime: false
+  rating: 4.9
+  ratingsTotal: 12
+  sponsored: true
+  categories:
+  - name: All Departments
+  prices:
+  - currencySymbol: "$"
+    price: 19.99
+    currency: USD
+    rawPrice: "$19.99"
