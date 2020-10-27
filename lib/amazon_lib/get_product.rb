@@ -4,8 +4,6 @@ require 'http'
 require 'yaml'
 require 'json'
 
-config = YAML.safe_load(File.read('config/secrets.yml'))
-
 def amazon_api_path(config, poke_name)
   "https://api.zilerate.com/amazon/category?apiKey=#{config['API_KEY']}&url=https%3A%2F%2Fwww.amazon.com%2Fs%3Fk%3D#{poke_name}"
 end
@@ -19,9 +17,10 @@ def call_amazon_url(url)
 end
 
 amazon_results = {}
-
+config = YAML.safe_load(File.read('config/secrets.yml'))
 url = amazon_api_path(config, 'Pikachu')
 amazon_obj = call_amazon_url(url)
+
 product_index = 1
 amazon_obj['results'].map do |element|
   amazon_results[product_index] = element

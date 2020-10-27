@@ -1,7 +1,11 @@
 {
   "RSpec": {
     "coverage": {
+<<<<<<< HEAD
       "/home/shelly/soa/soa2020/lib/poke_lib/pokemon_api.rb": {
+=======
+      "/home/lindaya/soa2020/soa2020/lib/amazon_lib/product_api.rb": {
+>>>>>>> 30b907c9d30531bde301f5462c96ebc747481729
         "lines": [
           null,
           null,
@@ -19,18 +23,28 @@
           1,
           null,
           1,
+          null,
+          1,
+          null,
           1,
           null,
           null,
           1,
           null,
           null,
+<<<<<<< HEAD
           1,
           null,
           2,
           null,
           1,
           null,
+=======
+          null,
+          null,
+          1,
+          null,
+>>>>>>> 30b907c9d30531bde301f5462c96ebc747481729
           1,
           1,
           null,
@@ -38,15 +52,20 @@
           1,
           null,
           1,
-          2,
-          null,
-          null,
-          1,
           1,
           null,
           null,
           1,
           1,
+<<<<<<< HEAD
+=======
+          1,
+>>>>>>> 30b907c9d30531bde301f5462c96ebc747481729
+          null,
+          null,
+          1,
+          1,
+<<<<<<< HEAD
           null,
           null,
           1,
@@ -56,12 +75,18 @@
           null,
           1,
           4,
+=======
+>>>>>>> 30b907c9d30531bde301f5462c96ebc747481729
           null,
           null,
           null
         ]
       },
+<<<<<<< HEAD
       "/home/shelly/soa/soa2020/lib/poke_lib/pokemon.rb": {
+=======
+      "/home/lindaya/soa2020/soa2020/lib/amazon_lib/product.rb": {
+>>>>>>> 30b907c9d30531bde301f5462c96ebc747481729
         "lines": [
           null,
           null,
@@ -72,6 +97,7 @@
           null,
           1,
           1,
+<<<<<<< HEAD
           1,
           1,
           1,
@@ -79,18 +105,21 @@
           null,
           null,
           null,
+=======
+>>>>>>> 30b907c9d30531bde301f5462c96ebc747481729
           null,
           null,
           null,
           1,
-          1,
+          0,
           null,
           null,
           1,
-          1,
+          0,
           null,
           null,
           1,
+<<<<<<< HEAD
           3,
           null,
           null,
@@ -197,6 +226,8 @@
           null,
           1,
           1,
+=======
+>>>>>>> 30b907c9d30531bde301f5462c96ebc747481729
           0,
           null,
           null,
@@ -209,7 +240,7 @@
           null,
           null,
           1,
-          0,
+          1,
           null,
           null,
           1,
@@ -364,6 +395,10 @@
         ]
       }
     },
+<<<<<<< HEAD
     "timestamp": 1603802506
+=======
+    "timestamp": 1603802309
+>>>>>>> 30b907c9d30531bde301f5462c96ebc747481729
   }
 }
