@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/chinyakao/SOA/soa2020/lib/amazon_lib/product_api.rb": {
+      "/home/lindaya/soa2020/soa2020/lib/amazon_lib/product_api.rb": {
         "lines": [
           null,
           null,
@@ -16,38 +16,42 @@
           1,
           null,
           1,
+          null,
+          1,
+          null,
           1,
           null,
           null,
           1,
           null,
           null,
-          null,
-          1,
-          null,
-          2,
-          2,
           null,
           null,
           1,
           null,
           1,
-          2,
+          1,
           null,
           null,
           1,
-          2,
-          2,
+          null,
+          1,
+          1,
           null,
           null,
           1,
-          2,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
           null,
           null,
           null
         ]
       },
-      "/home/chinyakao/SOA/soa2020/lib/amazon_lib/product.rb": {
+      "/home/lindaya/soa2020/soa2020/lib/amazon_lib/product.rb": {
         "lines": [
           null,
           null,
@@ -55,20 +59,8 @@
           null,
           1,
           1,
-          2,
-          null,
-          null,
-          null,
-          1,
           1,
           null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
           null,
           null,
           1,
@@ -81,6 +73,18 @@
           null,
           1,
           0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          1,
           null,
           null,
           1,
@@ -91,6 +95,6 @@
         ]
       }
     },
-    "timestamp": 1603706545
+    "timestamp": 1603802309
   }
 }

@@ -11,9 +11,13 @@ module ProductInf
     API_PRODUCT_ROOT = "https://api.zilerate.com/amazon/category?apiKey=#{config['API_KEY']}&url=https%3A%2F%2Fwww.amazon.com%2Fs%3Fk%3D"
 
     module Errors
+      # NotFound Errors
       class NotFound < StandardError; end
+      # Unauthorized Errors
+      class Unauthorized < StandardError; end
     end
     HTTP_ERROR = {
+      401 => Errors::Unauthorized,
       404 => Errors::NotFound
     }.freeze
 
