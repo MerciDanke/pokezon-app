@@ -1,17 +1,26 @@
 # frozen_string_literal: false
 
-require 'minitest/autorun'
-require 'minitest/rg'
-require 'yaml'
-require_relative '../lib/poke_lib/pokemon_api'
+require_relative 'spec_helper'
 
-ID = '1'.freeze
-CORRECT = YAML.safe_load(File.read('spec/fixtures/poke_data/poke1_results.yml'))
 describe 'Tests Pokemon API library' do
+  VCR.configure do |c|
+    c.cassette_library_dir = CASSETTES_FOLDER
+    c.hook_into :webmock
+  end
+
+  before do
+    VCR.insert_cassette CASSETTE_FILE,
+                        record: :new_episodes,
+                        match_requests_on: %i[method uri headers]
+  end
+
+  after do
+    VCR.eject_cassette
+  end
+
   describe 'Pokemon information' do
     it 'HAPPY: should provide correct pokemon attributes' do
-      pokemontest = PokemonInf::PokemonApi.new
-      pokemontest = pokemontest.pokemon(ID)
+      pokemontest = PokemonInf::PokemonApi.new.pokemon(ID)
       _(pokemontest.id).must_equal CORRECT['id']
       _(pokemontest.name).must_equal CORRECT['name']
       _(pokemontest.type).must_equal CORRECT['type']
@@ -27,32 +36,24 @@ describe 'Tests Pokemon API library' do
       _(pokemontest.front_default).must_equal CORRECT['front_default']
       _(pokemontest.front_shiny).must_equal CORRECT['front_shiny']
     end
-
-    # it 'SAD: should raise exception on incorrect id' do
-    #   _(proc do
-    #     PokemonInf::PokemonApi.new.pokemon('foobar')
-    #   end).must_raise PokemonInf::PokemonApi::Errors::NotFound
-    # end
+    it 'SAD: should raise exception on incorrect id' do
+      _(proc do
+        PokemonInf::PokemonApi.new.pokemon('foobar')
+      end).must_raise PokemonInf::PokemonApi::Errors::NotFound
+    end
   end
-
-  # describe 'Sprites information' do
-  #   before do
-  #     @pokemon = PokemonInf::PokemonApi.new.pokemon(ID)
-  #   end
-
-  #   it 'HAPPY: should recognize sprites' do
-  #     _(@pokemon.sprites).must_be_kind_of PokemonInf::Sprites
-  #   end
-
-  #   it 'HAPPY: should identify sprites' do
-  #     _(@pokemon.sprites.back_default).wont_be_nil
-  #     _(@pokemon.sprites.back_default).must_equal CORRECT['sprites']['back_default']
-  #     _(@pokemon.sprites.back_shiny).wont_be_nil
-  #     _(@pokemon.sprites.back_shiny).must_equal CORRECT['sprites']['back_shiny']
-  #     _(@pokemon.sprites.front_default).wont_be_nil
-  #     _(@pokemon.sprites.front_default).must_equal CORRECT['sprites']['front_default']
-  #     _(@pokemon.sprites.front_shiny).wont_be_nil
-  #     _(@pokemon.sprites.front_shiny).must_equal CORRECT['sprites']['front_shiny']
-  #   end
-  # end
+  describe 'Pokemon other information' do
+    it 'HAPPY: should provide correct ability attributes' do
+      abilitytest = AbilityInf::AbilityApi.new.ability(ID)
+      _(abilitytest.name).must_equal ABILITYCORRECT['name']
+      _(abilitytest.pokemon).must_equal ABILITYCORRECT['pokemon']
+      _(abilitytest.flavor_text_entries).must_equal ABILITYCORRECT['flavor_text_entries']
+    end
+    it 'HAPPY: should provide correct evolution chain' do
+      evotest = EvolutionChainInf::EvoluChainApi.new.evolution(ID)
+      _(evotest.name).must_equal EVOCORRECT['chain_species']
+      _(evotest.evolutions_to).must_equal EVOCORRECT['evolves_to']
+      # _(evotest.evolutions_to_second).must_equal EVOCORRECT['evolves_to_second']
+    end
+  end
 end

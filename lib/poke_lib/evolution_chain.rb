@@ -15,9 +15,11 @@ module EvolutionChainInf
       @evolution_chain['chain']['evolves_to'][0]['species']['name']
     end
 
-    def evolutions_to_2
-      ev2 = @evolution_chain['chain']['evolves_to'][0]['evolves_to']
-      ev2[0].nil? ? nil : ev2[0]['species']['name']
+    def evolutions_to_second
+      ev_second = @evolution_chain['chain']['evolves_to'][0]['evolves_to']
+      # ev_second[0].nil? ? nil : ['species']['name']
+      # ev_second[0].nil? ? nil : ev_second[0]['species']['name']
+      ['species']['name'] if ev_second[0]
     end
   end
 end
