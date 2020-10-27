@@ -1022,4 +1022,192 @@ http_interactions:
       encoding: UTF-8
       string: Not Found
   recorded_at: Thu, 22 Oct 2020 16:13:22 GMT
+- request:
+    method: get
+    uri: https://pokeapi.co/api/v2/ability/1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - pokeapi.co
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 27 Oct 2020 12:14:50 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Set-Cookie:
+      - __cfduid=d0b06fc8d02c6fa83cb8cfd4434b12cef1603800890; expires=Thu, 26-Nov-20
+        12:14:50 GMT; path=/; domain=.pokeapi.co; HttpOnly; SameSite=Lax; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - public, max-age=86400, s-maxage=86400
+      Etag:
+      - W/"3838-1aW2rX1Si83r+NLvh4P8GDFWTrQ"
+      Function-Execution-Id:
+      - 8ezpuaakxz9m
+      X-Cloud-Trace-Context:
+      - f3c332dbee42c1201d25c3a31f60313a;o=1
+      X-Country-Code:
+      - US
+      X-Powered-By:
+      - Express
+      X-Served-By:
+      - cache-bur17563-BUR
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1603800890.109459,VS0,VE475
+      Vary:
+      - Accept-Encoding,cookie,need-authorization, x-fh-requested-host, accept-encoding
+      Cf-Cache-Status:
+      - MISS
+      Cf-Request-Id:
+      - 060b9492e70000053c41199000000001
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?s=ZQuz93FeNfW38TWu6U0VWBxJ9X5Q%2FaNnTJIRaK07zDcnesZd2I%2BpW%2BZ4lm8OobIb%2BfNZp99peFcHrRnW2t2ZPAHPQ9VzzZcQwSEU"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5e8c56cb0ff7053c-LAX
+    body:
+      encoding: UTF-8
+      string: '{"effect_changes":[{"effect_entries":[{"effect":"Hat im Kampf keinen
+        Effekt.","language":{"name":"de","url":"https://pokeapi.co/api/v2/language/6/"}},{"effect":"Has
+        no effect in battle.","language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"}}],"version_group":{"name":"black-white","url":"https://pokeapi.co/api/v2/version-group/11/"}}],"effect_entries":[{"effect":"Attacken
+        die Schaden verursachen haben mit jedem Treffer eine 10% Chance das Ziel zurückschrecken
+        zu lassen, wenn die Attacke dies nicht bereits als Nebeneffekt hat.\n\nDer
+        Effekt stapelt nicht mit dem von getragenen Items.\n\nAußerhalb vom Kampf:
+        Wenn ein Pokémon mit dieser Fähigkeit an erster Stelle im Team steht, tauchen
+        wilde Pokémon nur halb so oft auf.","language":{"name":"de","url":"https://pokeapi.co/api/v2/language/6/"},"short_effect":"Mit
+        jedem Treffer besteht eine 10% Chance das Ziel zurückschrecken zu lassen."},{"effect":"This
+        Pokémon''s damaging moves have a 10% chance to make the target flinch with
+        each hit if they do not already cause flinching as a secondary effect.\n\nThis
+        ability does not stack with a held item.\n\nOverworld: The wild encounter
+        rate is halved while this Pokémon is first in the party.","language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"},"short_effect":"Has
+        a 10% chance of making target Pokémon flinch with each hit."}],"flavor_text_entries":[{"flavor_text":"Helps
+        repel wild POKéMON.","language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"},"version_group":{"name":"ruby-sapphire","url":"https://pokeapi.co/api/v2/version-group/5/"}},{"flavor_text":"Helps
+        repel wild POKéMON.","language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"},"version_group":{"name":"emerald","url":"https://pokeapi.co/api/v2/version-group/6/"}},{"flavor_text":"Helps
+        repel wild POKéMON.","language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"},"version_group":{"name":"firered-leafgreen","url":"https://pokeapi.co/api/v2/version-group/7/"}},{"flavor_text":"The
+        stench helps keep\nwild Pokémon away.","language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"},"version_group":{"name":"diamond-pearl","url":"https://pokeapi.co/api/v2/version-group/8/"}},{"flavor_text":"The
+        stench helps keep\nwild Pokémon away.","language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"},"version_group":{"name":"platinum","url":"https://pokeapi.co/api/v2/version-group/9/"}},{"flavor_text":"The
+        stench helps keep\nwild Pokémon away.","language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"},"version_group":{"name":"heartgold-soulsilver","url":"https://pokeapi.co/api/v2/version-group/10/"}},{"flavor_text":"La
+        puanteur peut\neffrayer l’adversaire.","language":{"name":"fr","url":"https://pokeapi.co/api/v2/language/5/"},"version_group":{"name":"black-white","url":"https://pokeapi.co/api/v2/version-group/11/"}},{"flavor_text":"The
+        stench may cause\nthe target to flinch.","language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"},"version_group":{"name":"black-white","url":"https://pokeapi.co/api/v2/version-group/11/"}},{"flavor_text":"The
+        stench may cause\nthe target to flinch.","language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"},"version_group":{"name":"black-2-white-2","url":"https://pokeapi.co/api/v2/version-group/14/"}},{"flavor_text":"くさくて　あいてが\nひるむ　ことがある。","language":{"name":"ja-Hrkt","url":"https://pokeapi.co/api/v2/language/1/"},"version_group":{"name":"x-y","url":"https://pokeapi.co/api/v2/version-group/15/"}},{"flavor_text":"악취
+        때문에 상대가\n풀죽을 때가 있다.","language":{"name":"ko","url":"https://pokeapi.co/api/v2/language/3/"},"version_group":{"name":"x-y","url":"https://pokeapi.co/api/v2/version-group/15/"}},{"flavor_text":"La
+        puanteur peut effrayer\nl’adversaire.","language":{"name":"fr","url":"https://pokeapi.co/api/v2/language/5/"},"version_group":{"name":"x-y","url":"https://pokeapi.co/api/v2/version-group/15/"}},{"flavor_text":"Lässt
+        den Gegner durch Gestank\nzurückschrecken.","language":{"name":"de","url":"https://pokeapi.co/api/v2/language/6/"},"version_group":{"name":"x-y","url":"https://pokeapi.co/api/v2/version-group/15/"}},{"flavor_text":"Es
+        posible que el rival retroceda\npor el mal olor.","language":{"name":"es","url":"https://pokeapi.co/api/v2/language/7/"},"version_group":{"name":"x-y","url":"https://pokeapi.co/api/v2/version-group/15/"}},{"flavor_text":"A
+        volte il cattivo odore\nfa tentennare i nemici.","language":{"name":"it","url":"https://pokeapi.co/api/v2/language/8/"},"version_group":{"name":"x-y","url":"https://pokeapi.co/api/v2/version-group/15/"}},{"flavor_text":"The
+        stench may cause\nthe target to flinch.","language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"},"version_group":{"name":"x-y","url":"https://pokeapi.co/api/v2/version-group/15/"}},{"flavor_text":"臭くて　相手が\nひるむ　ことがある。","language":{"name":"ja","url":"https://pokeapi.co/api/v2/language/11/"},"version_group":{"name":"x-y","url":"https://pokeapi.co/api/v2/version-group/15/"}},{"flavor_text":"くさくて　あいてが\nひるむ　ことがある。","language":{"name":"ja-Hrkt","url":"https://pokeapi.co/api/v2/language/1/"},"version_group":{"name":"omega-ruby-alpha-sapphire","url":"https://pokeapi.co/api/v2/version-group/16/"}},{"flavor_text":"악취
+        때문에 상대가\n풀죽을 때가 있다.","language":{"name":"ko","url":"https://pokeapi.co/api/v2/language/3/"},"version_group":{"name":"omega-ruby-alpha-sapphire","url":"https://pokeapi.co/api/v2/version-group/16/"}},{"flavor_text":"La
+        puanteur peut effrayer\nl’adversaire.","language":{"name":"fr","url":"https://pokeapi.co/api/v2/language/5/"},"version_group":{"name":"omega-ruby-alpha-sapphire","url":"https://pokeapi.co/api/v2/version-group/16/"}},{"flavor_text":"Lässt
+        den Gegner durch Gestank\nzurückschrecken.","language":{"name":"de","url":"https://pokeapi.co/api/v2/language/6/"},"version_group":{"name":"omega-ruby-alpha-sapphire","url":"https://pokeapi.co/api/v2/version-group/16/"}},{"flavor_text":"Es
+        posible que el rival retroceda\npor el mal olor.","language":{"name":"es","url":"https://pokeapi.co/api/v2/language/7/"},"version_group":{"name":"omega-ruby-alpha-sapphire","url":"https://pokeapi.co/api/v2/version-group/16/"}},{"flavor_text":"A
+        volte il cattivo odore\nfa tentennare i nemici.","language":{"name":"it","url":"https://pokeapi.co/api/v2/language/8/"},"version_group":{"name":"omega-ruby-alpha-sapphire","url":"https://pokeapi.co/api/v2/version-group/16/"}},{"flavor_text":"The
+        stench may cause\nthe target to flinch.","language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"},"version_group":{"name":"omega-ruby-alpha-sapphire","url":"https://pokeapi.co/api/v2/version-group/16/"}},{"flavor_text":"臭くて　相手が\nひるむ　ことがある。","language":{"name":"ja","url":"https://pokeapi.co/api/v2/language/11/"},"version_group":{"name":"omega-ruby-alpha-sapphire","url":"https://pokeapi.co/api/v2/version-group/16/"}},{"flavor_text":"くさい　においを　はなつことによって\nこうげきした　ときに　あいてを\nひるませることが　ある。","language":{"name":"ja-Hrkt","url":"https://pokeapi.co/api/v2/language/1/"},"version_group":{"name":"sun-moon","url":"https://pokeapi.co/api/v2/version-group/17/"}},{"flavor_text":"악취를
+        풍겨서\n공격했을 때 상대가\n풀죽을 때가 있다.","language":{"name":"ko","url":"https://pokeapi.co/api/v2/language/3/"},"version_group":{"name":"sun-moon","url":"https://pokeapi.co/api/v2/version-group/17/"}},{"flavor_text":"發出臭氣，\n在攻擊的時候，\n有時會使對手畏縮。","language":{"name":"zh-Hant","url":"https://pokeapi.co/api/v2/language/4/"},"version_group":{"name":"sun-moon","url":"https://pokeapi.co/api/v2/version-group/17/"}},{"flavor_text":"Le
+        Pokémon émet une odeur si nauséabonde\nqu’il peut effrayer sa cible.","language":{"name":"fr","url":"https://pokeapi.co/api/v2/language/5/"},"version_group":{"name":"sun-moon","url":"https://pokeapi.co/api/v2/version-group/17/"}},{"flavor_text":"Lässt
+        das Ziel beim Angriff eventuell durch Gestank\nzurückschrecken.","language":{"name":"de","url":"https://pokeapi.co/api/v2/language/6/"},"version_group":{"name":"sun-moon","url":"https://pokeapi.co/api/v2/version-group/17/"}},{"flavor_text":"Debido
+        al mal olor que emana, al atacar al rival puede\nhacerlo retroceder.","language":{"name":"es","url":"https://pokeapi.co/api/v2/language/7/"},"version_group":{"name":"sun-moon","url":"https://pokeapi.co/api/v2/version-group/17/"}},{"flavor_text":"A
+        volte il cattivo odore emesso dal Pokémon\nfa tentennare i nemici quando attacca.","language":{"name":"it","url":"https://pokeapi.co/api/v2/language/8/"},"version_group":{"name":"sun-moon","url":"https://pokeapi.co/api/v2/version-group/17/"}},{"flavor_text":"By
+        releasing stench when attacking, this Pokémon\nmay cause the target to flinch.","language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"},"version_group":{"name":"sun-moon","url":"https://pokeapi.co/api/v2/version-group/17/"}},{"flavor_text":"臭い　においを　放つことによって\n攻撃した　ときに　相手を\nひるませることが　ある。","language":{"name":"ja","url":"https://pokeapi.co/api/v2/language/11/"},"version_group":{"name":"sun-moon","url":"https://pokeapi.co/api/v2/version-group/17/"}},{"flavor_text":"通过释放臭臭的气味，\n在攻击的时候，\n有时会使对手畏缩。","language":{"name":"zh-Hans","url":"https://pokeapi.co/api/v2/language/12/"},"version_group":{"name":"sun-moon","url":"https://pokeapi.co/api/v2/version-group/17/"}},{"flavor_text":"くさい　においを　はなつことによって\nこうげきした　ときに　あいてを\nひるませることが　ある。","language":{"name":"ja-Hrkt","url":"https://pokeapi.co/api/v2/language/1/"},"version_group":{"name":"ultra-sun-ultra-moon","url":"https://pokeapi.co/api/v2/version-group/18/"}},{"flavor_text":"악취를
+        풍겨서\n공격했을 때 상대가\n풀죽을 때가 있다.","language":{"name":"ko","url":"https://pokeapi.co/api/v2/language/3/"},"version_group":{"name":"ultra-sun-ultra-moon","url":"https://pokeapi.co/api/v2/version-group/18/"}},{"flavor_text":"發出臭氣，\n在攻擊的時候，\n有時會使對手畏縮。","language":{"name":"zh-Hant","url":"https://pokeapi.co/api/v2/language/4/"},"version_group":{"name":"ultra-sun-ultra-moon","url":"https://pokeapi.co/api/v2/version-group/18/"}},{"flavor_text":"Le
+        Pokémon émet une odeur si nauséabonde\nqu’il peut effrayer sa cible.","language":{"name":"fr","url":"https://pokeapi.co/api/v2/language/5/"},"version_group":{"name":"ultra-sun-ultra-moon","url":"https://pokeapi.co/api/v2/version-group/18/"}},{"flavor_text":"Lässt
+        das Ziel beim Angriff eventuell durch Gestank\nzurückschrecken.","language":{"name":"de","url":"https://pokeapi.co/api/v2/language/6/"},"version_group":{"name":"ultra-sun-ultra-moon","url":"https://pokeapi.co/api/v2/version-group/18/"}},{"flavor_text":"Debido
+        al mal olor que emana, al atacar al rival puede\nhacerlo retroceder.","language":{"name":"es","url":"https://pokeapi.co/api/v2/language/7/"},"version_group":{"name":"ultra-sun-ultra-moon","url":"https://pokeapi.co/api/v2/version-group/18/"}},{"flavor_text":"A
+        volte il cattivo odore emesso dal Pokémon\nfa tentennare i nemici quando attacca.","language":{"name":"it","url":"https://pokeapi.co/api/v2/language/8/"},"version_group":{"name":"ultra-sun-ultra-moon","url":"https://pokeapi.co/api/v2/version-group/18/"}},{"flavor_text":"By
+        releasing stench when attacking, this Pokémon\nmay cause the target to flinch.","language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"},"version_group":{"name":"ultra-sun-ultra-moon","url":"https://pokeapi.co/api/v2/version-group/18/"}},{"flavor_text":"臭い　においを　放つことによって\n攻撃した　ときに　相手を\nひるませることが　ある。","language":{"name":"ja","url":"https://pokeapi.co/api/v2/language/11/"},"version_group":{"name":"ultra-sun-ultra-moon","url":"https://pokeapi.co/api/v2/version-group/18/"}},{"flavor_text":"通过释放臭臭的气味，\n在攻击的时候，\n有时会使对手畏缩。","language":{"name":"zh-Hans","url":"https://pokeapi.co/api/v2/language/12/"},"version_group":{"name":"ultra-sun-ultra-moon","url":"https://pokeapi.co/api/v2/version-group/18/"}}],"generation":{"name":"generation-iii","url":"https://pokeapi.co/api/v2/generation/3/"},"id":1,"is_main_series":true,"name":"stench","names":[{"language":{"name":"ja-Hrkt","url":"https://pokeapi.co/api/v2/language/1/"},"name":"あくしゅう"},{"language":{"name":"ko","url":"https://pokeapi.co/api/v2/language/3/"},"name":"악취"},{"language":{"name":"zh-Hant","url":"https://pokeapi.co/api/v2/language/4/"},"name":"惡臭"},{"language":{"name":"fr","url":"https://pokeapi.co/api/v2/language/5/"},"name":"Puanteur"},{"language":{"name":"de","url":"https://pokeapi.co/api/v2/language/6/"},"name":"Duftnote"},{"language":{"name":"es","url":"https://pokeapi.co/api/v2/language/7/"},"name":"Hedor"},{"language":{"name":"it","url":"https://pokeapi.co/api/v2/language/8/"},"name":"Tanfo"},{"language":{"name":"en","url":"https://pokeapi.co/api/v2/language/9/"},"name":"Stench"},{"language":{"name":"ja","url":"https://pokeapi.co/api/v2/language/11/"},"name":"あくしゅう"},{"language":{"name":"zh-Hans","url":"https://pokeapi.co/api/v2/language/12/"},"name":"恶臭"}],"pokemon":[{"is_hidden":true,"pokemon":{"name":"gloom","url":"https://pokeapi.co/api/v2/pokemon/44/"},"slot":3},{"is_hidden":false,"pokemon":{"name":"grimer","url":"https://pokeapi.co/api/v2/pokemon/88/"},"slot":1},{"is_hidden":false,"pokemon":{"name":"muk","url":"https://pokeapi.co/api/v2/pokemon/89/"},"slot":1},{"is_hidden":false,"pokemon":{"name":"stunky","url":"https://pokeapi.co/api/v2/pokemon/434/"},"slot":1},{"is_hidden":false,"pokemon":{"name":"skuntank","url":"https://pokeapi.co/api/v2/pokemon/435/"},"slot":1},{"is_hidden":false,"pokemon":{"name":"trubbish","url":"https://pokeapi.co/api/v2/pokemon/568/"},"slot":1},{"is_hidden":false,"pokemon":{"name":"garbodor","url":"https://pokeapi.co/api/v2/pokemon/569/"},"slot":1}]}'
+  recorded_at: Tue, 27 Oct 2020 12:14:50 GMT
+- request:
+    method: get
+    uri: https://pokeapi.co/api/v2/evolution-chain/1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - pokeapi.co
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 27 Oct 2020 12:14:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Set-Cookie:
+      - __cfduid=dd467149347ce2df1ae997b9e95ea6d051603800891; expires=Thu, 26-Nov-20
+        12:14:51 GMT; path=/; domain=.pokeapi.co; HttpOnly; SameSite=Lax; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - public, max-age=86400, s-maxage=86400
+      Etag:
+      - W/"519-mKqcmr+9AYQMpKJR7ibewJifciM"
+      Function-Execution-Id:
+      - n80wngdxbynf
+      X-Cloud-Trace-Context:
+      - 2a33456ea1815c0d16d08a6f558486ed
+      X-Country-Code:
+      - US
+      X-Powered-By:
+      - Express
+      X-Served-By:
+      - cache-bur17533-BUR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1603800892.940085,VS0,VE546
+      Vary:
+      - Accept-Encoding,cookie,need-authorization, x-fh-requested-host, accept-encoding
+      Cf-Cache-Status:
+      - MISS
+      Cf-Request-Id:
+      - 060b949a11000035df92878000000001
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?lkg-colo=12&lkg-time=1603800892"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5e8c56d6880a35df-LAX
+    body:
+      encoding: UTF-8
+      string: '{"baby_trigger_item":null,"chain":{"evolution_details":[],"evolves_to":[{"evolution_details":[{"gender":null,"held_item":null,"item":null,"known_move":null,"known_move_type":null,"location":null,"min_affection":null,"min_beauty":null,"min_happiness":null,"min_level":16,"needs_overworld_rain":false,"party_species":null,"party_type":null,"relative_physical_stats":null,"time_of_day":"","trade_species":null,"trigger":{"name":"level-up","url":"https://pokeapi.co/api/v2/evolution-trigger/1/"},"turn_upside_down":false}],"evolves_to":[{"evolution_details":[{"gender":null,"held_item":null,"item":null,"known_move":null,"known_move_type":null,"location":null,"min_affection":null,"min_beauty":null,"min_happiness":null,"min_level":32,"needs_overworld_rain":false,"party_species":null,"party_type":null,"relative_physical_stats":null,"time_of_day":"","trade_species":null,"trigger":{"name":"level-up","url":"https://pokeapi.co/api/v2/evolution-trigger/1/"},"turn_upside_down":false}],"evolves_to":[],"is_baby":false,"species":{"name":"venusaur","url":"https://pokeapi.co/api/v2/pokemon-species/3/"}}],"is_baby":false,"species":{"name":"ivysaur","url":"https://pokeapi.co/api/v2/pokemon-species/2/"}}],"is_baby":false,"species":{"name":"bulbasaur","url":"https://pokeapi.co/api/v2/pokemon-species/1/"}},"id":1}'
+  recorded_at: Tue, 27 Oct 2020 12:14:52 GMT
 recorded_with: VCR 6.0.0

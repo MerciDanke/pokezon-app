@@ -14,6 +14,7 @@ module PokemonInf
     API_FORM_ROOT = 'https://pokeapi.co/api/v2/pokemon-form'
 
     module Errors
+      # Notfound error
       class NotFound < StandardError; end
     end
     HTTP_ERROR = {
@@ -28,11 +29,6 @@ module PokemonInf
       # species api url
       species_data = call_pk_url(pksp_api_path(pokemon_id))
       Pokemon.new(pokemon_data, species_data, sprites_data)
-    end
-
-    def sprites(sprites_url)
-      sprites_data = call_pk_url(sprites_url)
-      sprites_data.map { |data| Sprites.new(data) }
     end
 
     private

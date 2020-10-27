@@ -10,7 +10,7 @@ def amazon_api_path(config, poke_name)
   "https://api.zilerate.com/amazon/category?apiKey=#{config['API_KEY']}&url=https%3A%2F%2Fwww.amazon.com%2Fs%3Fk%3D#{poke_name}"
 end
 
-# after call_amazon_url we get the json object
+after call_amazon_url we get the json object
 def call_amazon_url(url)
   JSON.parse(
     HTTP

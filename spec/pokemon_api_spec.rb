@@ -42,25 +42,18 @@ describe 'Tests Pokemon API library' do
       end).must_raise PokemonInf::PokemonApi::Errors::NotFound
     end
   end
-
-  # describe 'Sprites information' do
-  #   before do
-  #     @pokemon = PokemonInf::PokemonApi.new.pokemon(ID)
-  #   end
-
-  #   it 'HAPPY: should recognize sprites' do
-  #     _(@pokemon.sprites).must_be_kind_of PokemonInf::Sprites
-  #   end
-
-  #   it 'HAPPY: should identify sprites' do
-  #     _(@pokemon.sprites.back_default).wont_be_nil
-  #     _(@pokemon.sprites.back_default).must_equal CORRECT['sprites']['back_default']
-  #     _(@pokemon.sprites.back_shiny).wont_be_nil
-  #     _(@pokemon.sprites.back_shiny).must_equal CORRECT['sprites']['back_shiny']
-  #     _(@pokemon.sprites.front_default).wont_be_nil
-  #     _(@pokemon.sprites.front_default).must_equal CORRECT['sprites']['front_default']
-  #     _(@pokemon.sprites.front_shiny).wont_be_nil
-  #     _(@pokemon.sprites.front_shiny).must_equal CORRECT['sprites']['front_shiny']
-  #   end
-  # end
+  describe 'Pokemon other information' do
+    it 'HAPPY: should provide correct ability attributes' do
+      abilitytest = AbilityInf::AbilityApi.new.ability(ID)
+      _(abilitytest.name).must_equal ABILITYCORRECT['name']
+      _(abilitytest.pokemon).must_equal ABILITYCORRECT['pokemon']
+      _(abilitytest.flavor_text_entries).must_equal ABILITYCORRECT['flavor_text_entries']
+    end
+    it 'HAPPY: should provide correct evolution chain' do
+      evotest = EvolutionChainInf::EvoluChainApi.new.evolution(ID)
+      _(evotest.name).must_equal EVOCORRECT['chain_species']
+      _(evotest.evolutions_to).must_equal EVOCORRECT['evolves_to']
+      # _(evotest.evolutions_to_second).must_equal EVOCORRECT['evolves_to_second']
+    end
+  end
 end
