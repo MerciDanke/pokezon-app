@@ -5,24 +5,12 @@
         = search_name
   .container
     .row
-      .col-lg-1.col-md-2.col-sm-2
-        span.product.attribute Title:
-      .col-lg-11.col-md-10.col-sm-6
-        span.project.detail
-          = project.product.title
-    .row.top-buffer
-      .col-lg-1.col-md-2.col-sm-2
-        span.project.attribute Link:
-      .col-lg-11.col-md-10.col-sm-6
-        .row
-          - project.members.each do |member|
-            .col-sm-12
-              a.project.detail href="https://github.com/#{member.username}" #{member.username}
-
-/* following is the template of a product */
-.card style=("width: 18rem;") 
-  img.card-img-top alt="..." src="..." /
-  .card-body
-    h5.card-title product.name
-    p.card-text 
-    a.btn.btn-primary href="#"  Go somewhere
+      .row
+        - products.each do |item|
+          .col-lg-4.col-md-6.col-sm-12
+            .card style=("width: 18rem;") 
+              img.card-img-top alt="founding img" src="#{item.img}" /
+              .card-body
+                h5.card-title #{item.name}
+                p.card-text #{item.raw_price}
+                a.btn.btn-primary href="#{item.link}"  #{item.link}
