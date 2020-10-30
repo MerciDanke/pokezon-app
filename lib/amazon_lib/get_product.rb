@@ -20,8 +20,9 @@ config = YAML.safe_load(File.read('config/secrets.yml'))
 url = amazon_api_path(config, 'Pikachu')
 amazon_obj = call_amazon_url(url)
 
+# store attr in class Results
 class Results
-  attr_accessor :title, :link, :image, :rating, :ratings_total, :currency, :price
+  attr_reader :title, :link, :image, :rating, :ratings_total, :currency, :price
 
   def initialize(title, link, image, rating, ratings_total, currency, price)
     @title = title
