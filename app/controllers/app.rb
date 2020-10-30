@@ -27,10 +27,10 @@ module ProductInf
           end
         end
 
-        routing.on String, String do |poke_name, apikey|
+        routing.on String do |poke_name|
           # GET /products/poke_name, apikey
           routing.get do
-            amazon_products = Amazon::ProjectMapper.find(poke_name, apikey)
+            amazon_products = Amazon::ProductMapper.new.find(poke_name, API_KEY)
 
             view 'products', locals: { search_name: poke_name, products: amazon_products }
           end

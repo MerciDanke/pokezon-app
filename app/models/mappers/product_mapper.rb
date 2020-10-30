@@ -19,6 +19,7 @@ module ProductInf
         products.map do |product|
           DataMapper.new(product).build_entity
         end
+        # DataMapper.new(products).build_entity
       end
 
       # Extracts entity specific elements from data structure
