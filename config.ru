@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
 require_relative './init.rb'
-run ProductInf::App.freeze.app
+run MerciDanke::App.freeze.app

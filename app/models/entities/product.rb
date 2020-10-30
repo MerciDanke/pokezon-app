@@ -1,6 +1,6 @@
 # frozen_string_literal: false
 
-module ProductInf
+module MerciDanke
   module Entity
     # Domain entity for any coding projects
     class Product < Dry::Struct

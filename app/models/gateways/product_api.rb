@@ -2,7 +2,7 @@
 
 require 'http'
 
-module ProductInf
+module MerciDanke
   module Amazon
     # Library for Amazon Web API
     class Api

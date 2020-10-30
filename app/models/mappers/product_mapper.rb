@@ -1,6 +1,6 @@
 # frozen_string_literal: false
 
-module ProductInf
+module MerciDanke
   module Amazon
     # Data Mapper: Amazon product -> Product entity
     class ProductMapper
@@ -19,7 +19,6 @@ module ProductInf
         products.map do |product|
           DataMapper.new(product).build_entity
         end
-        # DataMapper.new(products).build_entity
       end
 
       # Extracts entity specific elements from data structure
@@ -29,7 +28,7 @@ module ProductInf
         end
 
         def build_entity
-          ProductInf::Entity::Product.new(
+          MerciDanke::Entity::Product.new(
             id: nil,
             title: title,
             link: link,
