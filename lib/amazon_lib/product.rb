@@ -29,11 +29,11 @@ module ProductInf
     end
 
     def raw_price
-      @product['prices']['rawPrice']
+      @product['prices'][0]['rawPrice']
     end
 
     def currency
-      @product['prices']['currency']
+      @product['prices'][0]['currency']
     end
   end
 end

@@ -24,7 +24,6 @@ describe 'Tests Product API library' do
   describe 'Product information' do
     it 'HAPPY: should provide correct product datatype' do
       producttest = ProductInf::ProductApi.new.product(POKENAME)
-      puts _(producttest.raw_price.class)
       _(producttest.title.class).must_equal String
       _(producttest.link.class).must_equal String
       _(producttest.image.class).must_equal String

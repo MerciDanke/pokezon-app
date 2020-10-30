@@ -16,7 +16,6 @@ def call_amazon_url(url)
   )
 end
 
-amazon_results = {}
 config = YAML.safe_load(File.read('config/secrets.yml'))
 url = amazon_api_path(config, 'Pikachu')
 amazon_obj = call_amazon_url(url)
@@ -36,13 +35,8 @@ class Results
 end
 
 amazon_results = amazon_obj['results'].map do |res|
-  Results.new(res['title'], res['link'], res['image'], res['rating'], res['ratingsTotal'], res['currency'], res['rawPrice'])
+  Results.new(res['title'], res['link'], res['image'], res['rating'], res['ratingsTotal'], res['prices'][0]['currency'], res['prices'][0]['rawPrice'])
 end
-# product_index = 1
-# amazon_obj['results'].map do |element|
-#   amazon_results[product_index] = element
-#   product_index += 1
-# end
 
 # put the product results into the yaml file
 File.write('spec/fixtures/amazon_data/amazon_results.yml', amazon_results.to_yaml)

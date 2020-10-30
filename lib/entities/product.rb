@@ -12,8 +12,8 @@ module ProductInf
       attribute :image,     Strict::String
       attribute :rating,    Strict::Float
       attribute :ratings_total, Strict::Integer
-      attribute :currency, String.optional
-      attribute :raw_price, String.optional
+      attribute :currency, Strict::String
+      attribute :raw_price, Strict::String
     end
   end
 end

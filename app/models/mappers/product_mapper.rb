@@ -61,11 +61,11 @@ module MerciDanke
         end
 
         def currency
-          @data['currency']
+          @data['prices'][0]['currency']
         end
 
         def raw_price
-          @data['rawPrice']
+          @data['prices'][0]['rawPrice']
         end
       end
     end
