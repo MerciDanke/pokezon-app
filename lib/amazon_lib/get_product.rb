@@ -19,10 +19,18 @@ end
 config = YAML.safe_load(File.read('config/secrets.yml'))
 url = amazon_api_path(config, 'Pikachu')
 amazon_obj = call_amazon_url(url)
+# product_index = 1
+# amazon_results = {}
+# amazon_obj['results'].map do |element|
+#   amazon_results[product_index] = element
+#   product_index += 1
+# end
 
+# REsults jijiji
 class Results
   attr_accessor :title, :link, :image, :rating, :ratings_total, :currency, :price
 
+  # def initialize(title, link, image, rating, ratings_total, currency, price)
   def initialize(title, link, image, rating, ratings_total, currency, price)
     @title = title
     @link = link
@@ -35,7 +43,9 @@ class Results
 end
 
 amazon_results = amazon_obj['results'].map do |res|
-  Results.new(res['title'], res['link'], res['image'], res['rating'], res['ratingsTotal'], res['prices'][0]['currency'], res['prices'][0]['rawPrice'])
+  # puts res['prices'][0]['price']
+  Results.new(res['title'], res['link'], res['image'], res['rating'], res['ratingsTotal'], res['prices'][0]['currency'], res['prices'][0]['price'])
+  # , res['image'], res['rating'], res['ratingsTotal'], res['prices'][0]['currency'], res['prices'][0]['rawPrice']
 end
 
 # put the product results into the yaml file

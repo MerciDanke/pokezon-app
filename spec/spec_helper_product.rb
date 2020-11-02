@@ -15,7 +15,7 @@ require_relative '../lib/amazon_lib/product_api'
 POKENAME = 'Pikachu'
 CONFIG = YAML.safe_load(File.read('config/secrets.yml'))
 API_KEY = CONFIG['API_KEY']
-CORRECT = YAML.safe_load(File.read('spec/fixtures/amazon_data/amazon_results.yml'))
+# CORRECT = YAML.safe_load(File.read('spec/fixtures/amazon_data/amazon_results.yml'))
 
 CASSETTES_FOLDER = 'spec/fixtures/cassettes'
 CASSETTE_FILE = 'product_api'

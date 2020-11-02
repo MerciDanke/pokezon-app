@@ -28,8 +28,8 @@ module ProductInf
       @product['ratingsTotal']
     end
 
-    def raw_price
-      @product['prices'][0]['rawPrice']
+    def price
+      @product['prices'][0]['price'].to_s
     end
 
     def currency

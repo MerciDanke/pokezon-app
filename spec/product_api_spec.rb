@@ -29,8 +29,8 @@ describe 'Tests Product API library' do
       _(producttest.image.class).must_equal String
       _(producttest.rating.class).must_equal Float
       _(producttest.ratings_total.class).must_equal Integer
-      # _(producttest.raw_price.class).must_equal String
-      # _(producttest.currency.class).must_equal String
+      _(producttest.price.class).must_equal String
+      _(producttest.currency.class).must_equal String
     end
   end
 end
