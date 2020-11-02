@@ -10,7 +10,7 @@ module MerciDanke
         Request.new.product(poke_name, apikey).parse
       end
 
-      # Sends out HTTP requests to Github
+      # Sends out HTTP requests to Amazon
       class Request
         AMAZON_PATH = 'https://api.zilerate.com/amazon/category?url=https%3A%2F%2Fwww.amazon.com%2Fs%3Fk%3D'.freeze
         # "https://api.zilerate.com/amazon/category?apiKey=#{config['API_KEY']}&url=https%3A%2F%2Fwww.amazon.com%2Fs%3Fk%3D#{poke_name}"
@@ -28,7 +28,7 @@ module MerciDanke
         end
       end
 
-      # Decorates HTTP responses from Github with success/error
+      # Decorates HTTP responses from Amazon with success/error
       class Response < SimpleDelegator
         # Response Unauthorized
         Unauthorized = Class.new(StandardError)
