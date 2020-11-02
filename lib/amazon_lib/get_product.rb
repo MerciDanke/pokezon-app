@@ -19,6 +19,7 @@ end
 config = YAML.safe_load(File.read('config/secrets.yml'))
 url = amazon_api_path(config, 'Pikachu')
 amazon_obj = call_amazon_url(url)
+<<<<<<< HEAD
 # product_index = 1
 # amazon_results = {}
 # amazon_obj['results'].map do |element|
@@ -27,8 +28,12 @@ amazon_obj = call_amazon_url(url)
 # end
 
 # REsults jijiji
+=======
+
+# store attr in class Results
+>>>>>>> 6f638ce8e1bc9e629ca0452bb9933a0a1d56931e
 class Results
-  attr_accessor :title, :link, :image, :rating, :ratings_total, :currency, :price
+  attr_reader :title, :link, :image, :rating, :ratings_total, :currency, :price
 
   # def initialize(title, link, image, rating, ratings_total, currency, price)
   def initialize(title, link, image, rating, ratings_total, currency, price)

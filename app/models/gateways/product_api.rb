@@ -30,7 +30,9 @@ module MerciDanke
 
       # Decorates HTTP responses from Github with success/error
       class Response < SimpleDelegator
+        # Response Unauthorized
         Unauthorized = Class.new(StandardError)
+        # Response NotFound
         NotFound = Class.new(StandardError)
 
         HTTP_ERROR = {
