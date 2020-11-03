@@ -1,5 +1,6 @@
 # frozen_string_literal: false
 
+require_relative 'ability_mapper'
 module MerciDanke
   module Pokemon
     # Data Mapper: Pokemon intro -> Pokemon entity
@@ -18,20 +19,23 @@ module MerciDanke
       end
 
       def build_entity(poke_data, pokeform_data, species_data)
-        DataMapper.new(poke_data, pokeform_data, species_data).build_entity
+        DataMapper.new(poke_data, pokeform_data, species_data, @gateway_class).build_entity
       end
 
       # Extracts entity specific elements from data structure
       class DataMapper
-        def initialize(poke_data, pokeform_data, species_data)
+        def initialize(poke_data, pokeform_data, species_data, gateway_class)
           @poke_data = poke_data
           @pokeform_data = pokeform_data
           @species_data = species_data
+          @ability_mapper = AbilityMapper.new(gateway_class)
         end
 
         def build_entity
           MerciDanke::Entity::Pokemon.new(
-            id: id, name: name, type: type,
+            id: id,
+            name: name,
+            type: type,
             abilities: abilities,
             height: height,
             weight: weight,
@@ -41,7 +45,7 @@ module MerciDanke
             front_shiny: front_shiny,
             habitat: habitat,
             color: color,
-            flavor_text_entries: flavor_text_entrie,
+            flavor_text_entries: flavor_text_entries,
             genera: genera
           )
         end
@@ -55,11 +59,7 @@ module MerciDanke
         end
 
         def type
-          @poke_data['type'].map { |element| element['type']['name'] }
-        end
-
-        def abilities
-          @poke_data['abilities'].map { |element| element['ability']['name'] }
+          @poke_data['types'].map { |element| element['type']['name'] }
         end
 
         def height
@@ -100,6 +100,13 @@ module MerciDanke
 
         def genera
           @species_data['genera'][7]['genus']
+        end
+
+        def abilities
+          @poke_data['abilities'].map do |element|
+            @ability_mapper.find_by_url(element['ability']['url'])
+          end
+          # @ability_mapper.find_by_url(@poke_data['abilities'].map { |element| element['ability']['url'] })
         end
       end
     end

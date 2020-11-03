@@ -34,9 +34,9 @@ module MerciDanke
             link: link,
             image: image,
             rating: rating,
-            ratings_total: ratings_total,
-            currency: currency,
-            raw_price: raw_price
+            ratings_total: ratings_total
+            # currency: currency,
+            # price: price
           )
         end
 
@@ -60,13 +60,13 @@ module MerciDanke
           @data['rating']
         end
 
-        def currency
-          @data['prices'][0]['currency']
-        end
+        # def currency
+        #   @data['prices'][0]['currency']
+        # end
 
-        def raw_price
-          @data['prices'][0]['rawPrice']
-        end
+        # def price
+        #   @data['prices'][0]['price']
+        # end
       end
     end
   end

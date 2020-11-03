@@ -9,13 +9,14 @@ module MerciDanke
         @gateway = @gateway_class.new
       end
 
-      def find(ability_id)
+      def find_by_url(ability_url)
         # data = all data
-        ability_data = @gateway.ability_data(ability_id)
-        build_entity(ability_data)
+        ability_data = @gateway.ability_data(ability_url)
+        puts ability_data
+        AbilityMapper.build_entity(ability_data)
       end
 
-      def build_entity(ability_data)
+      def self.build_entity(ability_data)
         DataMapper.new(ability_data).build_entity
       end
 
@@ -27,17 +28,17 @@ module MerciDanke
 
         def build_entity
           MerciDanke::Entity::Ability.new(
-            name: name,
+            ability_name: ability_name,
             flavor_text_entries: flavor_text_entries,
-            pokemon: pokemon
+            ability_pokemons: ability_pokemons
           )
         end
 
-        def name
+        def ability_name
           @ability_data['name']
         end
 
-        def pokemon
+        def ability_pokemons
           @ability_data['pokemon'].map { |num| num['pokemon']['name'] }
         end
 
