@@ -12,8 +12,8 @@ module MerciDanke
       attribute :image,     Strict::String
       attribute :rating,    Strict::Float
       attribute :ratings_total, Strict::Integer
-      # attribute :currency, Strict::String
-      # attribute :price, Float.optional
+      attribute :price,     Strict::Float
+      attribute :currency,  Strict::String
     end
   end
 end
