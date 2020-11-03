@@ -27,12 +27,14 @@ module MerciDanke
           end
         end
 
-        routing.on String do |poke_name|
+        routing.on String do |poke_name, evo_id, ability_id|
           # GET /products/poke_name, apikey
           routing.get do
             amazon_products = Amazon::ProductMapper.new.find(poke_name, API_KEY)
-
-            view 'products', locals: { search_name: poke_name, products: amazon_products }
+            pokemon_pokemon = Pokemon::PokemonMapper.new.find(poke_name)
+            pokemon_evolution = Pokemon::EvoMapper.new.find(evo_id)
+            pokemon_ability = Pokemon::AbilityMapper.new.find(ability_id)
+            view 'products', locals: { search_name: poke_name, products: amazon_products, pokemon: pokemon_pokemon, evolution: pokemon_evolution, ability: pokemon_ability}
           end
         end
       end

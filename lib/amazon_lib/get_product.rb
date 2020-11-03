@@ -37,9 +37,7 @@ class Results
 end
 
 amazon_results = amazon_obj['results'].map do |res|
-  # puts res['prices'][0]['price']
   Results.new(res['title'], res['link'], res['image'], res['rating'], res['ratingsTotal'], res['prices'][0]['currency'], res['prices'][0]['price'])
-  # , res['image'], res['rating'], res['ratingsTotal'], res['prices'][0]['currency'], res['prices'][0]['rawPrice']
 end
 
 # put the product results into the yaml file
