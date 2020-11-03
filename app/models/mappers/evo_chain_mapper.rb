@@ -9,13 +9,13 @@ module MerciDanke
         @gateway = @gateway_class.new
       end
 
-      def find(evo_id)
+      def find_by_url(evo_url)
         # data = all data
-        evo_data = @gateway.evo_data(evo_id)
-        build_entity(evo_data)
+        evo_data = @gateway.evo_data(evo_url)
+        EvoMapper.build_entity(evo_data)
       end
 
-      def build_entity(evo_data)
+      def self.build_entity(evo_data)
         DataMapper.new(evo_data).build_entity
       end
 
@@ -34,16 +34,16 @@ module MerciDanke
         end
 
         def chain_species_name
-          @evolution_chain['chain']['species']['name']
+          @evo_data['chain']['species']['name']
         end
 
         def evolves_to
-          @evolution_chain['chain']['evolves_to'][0]['species']['name']
+          @evo_data['chain']['evolves_to'][0]['species']['name']
         end
 
         def evolves_to_second
-          ev_second = @evolution_chain['chain']['evolves_to'][0]['evolves_to']
-          ['species']['name'] if ev_second[0]
+          ev_second = @evo_data['chain']['evolves_to'][0]['evolves_to'][0]
+          ev_second['species']['name'] if ev_second
         end
       end
     end

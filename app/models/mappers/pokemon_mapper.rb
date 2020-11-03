@@ -1,6 +1,7 @@
 # frozen_string_literal: false
 
 require_relative 'ability_mapper'
+require_relative 'evo_chain_mapper'
 module MerciDanke
   module Pokemon
     # Data Mapper: Pokemon intro -> Pokemon entity
@@ -29,6 +30,7 @@ module MerciDanke
           @pokeform_data = pokeform_data
           @species_data = species_data
           @ability_mapper = AbilityMapper.new(gateway_class)
+          @evo_chain_mapper = EvoMapper.new(gateway_class)
         end
 
         def build_entity
@@ -46,7 +48,8 @@ module MerciDanke
             habitat: habitat,
             color: color,
             flavor_text_entries: flavor_text_entries,
-            genera: genera
+            genera: genera,
+            evo_chains: evo_chains
           )
         end
 
@@ -106,7 +109,10 @@ module MerciDanke
           @poke_data['abilities'].map do |element|
             @ability_mapper.find_by_url(element['ability']['url'])
           end
-          # @ability_mapper.find_by_url(@poke_data['abilities'].map { |element| element['ability']['url'] })
+        end
+
+        def evo_chains
+          @evo_chain_mapper.find_by_url(@species_data['evolution_chain']['url'])
         end
       end
     end
