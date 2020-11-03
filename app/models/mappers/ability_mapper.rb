@@ -12,7 +12,6 @@ module MerciDanke
       def find_by_url(ability_url)
         # data = all data
         ability_data = @gateway.ability_data(ability_url)
-        puts ability_data
         AbilityMapper.build_entity(ability_data)
       end
 

@@ -11,7 +11,6 @@ module MerciDanke
       attribute :id, Strict::Integer
       attribute :name, Strict::String
       attribute :type, Strict::Array.of(String)
-      # attribute :abilities, Strict::String #???????
       attribute :height, Strict::Integer
       attribute :weight, Strict::Integer
       attribute :back_default, Strict::String
@@ -22,11 +21,9 @@ module MerciDanke
       attribute :color, Strict::String
       attribute :flavor_text_entries, Strict::String
       attribute :genera, Strict::String
-    #   # evolution chain
-    #   attribute :chain_species_name, Strict::String
-    #   attribute :evolves_to, Strict::String
-    #   attribute :evolves_to_second, Strict::String
-      # abilities
+      # EvoChain
+      attribute :evo_chains, EvoChain
+      # Ability
       attribute :abilities, Strict::Array.of(Ability)
     end
   end

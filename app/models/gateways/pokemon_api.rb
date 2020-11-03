@@ -19,13 +19,12 @@ module MerciDanke
       end
 
       def ability_data(ability_url)
-        puts ability_url.class
         Request.new.get(ability_url).parse
       end
 
-      # def evo_data(evo_id)
-      #   EvoRequest.new.evo_chain(evo_id).parse
-      # end
+      def evo_data(evo_url)
+        Request.new.get(evo_url).parse
+      end
 
       # Sends out HTTP requests to pokemon
       class Request
@@ -53,40 +52,6 @@ module MerciDanke
           end
         end
       end
-
-      # # Sends out HTTP requests to pokemon ability
-      # class AbilityRequest
-      #   ABILITY_PATH = 'https://pokeapi.co/api/v2/ability/'.freeze
-
-      #   def ability(ability_id)
-      #     get(ABILITY_PATH + ability_id)
-      #   end
-
-      #   def get(url)
-      #     http_response = HTTP.get(url)
-
-      #     Response.new(http_response).tap do |response|
-      #       raise(response.error) unless response.successful?
-      #     end
-      #   end
-      # end
-
-      # # Sends out HTTP requests to pokemon evolution chain
-      # class EvoRequest
-      #   EVO_PATH = 'https://pokeapi.co/api/v2/evolution-chain/'.freeze
-
-      #   def evo_chain(evo_id)
-      #     get(EVO_PATH + evo_id)
-      #   end
-
-      #   def get(url)
-      #     http_response = HTTP.get(url)
-
-      #     Response.new(http_response).tap do |response|
-      #       raise(response.error) unless response.successful?
-      #     end
-      #   end
-      # end
 
       # Decorates HTTP responses from Pokemon with success/error
       class Response < SimpleDelegator
