@@ -1,0 +1,18 @@
+.container
+  form role="form" action="/products" method='POST' id='show-pokemon-product'
+    .row.vertical-align.query-bar
+      .col-md-2.col-sm-3
+        .text-right Pokemon name:
+      .col-md-8.col-sm-6
+        input { 
+          type='text' name='poke_name'
+          id='poke_name_input' class="form-control"
+          placeholder="e.g. pikachu"
+        }
+      .col-md-2.col-sm-3
+        button { 
+          type='submit' id='repo-form-submit' class='submit' 
+          value='submit' class="btn btn-success" 
+        } Show Products
+    .row
+      .col-md-12.blank-row

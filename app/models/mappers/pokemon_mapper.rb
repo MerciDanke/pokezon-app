@@ -1,0 +1,120 @@
+# frozen_string_literal: false
+
+require_relative 'ability_mapper'
+require_relative 'evo_chain_mapper'
+module MerciDanke
+  module Pokemon
+    # Data Mapper: Pokemon intro -> Pokemon entity
+    class PokemonMapper
+      def initialize(gateway_class = Pokemon::Api)
+        @gateway_class = gateway_class
+        @gateway = @gateway_class.new
+      end
+
+      def find(poke_name)
+        # data = all data
+        poke_data = @gateway.poke_data(poke_name)
+        pokeform_data = @gateway.pokeform_data(poke_name)
+        species_data = @gateway.species_data(poke_name)
+        build_entity(poke_data, pokeform_data, species_data)
+      end
+
+      def build_entity(poke_data, pokeform_data, species_data)
+        DataMapper.new(poke_data, pokeform_data, species_data, @gateway_class).build_entity
+      end
+
+      # Extracts entity specific elements from data structure
+      class DataMapper
+        def initialize(poke_data, pokeform_data, species_data, gateway_class)
+          @poke_data = poke_data
+          @pokeform_data = pokeform_data
+          @species_data = species_data
+          @ability_mapper = AbilityMapper.new(gateway_class)
+          @evo_chain_mapper = EvoMapper.new(gateway_class)
+        end
+
+        def build_entity
+          MerciDanke::Entity::Pokemon.new(
+            id: id,
+            name: name,
+            type: type,
+            abilities: abilities,
+            height: height,
+            weight: weight,
+            back_default: back_default,
+            back_shiny: back_shiny,
+            front_default: front_default,
+            front_shiny: front_shiny,
+            habitat: habitat,
+            color: color,
+            flavor_text_entries: flavor_text_entries,
+            genera: genera,
+            evo_chains: evo_chains
+          )
+        end
+
+        def id
+          @poke_data['id']
+        end
+
+        def name
+          @poke_data['name']
+        end
+
+        def type
+          @poke_data['types'].map { |element| element['type']['name'] }
+        end
+
+        def height
+          @poke_data['height']
+        end
+
+        def weight
+          @poke_data['weight']
+        end
+
+        def back_default
+          @pokeform_data['sprites']['back_default']
+        end
+
+        def front_default
+          @pokeform_data['sprites']['front_default']
+        end
+
+        def back_shiny
+          @pokeform_data['sprites']['back_shiny']
+        end
+
+        def front_shiny
+          @pokeform_data['sprites']['front_shiny']
+        end
+
+        def habitat
+          @species_data['habitat']['name']
+        end
+
+        def color
+          @species_data['color']['name']
+        end
+
+        def flavor_text_entries
+          @species_data['flavor_text_entries'][0]['flavor_text']
+        end
+
+        def genera
+          @species_data['genera'][7]['genus']
+        end
+
+        def abilities
+          @poke_data['abilities'].map do |element|
+            @ability_mapper.find_by_url(element['ability']['url'])
+          end
+        end
+
+        def evo_chains
+          @evo_chain_mapper.find_by_url(@species_data['evolution_chain']['url'])
+        end
+      end
+    end
+  end
+end
