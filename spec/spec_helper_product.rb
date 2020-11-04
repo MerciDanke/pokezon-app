@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+ENV['RACK_ENV'] = 'test'
+
 require 'simplecov'
 SimpleCov.start
 
@@ -10,11 +12,8 @@ require 'minitest/rg'
 require 'vcr'
 require 'webmock'
 
-require_relative '../lib/amazon_lib/product_api'
+require_relative '../init'
 
 POKENAME = 'Pikachu'
 CONFIG = YAML.safe_load(File.read('config/secrets.yml'))
-API_KEY = CONFIG['API_KEY']
-
-CASSETTES_FOLDER = 'spec/fixtures/cassettes'
-CASSETTE_FILE = 'product_api'
+API_KEY = CONFIG['test']['API_KEY']
