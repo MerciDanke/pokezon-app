@@ -6,6 +6,9 @@ Sequel.migration do
   change do
     create_table(:pokemon) do
       primary_key :poke_name
+      foreign_key :ability_name, :ability
+      foreign_key :chain_species_name, :evolutionchain
+      foreign_key :product_poke_name, :product
 
       Integer     :id, unique: true
       String      :type, unique: true

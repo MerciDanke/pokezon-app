@@ -6,7 +6,6 @@ Sequel.migration do
   change do
     create_table(:ability) do
       primary_key :ability_name
-      foreign_key :abilities, :pokemon
 
       String      :flavor_text_entries
       Array       :ability_pokemons
