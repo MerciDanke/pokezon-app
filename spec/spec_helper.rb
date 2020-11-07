@@ -12,14 +12,10 @@ require 'minitest/rg'
 require 'vcr'
 require 'webmock'
 
-require_relative '../lib/poke_lib/pokemon_api'
-require_relative '../lib/poke_lib/evolu_chain_api'
-require_relative '../lib/poke_lib/ability_api'
+require_relative '../init'
 
-ID = '1'
+ID = '1'.freeze
 CORRECT = YAML.safe_load(File.read('spec/fixtures/poke_data/poke1_results.yml'))
-ABILITYCORRECT = YAML.safe_load(File.read('spec/fixtures/poke_data/ability_results.yml'))
-EVOCORRECT = YAML.safe_load(File.read('spec/fixtures/poke_data/evolution_chain_results.yml'))
 
-CASSETTES_FOLDER = 'spec/fixtures/cassettes'
-CASSETTE_FILE = 'pokemon_api'
+CASSETTES_FOLDER = 'spec/fixtures/cassettes'.freeze
+CASSETTE_FILE = 'pokemon_api'.freeze

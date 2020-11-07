@@ -20,11 +20,14 @@ describe 'Tests Pokemon API library' do
 
   describe 'Pokemon information' do
     it 'HAPPY: should provide correct pokemon attributes' do
-      pokemontest = PokemonInf::PokemonApi.new.pokemon(ID)
+      # pokemontest = PokemonInf::PokemonApi.new.pokemon(ID)
+      pokemontest = MerciDanke::Pokemon::PokemonMapper.new.find(ID)
       _(pokemontest.id).must_equal CORRECT['id']
       _(pokemontest.name).must_equal CORRECT['name']
       _(pokemontest.type).must_equal CORRECT['type']
-      _(pokemontest.abilities).must_equal CORRECT['abilities']
+      # _(pokemontest.abilities).must_equal CORRECT['abilities']
+      _(pokemontest.abilities).must_be_kind_of Array
+      _(pokemontest.evo_chains).must_be_kind_of MerciDanke::Entity::EvoChain
       _(pokemontest.height).must_equal CORRECT['height']
       _(pokemontest.weight).must_equal CORRECT['weight']
       _(pokemontest.habitat).must_equal CORRECT['habitat']
@@ -38,22 +41,8 @@ describe 'Tests Pokemon API library' do
     end
     it 'SAD: should raise exception on incorrect id' do
       _(proc do
-        PokemonInf::PokemonApi.new.pokemon('foobar')
-      end).must_raise PokemonInf::PokemonApi::Errors::NotFound
-    end
-  end
-  describe 'Pokemon other information' do
-    it 'HAPPY: should provide correct ability attributes' do
-      abilitytest = AbilityInf::AbilityApi.new.ability(ID)
-      _(abilitytest.name).must_equal ABILITYCORRECT['name']
-      _(abilitytest.pokemon).must_equal ABILITYCORRECT['pokemon']
-      _(abilitytest.flavor_text_entries).must_equal ABILITYCORRECT['flavor_text_entries']
-    end
-    it 'HAPPY: should provide correct evolution chain' do
-      evotest = EvolutionChainInf::EvoluChainApi.new.evolution(ID)
-      _(evotest.name).must_equal EVOCORRECT['chain_species']
-      _(evotest.evolutions_to).must_equal EVOCORRECT['evolves_to']
-      # _(evotest.evolutions_to_second).must_equal EVOCORRECT['evolves_to_second']
+        MerciDanke::Pokemon::PokemonMapper.new.find('foobar')
+      end).must_raise MerciDanke::Pokemon::Api::Response::NotFound
     end
   end
 end

@@ -10,7 +10,7 @@ module MerciDanke
     plugin :environments
 
     CONFIG = YAML.safe_load(File.read('config/secrets.yml'))
-    API_KEY = CONFIG['API_KEY']
+    API_KEY = CONFIG['development']['API_KEY']
 
     extend Econfig::Shortcut
     Econfig.env = environment.to_s

@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/lindaya/soa2020/soa2020/init.rb": {
+      "/home/shelly/soa/soa2020/init.rb": {
         "lines": [
           null,
           null,
@@ -10,14 +10,14 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/config/init.rb": {
+      "/home/shelly/soa/soa2020/config/init.rb": {
         "lines": [
           null,
           null,
           1
         ]
       },
-      "/home/lindaya/soa2020/soa2020/config/environment.rb": {
+      "/home/shelly/soa/soa2020/config/environment.rb": {
         "lines": [
           null,
           null,
@@ -57,27 +57,27 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/app/init.rb": {
+      "/home/shelly/soa/soa2020/app/init.rb": {
         "lines": [
           null,
           null,
           1,
           1,
-          2,
-          null
-        ]
-      },
-      "/home/lindaya/soa2020/soa2020/app/models/init.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
           3,
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/app/models/entities/init.rb": {
+      "/home/shelly/soa/soa2020/app/models/init.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          2,
+          null
+        ]
+      },
+      "/home/shelly/soa/soa2020/app/models/entities/init.rb": {
         "lines": [
           null,
           null,
@@ -89,7 +89,7 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/app/models/entities/ability.rb": {
+      "/home/shelly/soa/soa2020/app/models/entities/ability.rb": {
         "lines": [
           null,
           null,
@@ -106,7 +106,7 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/app/models/entities/evo_chain.rb": {
+      "/home/shelly/soa/soa2020/app/models/entities/evo_chain.rb": {
         "lines": [
           null,
           null,
@@ -124,7 +124,7 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/app/models/entities/pokemon.rb": {
+      "/home/shelly/soa/soa2020/app/models/entities/pokemon.rb": {
         "lines": [
           null,
           null,
@@ -158,7 +158,7 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/app/models/entities/product.rb": {
+      "/home/shelly/soa/soa2020/app/models/entities/product.rb": {
         "lines": [
           null,
           null,
@@ -181,155 +181,7 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/app/models/gateways/init.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          3,
-          null
-        ]
-      },
-      "/home/lindaya/soa2020/soa2020/app/models/gateways/pokemon_api.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/lindaya/soa2020/soa2020/app/models/gateways/product_api.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/lindaya/soa2020/soa2020/app/models/mappers/init.rb": {
+      "/home/shelly/soa/soa2020/app/models/mappers/init.rb": {
         "lines": [
           null,
           null,
@@ -338,7 +190,7 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/app/models/mappers/ability_mapper.rb": {
+      "/home/shelly/soa/soa2020/app/models/mappers/ability_mapper.rb": {
         "lines": [
           null,
           null,
@@ -392,7 +244,7 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/app/models/mappers/evo_chain_mapper.rb": {
+      "/home/shelly/soa/soa2020/app/models/mappers/evo_chain_mapper.rb": {
         "lines": [
           null,
           null,
@@ -447,7 +299,7 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/app/models/mappers/pokemon_mapper.rb": {
+      "/home/shelly/soa/soa2020/app/models/mappers/pokemon_mapper.rb": {
         "lines": [
           null,
           null,
@@ -571,7 +423,7 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/app/models/mappers/product_mapper.rb": {
+      "/home/shelly/soa/soa2020/app/models/mappers/product_mapper.rb": {
         "lines": [
           null,
           null,
@@ -592,10 +444,90 @@
           null,
           1,
           1,
-          0,
+          42,
           null,
           null,
           null,
+          null,
+          1,
+          1,
+          42,
+          null,
+          null,
+          1,
+          42,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          42,
+          null,
+          null,
+          1,
+          42,
+          null,
+          null,
+          1,
+          42,
+          null,
+          null,
+          1,
+          42,
+          null,
+          null,
+          1,
+          42,
+          null,
+          null,
+          1,
+          42,
+          null,
+          null,
+          1,
+          41,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/shelly/soa/soa2020/app/infrastructure/init.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/shelly/soa/soa2020/app/infrastructure/gateways/init.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          3,
+          null
+        ]
+      },
+      "/home/shelly/soa/soa2020/app/infrastructure/gateways/pokemon_api.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
           null,
           1,
           1,
@@ -606,14 +538,23 @@
           0,
           null,
           null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
           null,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
+          1,
+          1,
+          1,
+          1,
           null,
           1,
           0,
@@ -630,9 +571,26 @@
           1,
           0,
           null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
           null,
           1,
-          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
           null,
           null,
           1,
@@ -648,7 +606,64 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/app/controllers/init.rb": {
+      "/home/shelly/soa/soa2020/app/infrastructure/gateways/product_api.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/shelly/soa/soa2020/app/controllers/init.rb": {
         "lines": [
           null,
           null,
@@ -657,7 +672,7 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/app/controllers/app.rb": {
+      "/home/shelly/soa/soa2020/app/controllers/app.rb": {
         "lines": [
           null,
           null,
@@ -704,7 +719,7 @@
           null
         ]
       },
-      "/home/lindaya/soa2020/soa2020/spec/helpers/vcr_helper.rb": {
+      "/home/shelly/soa/soa2020/spec/helpers/vcr_helper.rb": {
         "lines": [
           null,
           null,
@@ -743,6 +758,6 @@
         ]
       }
     },
-    "timestamp": 1604506887
+    "timestamp": 1604717738
   }
 }
