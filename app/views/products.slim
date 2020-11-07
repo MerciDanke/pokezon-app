@@ -4,8 +4,122 @@
       span.products.name
         = search_name
   .container
-    .row
-      .row
+  .row
+    .col-12
+      .card.mb-3
+        .row.no-gutters
+          .col-md-4
+            #carouselExampleIndicators.carousel.slide[data-ride="carousel" style="max-width: 220px;"]
+              ol.carousel-indicators
+                li.active[data-target="#carouselExampleIndicators" data-slide-to="0"]
+                li[data-target="#carouselExampleIndicators" data-slide-to="1"]
+                li[data-target="#carouselExampleIndicators" data-slide-to="2"]
+                li[data-target="#carouselExampleIndicators" data-slide-to="3"]
+              .carousel-inner
+                .carousel-item.active
+                  img.d-block.w-100[src="#{pokemon.front_default}" alt="..."]
+                .carousel-item
+                  img.d-block.w-100[src="#{pokemon.back_default}" alt="..."]
+                .carousel-item
+                  img.d-block.w-100[src="#{pokemon.front_shiny}" alt="..."]
+                .carousel-item
+                  img.d-block.w-100[src="#{pokemon.back_shiny}" alt="..."]
+              a.carousel-control-prev[href="#carouselExampleIndicators" role="button" data-slide="prev"]
+                span.carousel-control-prev-icon[aria-hidden="true"]
+                span.sr-only
+                  | Previous
+              a.carousel-control-next[href="#carouselExampleIndicators" role="button" data-slide="next"]
+                span.carousel-control-next-icon[aria-hidden="true"]
+                span.sr-only
+                  | Next
+          .col-md-8
+            .card-body
+              h5.card-title
+                | INTRO
+              table.table
+                thead
+                  tr
+                    th[scope="col"]
+                      | HEIGHT
+                    th[scope="col"]
+                      | WEIGHT
+                    th[scope="col"]
+                      | COLOR
+                    th[scope="col"]
+                      | HABITAT
+                tbody
+                  tr
+                    td
+                      = pokemon.height
+                    td
+                      = pokemon.weight
+                    td
+                      = pokemon.color
+                    td
+                      = pokemon.habitat
+  .row
+    .col
+      .card
+        .card-body
+          h5.card-title
+            | DETAILS
+          table.table
+            tbody
+              tr
+                th[scope="row"]
+                  | GENERA
+                td
+                  = pokemon.genera
+              tr
+                th[scope="row"]
+                  | TYPES
+                td
+                  - pokemon.type.each do |type|
+                    p.type = type
+              tr
+                th[scope="row"]
+                  | INFOMATION
+                td
+                  = pokemon.flavor_text_entries
+  .row.mt-3
+    .col
+      .card
+        .card-body
+          h5.card-title
+            | ABILITIES
+          table.table
+            thead
+              tr
+                th[scope="col"]
+                  | #
+                th[scope="col"]
+                  | NAME
+                th[scope="col"]
+                  | INFORMATION
+            tbody
+              - i = 0
+              - pokemon.abilities.each do |ability|
+                tr
+                  - i = i + 1
+                  th.index[scope="row"] = i
+                  td.name = ability.ability_name
+                  td.info = ability.flavor_text_entries
+
+  .row.mt-3
+    .col
+      .card
+        .card-body
+          h5.card-title
+            | EVOLUTION CHAIN
+          a.card-link[href="#"]
+            = pokemon.evo_chains.chain_species_name
+          |  >> 
+          a.card-link[href="#"]
+            = pokemon.evo_chains.evolves_to
+          |  >> 
+          a.card-link[href="#"]
+            = pokemon.evo_chains.evolves_to_second
+      .row.mt-3
         - products.each do |item|
           .col-lg-4.col-md-6.col-sm-12
             .card style=("width: 18rem;") 
