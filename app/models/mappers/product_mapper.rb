@@ -31,19 +31,24 @@ module MerciDanke
         def build_entity
           MerciDanke::Entity::Product.new(
             id: nil,
+            orgin_id: origin_id,
             poke_name: poke_name,
             title: title,
             link: link,
             image: image,
             rating: rating,
-            ratings_total: ratings_total
-            # price: price,
-            # currency: currency
+            ratings_total: ratings_total,
+            price: price,
+            currency: currency
           )
         end
 
         def poke_name
           @url_data.split('=')[1]
+        end
+
+        def origin_id
+          @data['asin']
         end
 
         def title
@@ -66,13 +71,13 @@ module MerciDanke
           @data['rating']
         end
 
-        # def price
-        #   @data['prices'][0]['price']
-        # end
+        def price
+          @data['prices'][0]['price']
+        end
 
-        # def currency
-        #   @data['prices'][0]['currency']
-        # end
+        def currency
+          @data['prices'][0]['currency']
+        end
       end
     end
   end
