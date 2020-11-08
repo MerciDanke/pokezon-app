@@ -31,7 +31,7 @@ module MerciDanke
         def build_entity
           MerciDanke::Entity::Product.new(
             id: nil,
-            orgin_id: origin_id,
+            origin_id: origin_id,
             poke_name: poke_name,
             title: title,
             link: link,

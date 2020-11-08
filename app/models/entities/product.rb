@@ -14,8 +14,12 @@ module MerciDanke
       attribute :image,     Strict::String
       attribute :rating,    Strict::Float
       attribute :ratings_total, Strict::Integer
-      attribute :price, Strict::Float
-      attribute :currency, Strict::String
+      # attribute :price, Strict::Float
+      # attribute :currency, Strict::String
+
+      def to_attr_hash
+        to_hash.reject { |key, _| [:id].include? key }
+      end
     end
   end
 end

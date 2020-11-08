@@ -4,12 +4,13 @@ require 'sequel'
 
 Sequel.migration do
   change do
-    create_table(:product) do
-      primary_key :product_poke_name
+    create_table(:products) do
+      primary_key :id
 
-      Integer     :id
-      String      :title, unique: true
-      String      :link, unique: true
+      String      :origin_id, unique: true
+      String      :poke_name
+      String      :title
+      String      :link
       String      :image
       Float       :rating
       Integer     :ratings_total
