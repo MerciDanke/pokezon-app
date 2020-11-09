@@ -48,7 +48,8 @@ module MerciDanke
           http_response = HTTP.get(url)
 
           Response.new(http_response).tap do |response|
-            raise(response.error) unless response.successful?
+            # raise(response.error) unless response.successful?
+            fail(response.error) unless response.successful?
           end
         end
       end
@@ -56,12 +57,15 @@ module MerciDanke
       # Decorates HTTP responses from Pokemon with success/error
       class Response < SimpleDelegator
         # Response Unauthorized
-        Unauthorized = Class.new(StandardError)
+        # Unauthorized = Class.new(StandardError)
         # Response NotFound
         NotFound = Class.new(StandardError)
 
+        # HTTP_ERROR = {
+        #   401 => Unauthorized,
+        #   404 => NotFound
+        # }.freeze
         HTTP_ERROR = {
-          401 => Unauthorized,
           404 => NotFound
         }.freeze
 

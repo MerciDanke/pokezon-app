@@ -16,3 +16,18 @@
         } Show Products
     .row
       .col-md-12.blank-row
+    - if products.any?
+      table class="table table-hover" id="projects_table"
+        thead
+          tr
+            th Pokemon name
+            th Title
+        tbody
+          - products.each.with_index do |product, index|
+            tr class="table-row product_row" data-href="product/#{product.poke_name}" id="product[#{index}].row"
+              td id='td_pokemon_name'
+                span class="product_table_poke_name" id="product[#{index}].poke_name"
+                  = product.poke_name
+              td id='td_title'
+                span class="title" id="product[#{index}].title"
+                  a href=product.link id="product[#{index}].link" target="_blank" #{product.title}

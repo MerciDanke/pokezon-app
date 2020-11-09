@@ -15,7 +15,8 @@ module MerciDanke
 
       # GET /
       routing.root do
-        view 'home'
+        products = SearchRecord::For.klass(Entity::Product).all
+        view 'home', locals: { products: products }
       end
 
       routing.on 'products' do
@@ -23,17 +24,28 @@ module MerciDanke
           # GET /products/
           routing.post do
             poke_name = routing.params['poke_name'].downcase
+
+            # GET product from amazon
+            amazon_products = Amazon::ProductMapper.new.find(poke_name, API_KEY)
+
+            # ADD product to DB
+            amazon_products.map do |product|
+              SearchRecord::For.entity(product).create(product)
+            end
+            # Redirect viewer to product page
             routing.redirect "products/#{poke_name}"
+            # routing.redirect "product/#{product.title}"
           end
         end
 
         routing.on String do |poke_name|
           # GET /products/poke_name, apikey
           routing.get do
-            amazon_products = Amazon::ProductMapper.new.find(poke_name, API_KEY)
+            # amazon_products = Amazon::ProductMapper.new.find(poke_name, API_KEY)
+            amazon_products = SearchRecord::For.klass(Entity::Product)
+              .find_full_name(poke_name)
             pokemon_pokemon = Pokemon::PokemonMapper.new.find(poke_name)
-            # pokemon_evolution = Pokemon::EvoMapper.new.find(evo_id)
-            # pokemon_ability = Pokemon::AbilityMapper.new.find(ability_id)
+
             view 'products', locals: { search_name: poke_name, products: amazon_products, pokemon: pokemon_pokemon }
           end
         end
