@@ -12,10 +12,13 @@ module MerciDanke
         # SELECT * FROM `projects` LEFT JOIN `members`
         # ON (`members`.`id` = `projects`.`owner_id`)
         # WHERE ((`username` = 'owner_name') AND (`name` = 'project_name'))
-        db_product = Database::ProductOrm
+        db_products = Database::ProductOrm
           .where(poke_name: poke_name)
-          .first              #是只會吐第一個回來嗎?
-        rebuild_entity(db_product)
+          .all
+        # puts db_product.all
+        db_products.map do |db_product|
+          rebuild_entity(db_product)
+        end
       end
 
       def self.find(entity)
@@ -33,9 +36,9 @@ module MerciDanke
       end
 
       def self.create(entity)
-        raise 'Product already exists' if find(entity)
+        # raise 'Product already exists' if find(entity)
 
-        db_product = PersistProduct.new(entity).create_product
+        db_product = PersistProduct.new(entity).create_product unless find(entity)
         rebuild_entity(db_product)
       end
 
@@ -44,16 +47,12 @@ module MerciDanke
       def self.rebuild_entity(db_record)
         return nil unless db_record
 
-        Entity::Product.new(
-          db_record.to_hash.merge
-          # db_record.to_hash.merge(
-          #   owner: Members.rebuild_entity(db_record.owner),
-          #   contributors: Members.rebuild_many(db_record.contributors)
-          # )
+        MerciDanke::Entity::Product.new(
+          db_record.to_hash
         )
       end
 
-      # Helper class to persist project and its members to database
+      # Helper class to persist project to database
       class PersistProduct
         def initialize(entity)
           @entity = entity
