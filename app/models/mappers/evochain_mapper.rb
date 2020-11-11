@@ -3,7 +3,7 @@
 module MerciDanke
   module Pokemon
     # Data Mapper: evolution chain intro -> evolution chain entity
-    class EvoMapper
+    class EvochainMapper
       def initialize(gateway_class = Pokemon::Api)
         @gateway_class = gateway_class
         @gateway = @gateway_class.new
@@ -12,7 +12,7 @@ module MerciDanke
       def find_by_url(evo_url)
         # data = all data
         evo_data = @gateway.evo_data(evo_url)
-        EvoMapper.build_entity(evo_data)
+        EvochainMapper.build_entity(evo_data)
       end
 
       def self.build_entity(evo_data)
@@ -26,11 +26,17 @@ module MerciDanke
         end
 
         def build_entity
-          MerciDanke::Entity::EvoChain.new(
+          MerciDanke::Entity::Evochain.new(
+            id: nil,
+            origin_id: origin_id,
             chain_species_name: chain_species_name,
             evolves_to: evolves_to,
             evolves_to_second: evolves_to_second
           )
+        end
+
+        def origin_id
+          @evo_data['id']
         end
 
         def chain_species_name

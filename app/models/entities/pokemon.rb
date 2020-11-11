@@ -1,6 +1,7 @@
 # frozen_string_literal: false
 
 require_relative 'ability'
+require_relative 'evochain'
 
 module MerciDanke
   module Entity
@@ -8,8 +9,9 @@ module MerciDanke
     class Pokemon < Dry::Struct
       include Dry.Types
 
-      attribute :id, Strict::Integer
-      attribute :name, Strict::String
+      attribute :id, Integer.optional
+      attribute :origin_id, Strict::Integer
+      attribute :poke_name, Strict::String
       attribute :type, Strict::Array.of(String)
       attribute :height, Strict::Integer
       attribute :weight, Strict::Integer
@@ -21,10 +23,14 @@ module MerciDanke
       attribute :color, Strict::String
       attribute :flavor_text_entries, Strict::String
       attribute :genera, Strict::String
-      # EvoChain
-      attribute :evo_chains, EvoChain
+      # Evochain
+      attribute :evochain, Evochain
       # Ability
       attribute :abilities, Strict::Array.of(Ability)
+
+      def to_attr_hash
+        to_hash.reject { |key, _| %i[id evochain abilities].include? key }
+      end
     end
   end
 end

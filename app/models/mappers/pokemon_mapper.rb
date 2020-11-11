@@ -1,7 +1,7 @@
 # frozen_string_literal: false
 
 require_relative 'ability_mapper'
-require_relative 'evo_chain_mapper'
+require_relative 'evochain_mapper'
 module MerciDanke
   module Pokemon
     # Data Mapper: Pokemon intro -> Pokemon entity
@@ -30,13 +30,14 @@ module MerciDanke
           @pokeform_data = pokeform_data
           @species_data = species_data
           @ability_mapper = AbilityMapper.new(gateway_class)
-          @evo_chain_mapper = EvoMapper.new(gateway_class)
+          @evochain_mapper = EvochainMapper.new(gateway_class)
         end
 
         def build_entity
           MerciDanke::Entity::Pokemon.new(
-            id: id,
-            name: name,
+            id: nil,
+            origin_id: origin_id,
+            poke_name: poke_name,
             type: type,
             abilities: abilities,
             height: height,
@@ -49,15 +50,15 @@ module MerciDanke
             color: color,
             flavor_text_entries: flavor_text_entries,
             genera: genera,
-            evo_chains: evo_chains
+            evochain: evochain
           )
         end
 
-        def id
+        def origin_id
           @poke_data['id']
         end
 
-        def name
+        def poke_name
           @poke_data['name']
         end
 
@@ -111,8 +112,8 @@ module MerciDanke
           end
         end
 
-        def evo_chains
-          @evo_chain_mapper.find_by_url(@species_data['evolution_chain']['url'])
+        def evochain
+          @evochain_mapper.find_by_url(@species_data['evolution_chain']['url'])
         end
       end
     end

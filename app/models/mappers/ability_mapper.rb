@@ -27,6 +27,8 @@ module MerciDanke
 
         def build_entity
           MerciDanke::Entity::Ability.new(
+            id: nil,
+            origin_id: origin_id,
             ability_name: ability_name,
             flavor_text_entries: flavor_text_entries,
             ability_pokemons: ability_pokemons
@@ -35,6 +37,10 @@ module MerciDanke
 
         def ability_name
           @ability_data['name']
+        end
+
+        def origin_id
+          @ability_data['id']
         end
 
         def ability_pokemons

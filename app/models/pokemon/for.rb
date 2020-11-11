@@ -2,10 +2,10 @@
 
 module MerciDanke
   module SearchRecord
-    # Finds the right product for an entity object or class
-    class For
+    # Finds the right pokemon for an entity object or class
+    class ForPoke
       ENTITY_REPOSITORY = {
-        Entity::Product => Products
+        Entity::Pokemon => Pokemons
       }.freeze
 
       def self.klass(entity_klass)
