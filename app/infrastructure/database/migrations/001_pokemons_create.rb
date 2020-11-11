@@ -4,14 +4,14 @@ require 'sequel'
 
 Sequel.migration do
   change do
-    create_table(:pokemon) do
-      primary_key :poke_name
-      foreign_key :ability_name, :ability
-      foreign_key :chain_species_name, :evolutionchain
-      foreign_key :product_poke_name, :product
+    create_table(:pokemons) do
+      primary_key :id
+      foreign_key :ability_id, :abilities
+      foreign_key :evochain_id, :evochains
 
-      Integer     :id, unique: true
-      String      :type, unique: true
+      Integer     :origin_id, unique: true
+      String      :poke_name
+      String      :type
       Integer     :height
       Integer     :weight
       String      :back_default
@@ -22,7 +22,7 @@ Sequel.migration do
       String      :color
       String      :flavor_text_entries
       String      :genera
-      Array       :abilities
+      # Array       :abilities
 
       DateTime :created_at
       DateTime :updated_at

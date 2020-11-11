@@ -112,13 +112,13 @@
           h5.card-title
             | EVOLUTION CHAIN
           a.card-link[href="#"]
-            = pokemon.evo_chains.chain_species_name
+            = pokemon.evochain.chain_species_name
           |  >> 
           a.card-link[href="#"]
-            = pokemon.evo_chains.evolves_to
+            = pokemon.evochain.evolves_to
           |  >> 
           a.card-link[href="#"]
-            = pokemon.evo_chains.evolves_to_second
+            = pokemon.evochain.evolves_to_second
       .row.mt-3
         - products.each do |item|
           .col-lg-4.col-md-6.col-sm-12
@@ -128,4 +128,4 @@
                 h5.card-title #{item.title}
                 / p.card-text #{item.currency} #{item.price}
                 p.card-text #{item.rating}
-                a.btn.btn-primary href="#{item.link}"  see more
+                a.btn.btn-primary target="_blank" href="#{item.link}"  see more

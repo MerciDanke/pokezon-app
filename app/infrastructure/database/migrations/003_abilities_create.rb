@@ -4,11 +4,13 @@ require 'sequel'
 
 Sequel.migration do
   change do
-    create_table(:ability) do
-      primary_key :ability_name
+    create_table(:abilities) do
+      primary_key :id
 
+      Integer     :origin_id, unique: true
+      String      :ability_name
       String      :flavor_text_entries
-      Array       :ability_pokemons
+      String      :ability_pokemons
 
       DateTime :created_at
       DateTime :updated_at
