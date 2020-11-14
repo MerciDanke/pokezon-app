@@ -14,6 +14,11 @@ module MerciDanke
                    join_table: :pokemons_abilities,
                    left_key: :poke_id, right_key: :ability_id
 
+      many_to_many :types,
+                   class: :'MerciDanke::Database::TypeOrm',
+                   join_table: :pokemons_types,
+                   left_key: :poke_id, right_key: :type_id
+
       plugin :timestamps, update_on_create: true
     end
   end

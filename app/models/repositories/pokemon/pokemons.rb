@@ -40,12 +40,13 @@ module MerciDanke
       def self.rebuild_entity(db_record)
         return nil unless db_record
 
-        db_record[:type] = JSON.parse(db_record[:type])
+        # db_record[:type] = JSON.parse(db_record[:type])
 
         MerciDanke::Entity::Pokemon.new(
           db_record.to_hash.merge(
             evochain: Evochains.rebuild_entity(db_record.evochain),
-            abilities: Abilities.rebuild_many(db_record.abilities)
+            abilities: Abilities.rebuild_many(db_record.abilities),
+            types: Types.rebuild_many(db_record.types)
           )
         )
       end
@@ -58,18 +59,20 @@ module MerciDanke
 
         def create_pokemon
           entity_hash = @entity.to_attr_hash
-          entity_hash[:type] = entity_hash[:type].to_s
+          # entity_hash[:type] = entity_hash[:type].to_s
           Database::PokemonOrm.create(entity_hash)
         end
 
         def call
           evochain = Evochains.db_find_or_create(@entity.evochain)
-          puts evochain
           create_pokemon.tap do |db_pokemon|
             db_pokemon.update(evochain: evochain)
 
             @entity.abilities.each do |ability|
               db_pokemon.add_ability(Abilities.db_find_or_create(ability))
+            end
+            @entity.types.each do |type|
+              db_pokemon.add_type(Types.db_find_or_create(type))
             end
           end
         end

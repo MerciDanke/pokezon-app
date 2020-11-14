@@ -74,8 +74,8 @@
                 th[scope="row"]
                   | TYPES
                 td
-                  - pokemon.type.each do |type|
-                    p.type = type
+                  - pokemon.types.each do |type|
+                    p.type = type.type_name
               tr
                 th[scope="row"]
                   | INFOMATION

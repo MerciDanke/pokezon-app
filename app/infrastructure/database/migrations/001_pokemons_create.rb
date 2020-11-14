@@ -8,10 +8,10 @@ Sequel.migration do
       primary_key :id
       foreign_key :ability_id, :abilities
       foreign_key :evochain_id, :evochains
+      foreign_key :type_id, :types
 
       Integer     :origin_id, unique: true
       String      :poke_name
-      String      :type
       Integer     :height
       Integer     :weight
       String      :back_default
@@ -22,7 +22,6 @@ Sequel.migration do
       String      :color
       String      :flavor_text_entries
       String      :genera
-      # Array       :abilities
 
       DateTime :created_at
       DateTime :updated_at
