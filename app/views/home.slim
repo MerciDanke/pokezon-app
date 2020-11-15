@@ -16,6 +16,48 @@
         } Show Products
     .row
       .col-md-12.blank-row
+  form role="form" action="/type" method='POST' id='show-pokemon-product'
+    .row.vertical-align.query-bar
+      .col-md-2.col-sm-3
+        .text-right Type name:
+      .col-md-8.col-sm-6
+        input { 
+          type='text' name='type_name'
+          id='type_name_input' class="form-control"
+          placeholder="e.g. grass"
+        }
+      .col-md-2.col-sm-3
+        button { 
+          type='submit' id='repo-form-submit' class='submit' 
+          value='submit' class="btn btn-success" 
+        } Search
+        / a.btn.btn-outline-dark type="button" href="#" normal
+        / input.btn.btn-outline-dark type="button" value="Input" name=normal
+        / a.btn.btn-outline-primary type="button" href="#" fire
+        / a.btn.btn-outline-secondary type="button" href="#" fighting
+        / a.btn.btn-outline-success type="button" href="#" grass
+        / a.btn.btn-outline-danger type="button" href="#" poison
+        / a.btn.btn-outline-warning type="button" href="#" electric
+        / a.btn.btn-outline-info type="button" href="#" flying
+    .row
+      .col-md-12.blank-row
+  form role="form" action="/color" method='POST' id='show-pokemon-product'
+    .row.vertical-align.query-bar
+      .col-md-2.col-sm-3
+        .text-right Color name:
+      .col-md-8.col-sm-6
+        input { 
+          type='text' name='color_name'
+          id='color_name_input' class="form-control"
+          placeholder="e.g. yellow"
+        }
+      .col-md-2.col-sm-3
+        button { 
+          type='submit' id='repo-form-submit' class='submit' 
+          value='submit' class="btn btn-success" 
+        } Search
+    .row
+      .col-md-12.blank-row
     - if pokemon.any?
       .row.mt-4
         - pokemon.each do |pokemon|
