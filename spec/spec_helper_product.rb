@@ -15,5 +15,4 @@ require 'minitest/rg'
 require_relative '../init'
 
 POKENAME = 'Pikachu'.freeze
-CONFIG = YAML.safe_load(File.read('config/secrets.yml'))
-API_KEY = CONFIG['test']['API_KEY']
+API_KEY = MerciDanke::App.config.API_KEY
