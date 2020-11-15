@@ -1,0 +1,13 @@
+.container
+  .row
+    h2
+      span.type.name
+        = search_color
+  .container
+      .row.mt-3
+        - color_pokemon.each do |pokemon|
+          .col-lg-2.col-md-4.col-sm-8 
+            .card style=("width: 10rem;") 
+              img.card-img-top alt="founding img" src="#{pokemon.front_default}" /
+              .card-body
+                a href="../products/#{pokemon.poke_name}"  #{pokemon.poke_name} 

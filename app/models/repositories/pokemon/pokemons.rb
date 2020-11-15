@@ -21,6 +21,20 @@ module MerciDanke
         rebuild_entity(db_pokemon)
       end
 
+      def self.find_color_name(color_name)
+        # SELECT * FROM `projects` LEFT JOIN `members`
+        # ON (`members`.`id` = `projects`.`owner_id`)
+        # WHERE ((`username` = 'owner_name') AND (`name` = 'project_name'))
+        # .left_join(:ability, id: :ability_id)
+        # .where(poke_name: poke_name)
+        db_pokemon = Database::PokemonOrm
+          .where(color: color_name)
+          .all
+        db_pokemon.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
       def self.find(entity)
         find_origin_id(entity.origin_id)
       end

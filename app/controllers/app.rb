@@ -25,6 +25,24 @@ module MerciDanke
         view 'home', locals: { products: products, pokemon: pokemon }
       end
 
+      routing.on 'color' do
+        routing.is do
+          # GET /products/
+          routing.post do
+            color_name = routing.params['color_name'].downcase
+            routing.redirect "color/#{color_name}"
+          end
+        end
+        # GET /color/color_name
+        routing.on String do |color_name|
+          routing.get do
+            pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
+              .find_color_name(color_name)
+            view 'color', locals: { search_color: color_name, color_pokemon: pokemon_pokemon }
+          end
+        end
+      end
+
       routing.on 'products' do
         routing.is do
           # GET /products/
