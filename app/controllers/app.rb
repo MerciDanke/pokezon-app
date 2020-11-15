@@ -17,6 +17,11 @@ module MerciDanke
       routing.root do
         products = SearchRecord::For.klass(Entity::Product).all
         pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon).all
+        807.times do |i|
+          break if Database::PokemonOrm.find(id: 807)
+          pokemon_all = Pokemon::PokemonMapper.new.find((i + 1).to_s)
+          SearchRecord::ForPoke.entity(pokemon_all).create(pokemon_all)
+        end
         view 'home', locals: { products: products, pokemon: pokemon }
       end
 

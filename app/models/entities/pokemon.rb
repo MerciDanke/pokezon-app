@@ -16,14 +16,14 @@ module MerciDanke
       attribute :types, Strict::Array.of(Type)
       attribute :height, Strict::Integer
       attribute :weight, Strict::Integer
-      attribute :back_default, Strict::String
-      attribute :back_shiny, Strict::String
-      attribute :front_default, Strict::String
-      attribute :front_shiny, Strict::String
-      attribute :habitat, Strict::String
-      attribute :color, Strict::String
-      attribute :flavor_text_entries, Strict::String
-      attribute :genera, Strict::String
+      attribute :back_default, String.optional
+      attribute :back_shiny, String.optional
+      attribute :front_default, String.optional
+      attribute :front_shiny, String.optional
+      attribute :habitat, String.optional
+      attribute :color, String.optional
+      attribute :flavor_text_entries, String.optional
+      attribute :genera, String.optional
       # Evochain
       attribute :evochain, Evochain
       # Ability
