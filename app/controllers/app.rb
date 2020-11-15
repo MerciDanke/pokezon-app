@@ -32,7 +32,7 @@ module MerciDanke
             poke_name = routing.params['poke_name'].downcase
 
             # GET product from amazon
-            amazon_products = Amazon::ProductMapper.new.find(poke_name, API_KEY)
+            amazon_products = Amazon::ProductMapper.new.find(poke_name, MerciDanke::App.config.API_KEY)
             pokemon_pokemon = Pokemon::PokemonMapper.new.find(poke_name)
             # ADD product to DB
             amazon_products.map do |product|
