@@ -78,23 +78,43 @@ module MerciDanke
         end
 
         def back_default
-          @pokeform_data['sprites']['back_default']
+          if @pokeform_data['sprites']['back_default']
+            return @pokeform_data['sprites']['back_default']
+          else
+            return nil
+          end
         end
 
         def front_default
-          @pokeform_data['sprites']['front_default']
+          if @pokeform_data['sprites']['front_default']
+            return @pokeform_data['sprites']['front_default']
+          else
+            return nil
+          end
         end
 
         def back_shiny
-          @pokeform_data['sprites']['back_shiny']
+          if @pokeform_data['sprites']['back_shiny']
+            return @pokeform_data['sprites']['back_shiny']
+          else
+            return nil
+          end
         end
 
         def front_shiny
-          @pokeform_data['sprites']['front_shiny']
+          if @pokeform_data['sprites']['front_shiny']
+            return @pokeform_data['sprites']['front_shiny']
+          else
+            return nil
+          end
         end
 
         def habitat
-          @species_data['habitat']['name']
+          if @species_data['habitat']
+            return @species_data['habitat']['name']
+          else
+            return nil
+          end
         end
 
         def color

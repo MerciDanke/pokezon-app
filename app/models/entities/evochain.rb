@@ -8,7 +8,7 @@ module MerciDanke
       attribute :id, Integer.optional
       attribute :origin_id, Strict::Integer
       attribute :chain_species_name, Strict::String
-      attribute :evolves_to, Strict::String
+      attribute :evolves_to, String.optional
       attribute :evolves_to_second, String.optional
 
       def to_attr_hash
