@@ -29,6 +29,7 @@ module MerciDanke
           @poke_data = poke_data
           @pokeform_data = pokeform_data
           @species_data = species_data
+          @type_mapper = TypeMapper.new(gateway_class)
           @ability_mapper = AbilityMapper.new(gateway_class)
           @evochain_mapper = EvochainMapper.new(gateway_class)
         end
@@ -38,7 +39,7 @@ module MerciDanke
             id: nil,
             origin_id: origin_id,
             poke_name: poke_name,
-            type: type,
+            types: types,
             abilities: abilities,
             height: height,
             weight: weight,
@@ -62,8 +63,10 @@ module MerciDanke
           @poke_data['name']
         end
 
-        def type
-          @poke_data['types'].map { |element| element['type']['name'] }
+        def types
+          @poke_data['types'].map do |element|
+            @type_mapper.build_entity(element['type']['name'])
+          end
         end
 
         def height

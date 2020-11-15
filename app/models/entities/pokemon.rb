@@ -2,6 +2,7 @@
 
 require_relative 'ability'
 require_relative 'evochain'
+require_relative 'type'
 
 module MerciDanke
   module Entity
@@ -12,7 +13,7 @@ module MerciDanke
       attribute :id, Integer.optional
       attribute :origin_id, Strict::Integer
       attribute :poke_name, Strict::String
-      attribute :type, Strict::Array.of(String)
+      attribute :types, Strict::Array.of(Type)
       attribute :height, Strict::Integer
       attribute :weight, Strict::Integer
       attribute :back_default, Strict::String
@@ -29,7 +30,7 @@ module MerciDanke
       attribute :abilities, Strict::Array.of(Ability)
 
       def to_attr_hash
-        to_hash.reject { |key, _| %i[id evochain abilities].include? key }
+        to_hash.reject { |key, _| %i[id evochain abilities types].include? key }
       end
     end
   end
