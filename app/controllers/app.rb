@@ -15,34 +15,27 @@ module MerciDanke
 
       # GET /
       routing.root do
-        products = SearchRecord::For.klass(Entity::Product).all
+        color_name = {}
         pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon).all
-        807.times do |i|
+        pokemon.length.times do |i|
           break if Database::PokemonOrm.find(id: 807)
           pokemon_all = Pokemon::PokemonMapper.new.find((i + 1).to_s)
           SearchRecord::ForPoke.entity(pokemon_all).create(pokemon_all)
         end
-        view 'home', locals: { products: products, pokemon: pokemon }
+        view 'home', locals: { pokemon: pokemon, color_name: color_name }
       end
 
-      routing.on 'color' do
+      routing.on 'home.slim' do
         routing.is do
           # GET /products/
           routing.post do
             color_name = routing.params['color_name'].downcase
-            routing.redirect "color/#{color_name}"
-          end
-        end
-        # GET /color/color_name
-        routing.on String do |color_name|
-          routing.get do
-            pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
+            pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
               .find_color_name(color_name)
-            view 'color', locals: { search_color: color_name, color_pokemon: pokemon_pokemon }
+            view 'home', locals: { color_name: color_name, pokemon: pokemon }
           end
         end
       end
-
       routing.on 'products' do
         routing.is do
           # GET /products/
