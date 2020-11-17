@@ -16,8 +16,10 @@ module MerciDanke
       end
 
       def build_entity(products, marketplaceurl)
-        products.map do |product|
-          DataMapper.new(product, marketplaceurl).build_entity
+        if products != nil
+          products.map do |product|
+            DataMapper.new(product, marketplaceurl).build_entity
+          end
         end
       end
 
@@ -37,9 +39,9 @@ module MerciDanke
             link: link,
             image: image,
             rating: rating,
-            ratings_total: ratings_total
-            # price: price,
-            # currency: currency
+            ratings_total: ratings_total,
+            price: price,
+            product_likes: nil
           )
         end
 
@@ -71,13 +73,13 @@ module MerciDanke
           @data['rating']
         end
 
-        # def price
-        #   @data['prices'][0]['price']
-        # end
-
-        # def currency
-        #   @data['prices'][0]['currency']
-        # end
+        def price
+          if @data.length < 11
+            nil
+          else
+            @data['prices'][0]['price']
+          end
+        end
       end
     end
   end

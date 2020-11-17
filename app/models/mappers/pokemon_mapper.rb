@@ -51,7 +51,8 @@ module MerciDanke
             color: color,
             flavor_text_entries: flavor_text_entries,
             genera: genera,
-            evochain: evochain
+            evochain: evochain,
+            poke_likes: nil
           )
         end
 

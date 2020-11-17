@@ -15,22 +15,33 @@ module MerciDanke
         # .left_join(:ability, id: :ability_id)
         # .where(poke_name: poke_name)
         db_pokemon = Database::PokemonOrm
-          .left_join(:evochains, id: :evochain_id)
           .where(poke_name: poke_name)
           .first
         rebuild_entity(db_pokemon)
+      end
+
+      def self.find_type_name(type_name)
+        # SELECT * FROM `projects` LEFT JOIN `members`
+        # ON (`members`.`id` = `projects`.`owner_id`)
+        # WHERE ((`username` = 'owner_name') AND (`name` = 'project_name'))
+        join1 = Database::TypeOrm.left_join(:pokemons_types, type_id: :id)
+        db_pokemons = Database::PokemonOrm
+          .left_join(join1, poke_id: :id)
+          .where(type_name: type_name)
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
       end
 
       def self.find_color_name(color_name)
         # SELECT * FROM `projects` LEFT JOIN `members`
         # ON (`members`.`id` = `projects`.`owner_id`)
         # WHERE ((`username` = 'owner_name') AND (`name` = 'project_name'))
-        # .left_join(:ability, id: :ability_id)
-        # .where(poke_name: poke_name)
-        db_pokemon = Database::PokemonOrm
+        db_pokemons = Database::PokemonOrm
           .where(color: color_name)
           .all
-        db_pokemon.map do |db_pokemon|
+        db_pokemons.map do |db_pokemon|
           rebuild_entity(db_pokemon)
         end
       end

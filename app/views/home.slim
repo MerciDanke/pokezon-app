@@ -16,7 +16,7 @@
         } Show Products
     .row
       .col-md-12.blank-row
-  form role="form" action="/type" method='POST' id='show-pokemon-product'
+  form role="form" action="type" method='POST' id='show-pokemon-product'
     .row.vertical-align.query-bar
       .col-md-2.col-sm-3
         .text-right Type name:
@@ -34,7 +34,7 @@
     .row
       .col-md-12.blank-row
 
-  form role="form" action="home.slim" method='POST' id='show-pokemon-product'
+  form role="form" action="color" method='POST' id='show-pokemon-product'
     .row.vertical-align.query-bar
       .col-md-2.col-sm-3
         .text-right Color name:
@@ -62,6 +62,9 @@
       - if color_name != {}
         span.type.name
           = color_name
+      - if type_name != {}
+        span.type.name
+          = type_name
   .row
     .col-md-12.blank-row
   - if pokemon.any?
@@ -72,12 +75,3 @@
             img.card-img-top alt="founding img" src="#{pokemon.front_default}" /
             .card-body
               a href="products/#{pokemon.poke_name}"  #{pokemon.poke_name} 
-    
-    / - if search_color.any?
-    /   .row.mt-3
-    /     - color_pokemon.each do |pokemon|
-    /       .col-lg-2.col-md-4.col-sm-8 
-    /         .card style=("width: 10rem;") 
-    /           img.card-img-top alt="founding img" src="#{pokemon.front_default}" /
-    /           .card-body
-    /             a href="../products/#{pokemon.poke_name}"  #{pokemon.poke_name} 
