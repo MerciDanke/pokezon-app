@@ -17,37 +17,40 @@ module MerciDanke
       routing.root do
         color_name = {}
         type_name = {}
+        habitat_name = {}
         pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon).all
-        20.times do |i|
-          break if Database::PokemonOrm.find(id: 20)
-          pokemon_all = Pokemon::PokemonMapper.new.find((i + 1).to_s)
+        500.times do |num|
+          break if Database::PokemonOrm.find(id: 500)
+          pokemon_all = Pokemon::PokemonMapper.new.find((num + 1).to_s)
           SearchRecord::ForPoke.entity(pokemon_all).create(pokemon_all)
         end
-        view 'home', locals: { pokemon: pokemon, color_name: color_name, type_name: type_name }
+        view 'home', locals: { pokemon: pokemon, color_name: color_name, type_name: type_name, habitat_name: habitat_name }
       end
 
-      routing.on 'color' do
-        routing.is do
-          # GET /products/
-          routing.post do
-            color_name = routing.params['color_name'].downcase
-            pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
-              .find_color_name(color_name)
-            type_name = {}
-            view 'home', locals: { color_name: color_name, pokemon: pokemon, type_name: type_name }
-          end
-        end
-      end
       routing.on 'type' do
         routing.is do
           # GET /products/
           routing.post do
+            color_name = routing.params['color_name'].downcase
             type_name = routing.params['type_name'].downcase
-            pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
-              .find_type_name(type_name)
-            puts pokemon
-            color_name = {}
-            view 'home', locals: { type_name: type_name, pokemon: pokemon, color_name: color_name }
+            habitat_name = routing.params['habitat_name'].downcase
+            if type_name != ''
+              pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
+                .find_type_name(type_name)
+            end
+            if color_name != ''
+              pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
+                .find_color_name(color_name)
+            end
+            if habitat_name != ''
+              pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
+                .find_habitat_name(habitat_name)
+            end
+            if color_name != '' && type_name != ''
+              pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
+                .find_color_and_type_name(color_name, type_name)
+            end
+            view 'home', locals: { color_name: color_name, pokemon: pokemon, type_name: type_name, habitat_name: habitat_name }
           end
         end
       end
@@ -56,11 +59,12 @@ module MerciDanke
           # GET /products/
           routing.post do
             poke_name = routing.params['poke_name'].downcase
-
             # GET product from amazon
             amazon_products = Amazon::ProductMapper.new.find(poke_name, MerciDanke::App.config.API_KEY)
             pokemon_pokemon = Pokemon::PokemonMapper.new.find(poke_name)
-            # ADD product to DB
+
+            puts amazon_products
+            # ADD product to DataBase
             amazon_products.map do |product|
               SearchRecord::For.entity(product).create(product)
             end

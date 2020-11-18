@@ -12,8 +12,6 @@ module MerciDanke
         # SELECT * FROM `projects` LEFT JOIN `members`
         # ON (`members`.`id` = `projects`.`owner_id`)
         # WHERE ((`username` = 'owner_name') AND (`name` = 'project_name'))
-        # .left_join(:ability, id: :ability_id)
-        # .where(poke_name: poke_name)
         db_pokemon = Database::PokemonOrm
           .where(poke_name: poke_name)
           .first
@@ -24,9 +22,8 @@ module MerciDanke
         # SELECT * FROM `projects` LEFT JOIN `members`
         # ON (`members`.`id` = `projects`.`owner_id`)
         # WHERE ((`username` = 'owner_name') AND (`name` = 'project_name'))
-        join1 = Database::TypeOrm.left_join(:pokemons_types, type_id: :id)
         db_pokemons = Database::PokemonOrm
-          .left_join(join1, poke_id: :id)
+          .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
           .where(type_name: type_name)
           .all
         db_pokemons.map do |db_pokemon|
@@ -40,6 +37,31 @@ module MerciDanke
         # WHERE ((`username` = 'owner_name') AND (`name` = 'project_name'))
         db_pokemons = Database::PokemonOrm
           .where(color: color_name)
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
+      def self.find_color_and_type_name(color_name, type_name)
+        # SELECT * FROM `projects` LEFT JOIN `members`
+        # ON (`members`.`id` = `projects`.`owner_id`)
+        # WHERE ((`username` = 'owner_name') AND (`name` = 'project_name'))
+        db_pokemons = Database::PokemonOrm
+          .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
+          .where(color: color_name, type_name: type_name)
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
+      def self.find_habitat_name(habitat_name)
+        # SELECT * FROM `projects` LEFT JOIN `members`
+        # ON (`members`.`id` = `projects`.`owner_id`)
+        # WHERE ((`username` = 'owner_name') AND (`name` = 'project_name'))
+        db_pokemons = Database::PokemonOrm
+          .where(habitat: habitat_name)
           .all
         db_pokemons.map do |db_pokemon|
           rebuild_entity(db_pokemon)

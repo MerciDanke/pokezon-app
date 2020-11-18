@@ -40,9 +40,9 @@
                 thead
                   tr
                     th[scope="col"]
-                      | HEIGHT
+                      | HEIGHT(m)
                     th[scope="col"]
-                      | WEIGHT
+                      | WEIGHT(kg)
                     th[scope="col"]
                       | COLOR
                     th[scope="col"]
@@ -50,9 +50,9 @@
                 tbody
                   tr
                     td
-                      = pokemon.height
+                      = (pokemon.height).to_f/10 
                     td
-                      = pokemon.weight
+                      = (pokemon.weight).to_f/100
                     td
                       = pokemon.color
                     td
@@ -111,13 +111,13 @@
         .card-body
           h5.card-title
             | EVOLUTION CHAIN
-          a.card-link[href="#"]
+          a.card-link[href="../products/#{pokemon.evochain.chain_species_name}"]
             = pokemon.evochain.chain_species_name
           |  >> 
-          a.card-link[href="#"]
+          a.card-link[href="../products/#{pokemon.evochain.evolves_to}"]
             = pokemon.evochain.evolves_to
           |  >> 
-          a.card-link[href="#"]
+          a.card-link[href="../products/#{pokemon.evochain.evolves_to_second}"]
             = pokemon.evochain.evolves_to_second
       .row.mt-3
         - products.each do |item|
