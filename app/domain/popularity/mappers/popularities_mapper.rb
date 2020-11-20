@@ -9,8 +9,8 @@ module MerciDanke
         @products = products
       end
 
-      def build_entity(pokemon, products)
-        DbDataMapper.new(pokemon, products).build_popularity_entity
+      def build_entity
+        DbDataMapper.new(@pokemon, @products).build_popularity_entity
       end
 
       # put pokemon/products data in domain entity
@@ -25,7 +25,7 @@ module MerciDanke
         end
 
         def build_popularity_entity
-          level_entity = build_entity
+          level_entity = build_level_entity
           hash = level_entity.popularity_level_hash
           # popularity_entity
           level_entity.popularity_build_entity(hash)

@@ -15,25 +15,25 @@ module MerciDanke
 
       # not sure this could call the PopularityCalculator method
       def average_rating
-        average_rating(@products)
+        cal_average_rating(@products)
       end
 
       def products_num
-        products_num(@products)
+        cal_products_num(@products)
       end
 
       def poke_likes_num
-        poke_likes_num(@pokemon)
+        cal_poke_likes_num(@pokemon)
       end
 
       def products_likes_num
-        products_likes_num(@products)
+        cal_products_likes_num(@products)
       end
 
       # mapper should call popularity_level_hash
       def popularity_level_hash
         Value::PopularityLevels.new(
-          @pokemon.poke_id,
+          @pokemon.id,
           average_rating,
           products_num,
           poke_likes_num,
