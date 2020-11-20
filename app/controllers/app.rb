@@ -18,13 +18,44 @@ module MerciDanke
         color_name = {}
         type_name = {}
         habitat_name = {}
-        pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon).all
-        500.times do |num|
-          break if Database::PokemonOrm.find(id: 500)
-          pokemon_all = Pokemon::PokemonMapper.new.find((num + 1).to_s)
-          SearchRecord::ForPoke.entity(pokemon_all).create(pokemon_all)
+
+        5.times do |num|
+          break if Database::PokemonOrm.find(id: 5)
+
+          pokemon = Pokemon::PokemonMapper.new.find((num + 1).to_s)
+          SearchRecord::ForPoke.entity(pokemon).create(pokemon)
         end
-        view 'home', locals: { pokemon: pokemon, color_name: color_name, type_name: type_name, habitat_name: habitat_name }
+
+        pokemon_all = SearchRecord::ForPoke.klass(Entity::Pokemon).all
+
+        2.times do |num|
+          break if SearchRecord::For.klass(Entity::Product).all
+
+          amazon_products = Amazon::ProductMapper.new.find(pokemon_all[num].poke_name, MerciDanke::App.config.API_KEY)
+          amazon_products.map do |product|
+            SearchRecord::For.entity(product).create(product)
+          end
+        end
+
+        popularities = []
+        pokemon_all.map do |pokemon|
+          puts pokemon.poke_name
+          products = SearchRecord::For.klass(Entity::Product)
+            .find_full_name(pokemon.poke_name)
+
+          pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
+            .find_full_name(pokemon.poke_name)
+
+          popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
+        end
+
+        puts popularities
+
+        view 'home', locals: {  pokemon: pokemon_all,
+                                color_name: color_name,
+                                type_name: type_name,
+                                habitat_name: habitat_name,
+                                popularities: popularities }
       end
 
       routing.on 'type' do

@@ -7,6 +7,8 @@ module MerciDanke
       # 老師有attr_reader :file_path, :lines在entities/file_contributions.rb
       # one pokemon's all products average rating
       def cal_average_rating(products)
+        return 0 if products.length.zero?
+        
         all_ratings = []
         products.map { |product| all_ratings.push(product.rating) }
         total_rating = all_ratings.reduce { |l, r| l + r }
@@ -15,6 +17,8 @@ module MerciDanke
 
       # one pokemon can search how many products
       def cal_products_num(products)
+        return 0 if products.length.zero?
+
         products.length
       end
 
@@ -25,6 +29,8 @@ module MerciDanke
 
       # one pokemon's all products likes count
       def cal_products_likes_num(products)
+        return 0 if products.length.zero?
+
         all_likes = []
         products.map { |product| all_likes.push(product.product_likes) }
         all_likes.reduce { |l, r| l + r }
