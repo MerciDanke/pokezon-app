@@ -10,13 +10,13 @@
           option selected=""  Pokémon Name
           option value="1"  Product Type
         input.form-control.mr-sm-2 aria-label="Search" placeholder="e.g. pikachu" style=("width: 25rem;") type="text" name='poke_name' /
-      button.btn.btn-outline-secondary.my-2.my-sm-0 type="submit"  Search
-    button.btn.btn-outline-secondary.mt-2 aria-controls="collapseExample" aria-expanded="false" data-target="#collapseExample" data-toggle="collapse" type="button" style=("display: inline-block;")
+      button.btn.btn-outline-warning.my-2.my-sm-0 type="submit"  Search
+    button.btn.btn-outline-primary.mt-2 aria-controls="collapseExample" aria-expanded="false" data-target="#collapseExample" data-toggle="collapse" type="button" style=("display: inline-block;")
       | Advance
     #collapseExample.collapse.my-2
       .card.card-body
           form role="form" action="type" method='POST' id='show-pokemon-product'
-            .row.vertical-align.query-bar
+            .row.vertical-align.my-3
               .col-md-2.col-sm-3
                 .text-right Type name:
               .col-md-2.col-sm-6
@@ -39,7 +39,7 @@
                   option value='dark'Dark
                   option value='steel'Steel
                   option value='fairy'Fairy
-            .row.vertical-align.query-bar
+            .row.vertical-align.my-3
               .col-md-2.col-sm-3
                 .text-right Habitat name:
               .col-md-2.col-sm-6
@@ -54,7 +54,7 @@
                   option value='sea'Sea
                   option value='urban'Urban
                   option value='waters-edge'Waters-edge
-            .row.vertical-align.query-bar
+            .row.vertical-align.my-3
               .col-md-2.col-sm-3
                 .text-right Color name:
               .col-md-auto.col-sm-3
@@ -68,56 +68,66 @@
                 input type='radio' name='color_name' value='purple' &nbsp;Purple &nbsp;
                 input type='radio' name='color_name' value='gray' &nbsp;Gray &nbsp; 
                 input type='radio' name='color_name' value='brown' &nbsp;Brown &nbsp;
-            .row.vertical-align.query-bar
+            .row.vertical-align.my-3
               .col-md-2.col-sm-3
                 .text-right Height:
               .col-md-auto.col-sm-3
                 .number-input
-                  input#height.number-input-text-box step="0.1" max="14.5" min="0" name="height1" type="number" placeholder="0" (m)&nbsp; ~ &nbsp;
+                  input#height.number-input-text-box step="0.1" max="14.5" min="0" name="low_h" type="number" placeholder="0" (m)&nbsp; ~ &nbsp;
                 .number-input
-                  input#height.number-input-text-box step="0.1" max="14.5" min="0" name="height2" type="number" placeholder="14.5" (m)&nbsp;
-            .row.vertical-align.query-bar
+                  input#height.number-input-text-box step="0.1" max="14.5" min="0" name="high_h" type="number" placeholder="14.5" (m)&nbsp;
+            .row.vertical-align.my-3
               .col-md-2.col-sm-3
                 .text-right Weight:
               .col-md-auto.col-sm-3
                 .number-input
-                  input#height.number-input-text-box step="0.1" max="999.9" min="0" name="weight1" type="number" placeholder="0" (kg)&nbsp; ~ &nbsp;
+                  input#height.number-input-text-box step="0.1" max="999.9" min="0" name="low_w" type="number" placeholder="0" (kg)&nbsp; ~ &nbsp;
                 .number-input
-                  input#height.number-input-text-box step="0.1" max="999.9" min="0" name="weight2" type="number" placeholder="999.9" (kg)&nbsp;
-                button { 
-                  type='submit' id='repo-form-submit' class='submit' 
-                  value='submit' class="btn btn-success" 
-                } Search
+                  input#height.number-input-text-box step="0.1" max="999.9" min="0" name="high_w" type="number" placeholder="999.9" (kg)&nbsp;
+            .row.vertical-align.my-3.float-right.mr-5
+              button { 
+                type='submit' id='repo-form-submit' class='btn btn-warning submit'
+                value='submit' 
+              } Search
   .row
-    h3
-      - if color_name != ''
-        span.type.name
-          = color_name + " "
-      - if type_name != ''
-        span.type.name
-          = type_name + " "
-      - if habitat_name != ''
-        span.type.name
-          = habitat_name + " "
-      - if height1 != ''
-        span.type.name
-          = height1 + " ~ "
-      - if height1 != ''
-        span.type.name
-          = height2 + "(m) "
-      - if weight1 != ''
-        span.type.name
-          = weight1 + " ~ "
-      - if weight1 != ''
-        span.type.name
-          = weight2 + "(kg) "
+    .col
+      h3
+        - if color_name != ''
+          span.type.name
+            = color_name + " "
+        - if type_name != ''
+          span.type.name
+            = type_name + " "
+        - if habitat_name != ''
+          span.type.name
+            = habitat_name + " "
+        - if low_h != ''
+          span.type.name
+            = low_h + " ~ "
+        - if high_h != ''
+          span.type.name
+            = high_h + "(m) "
+        - if low_w != ''
+          span.type.name
+            = low_w + " ~ "
+        - if high_w != ''
+          span.type.name
+            = high_w + "(kg) "
   / .row
   /   .col-md-12.blank-row
   - if pokemon.any?
     .row
-      - pokemon.each do |pokemon|
-        .col-lg-2.col-md-4.col-sm-8.mt-3 
-          .card style=("width: 10rem;") 
-            img.card-img-top alt="founding img" src="#{pokemon.front_default}" /
-            .card-body
-              a href="products/#{pokemon.poke_name}"  #{pokemon.poke_name} 
+      - pokemon.length.times do |index|
+        .col-lg-2.col-md-4.col-sm-8.mt-2 
+          .card-deck
+            .card  
+              .card-header.text-center
+                a href="products/#{pokemon[index].poke_name}"  #{pokemon[index].poke_name} 
+              img.card-img-top alt="founding img" src="#{pokemon[index].front_default}" /
+              .card-body.align-middle
+                span.badge.badge-secondary.my-2 #{popularities[index].popularity_level}
+                form role="form" action="/" method='POST' id='plus-pokemon-like'
+                  button.btn.btn-outline-danger.float-right name='poke_id' value="#{pokemon[index].id}" type="submit" style=("border: none; border-radius: 10%;")
+                    svg.bi.bi-suit-heart fill="currentColor" height="1em" viewbox=("0 0 16 16") width="1em" xmlns="http://www.w3.org/2000/svg" 
+                      path d=("M8 6.236l.894-1.789c.222-.443.607-1.08 1.152-1.595C10.582 2.345 11.224 2 12 2c1.676 0 3 1.326 3 2.92 0 1.211-.554 2.066-1.868 3.37-.337.334-.721.695-1.146 1.093C10.878 10.423 9.5 11.717 8 13.447c-1.5-1.73-2.878-3.024-3.986-4.064-.425-.398-.81-.76-1.146-1.093C1.554 6.986 1 6.131 1 4.92 1 3.326 2.324 2 4 2c.776 0 1.418.345 1.954.852.545.515.93 1.152 1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z") fill-rule="evenodd" /
+                    span.ml-2 #{pokemon[index].poke_likes}

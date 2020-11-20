@@ -23,8 +23,8 @@ module MerciDanke
         low_w = ''
         high_w = ''
 
-        200.times do |num|
-          break if Database::PokemonOrm.find(id: 200)
+        5.times do |num|
+          break if Database::PokemonOrm.find(id: 5)
 
           pokemon = Pokemon::PokemonMapper.new.find((num + 1).to_s)
           SearchRecord::ForPoke.entity(pokemon).create(pokemon)
@@ -60,6 +60,41 @@ module MerciDanke
                                 low_w: low_w,
                                 high_w: high_w,
                                 popularities: popularities }
+      end
+
+      routing.on '/' do
+        routing.is do
+          routing.post do
+            color_name = ''
+            type_name = ''
+            habitat_name = ''
+            low_h = ''
+            high_h = ''
+            low_w = ''
+            high_w = ''
+            poke_id = routing.params['poke_id']
+            puts poke_id
+            popularities = []
+            pokemon.map do |poke|
+              products = SearchRecord::For.klass(Entity::Product)
+                .find_full_name(poke.poke_name)
+
+              pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
+                .find_full_name(poke.poke_name)
+
+              popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
+            end
+            view 'home', locals: { color_name: color_name,
+                                   pokemon: pokemon,
+                                   type_name: type_name,
+                                   habitat_name: habitat_name,
+                                   low_h: low_h,
+                                   high_h: high_h,
+                                   low_w: low_w,
+                                   high_w: high_w,
+                                   popularities: popularities }
+          end
+        end
       end
 
       routing.on 'type' do
@@ -202,8 +237,26 @@ module MerciDanke
               pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
                 .find_type_color_habitat_height_weight(type_name, color_name, habitat_name, low_h, high_h, low_w, high_w)
             end
+            popularities = []
+            pokemon.map do |poke|
+              products = SearchRecord::For.klass(Entity::Product)
+                .find_full_name(poke.poke_name)
 
-            view 'home', locals: { color_name: color_name, pokemon: pokemon, type_name: type_name, habitat_name: habitat_name, low_h: low_h, high_h: high_h, low_w: low_w, high_w: high_w }
+              pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
+                .find_full_name(poke.poke_name)
+
+              popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
+            end
+
+            view 'home', locals: { color_name: color_name,
+                                   pokemon: pokemon,
+                                   type_name: type_name,
+                                   habitat_name: habitat_name,
+                                   low_h: low_h,
+                                   high_h: high_h,
+                                   low_w: low_w,
+                                   high_w: high_w,
+                                   popularities: popularities }
           end
         end
       end
