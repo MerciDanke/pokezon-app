@@ -41,7 +41,7 @@ module MerciDanke
             rating: rating,
             ratings_total: ratings_total,
             price: price,
-            product_likes: nil
+            product_likes: 0
           )
         end
 

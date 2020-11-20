@@ -17,7 +17,8 @@ module MerciDanke
       end
 
       def level_rules
-        if @average_rating > 4.5 && @products_num >= 45 && @poke_likes_num >= 10 && @products_likes_num > 5 then 'Super Hot'
+        if @average_rating.zero? then 'have not search'
+        elsif @average_rating > 4.5 && @products_num >= 45 && @poke_likes_num >= 10 && @products_likes_num > 5 then 'Super Hot'
         elsif @average_rating > 4.0 && @products_num >= 35 && @poke_likes_num >= 7 && @products_likes_num > 3 then 'Hot'
         elsif @average_rating > 3.5 && @products_num >= 25 && @poke_likes_num >= 4 && @products_likes_num > 1 then 'Common'
         else

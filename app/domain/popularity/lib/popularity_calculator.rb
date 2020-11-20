@@ -6,24 +6,34 @@ module MerciDanke
     module PopularityCalculator
       # 老師有attr_reader :file_path, :lines在entities/file_contributions.rb
       # one pokemon's all products average rating
-      def average_rating(products)
-        all_ratings = products.reduce { |l, r| l.rating + r.rating }
-        (all_ratings / pruducts_num).round
+      def cal_average_rating(products)
+        return 0 if products.length.zero?
+        
+        all_ratings = []
+        products.map { |product| all_ratings.push(product.rating) }
+        total_rating = all_ratings.reduce { |l, r| l + r }
+        (total_rating / cal_products_num(products)).round
       end
 
       # one pokemon can search how many products
-      def products_num(products)
+      def cal_products_num(products)
+        return 0 if products.length.zero?
+
         products.length
       end
 
       # one pokemon's likes count
-      def poke_likes_num(pokemon)
+      def cal_poke_likes_num(pokemon)
         pokemon.poke_likes
       end
 
       # one pokemon's all products likes count
-      def products_likes_num(products)
-        products.reduce { |l, r| l.product_likes + r.product_likes }
+      def cal_products_likes_num(products)
+        return 0 if products.length.zero?
+
+        all_likes = []
+        products.map { |product| all_likes.push(product.product_likes) }
+        all_likes.reduce { |l, r| l + r }
       end
     end
   end
