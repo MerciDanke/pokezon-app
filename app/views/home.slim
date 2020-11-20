@@ -1,13 +1,13 @@
 .container-fluid
   .jumbotron.bg-light
-    h1.display-4 PokeZon
-    p.lead There are more than 800 types of Pokemon. We list all Pokémon's information and related products that sells on Amazon.
+    h1.display-4 PokéZon
+    p.lead There are more than 800 types of Pokémon. We list all Pokémon's information and related products that sells on Amazon.
     hr.my-4/
     p If you are browsing Pikachu's information, you can also see the products of Pikachu in the same page.
     form.form-inline.my-2.my-lg-0 role="form" action="/products" method='POST'
       .input-group
         select#inputGroupSelect02.custom-select style=("width: 10rem;") 
-          option selected=""  Pokemon Name
+          option selected=""  Pokémon Name
           option value="1"  Product Type
         input.form-control.mr-sm-2 aria-label="Search" placeholder="e.g. pikachu" style=("width: 25rem;") type="text" name='poke_name' /
       button.btn.btn-outline-secondary.my-2.my-sm-0 type="submit"  Search
@@ -68,48 +68,49 @@
                 input type='radio' name='color_name' value='purple' &nbsp;Purple &nbsp;
                 input type='radio' name='color_name' value='gray' &nbsp;Gray &nbsp; 
                 input type='radio' name='color_name' value='brown' &nbsp;Brown &nbsp;
-                button { 
-                  type='submit' id='repo-form-submit' class='submit' 
-                  value='submit' class="btn btn-success" 
-                } Search
             .row.vertical-align.query-bar
               .col-md-2.col-sm-3
                 .text-right Height:
               .col-md-auto.col-sm-3
-              .btn-toolbar aria-label=("Toolbar with button groups") role="toolbar" 
-                .btn-group aria-label=("First group") role="group" 
-                  button.button.decrement type="button" data-operation="decrement" onclick="setNumber(event)" data-input-id="height"
-                    i.fa.fa-minus
-                  .number-input
-                    input#height.number-input-text-box data-step="10" max="100" min="0" name="saturation" onblur="handleNumberInputBlur(event)" oninput="handleNumberInput()" type="number" value="40"
-                  button.button.increment type="button" data-operation="increment" onclick="setNumber(event)" data-input-id="height"
-                    i.fa.fa-plus
-  / form role="form" action="/products" method='POST' id='show-pokemon-product'
-  /   .row.vertical-align.query-bar
-  /     .col-md-2.col-sm-3
-  /       .text-right Pokémon name:
-  /     .col-md-8.col-sm-6
-  /       input { 
-  /         type='text' name='poke_name'
-  /         id='poke_name_input' class="form-control"
-  /         placeholder="e.g. pikachu"
-  /       }
-  /     .col-md-2.col-sm-3
-  /       button { 
-  /         type='submit' id='repo-form-submit' class='submit' 
-  /         value='submit' class="btn btn-success" 
-  /       } Show Products
+                .number-input
+                  input#height.number-input-text-box step="0.1" max="14.5" min="0" name="height1" type="number" placeholder="0" (m)&nbsp; ~ &nbsp;
+                .number-input
+                  input#height.number-input-text-box step="0.1" max="14.5" min="0" name="height2" type="number" placeholder="14.5" (m)&nbsp;
+            .row.vertical-align.query-bar
+              .col-md-2.col-sm-3
+                .text-right Weight:
+              .col-md-auto.col-sm-3
+                .number-input
+                  input#height.number-input-text-box step="0.1" max="999.9" min="0" name="weight1" type="number" placeholder="0" (kg)&nbsp; ~ &nbsp;
+                .number-input
+                  input#height.number-input-text-box step="0.1" max="999.9" min="0" name="weight2" type="number" placeholder="999.9" (kg)&nbsp;
+                button { 
+                  type='submit' id='repo-form-submit' class='submit' 
+                  value='submit' class="btn btn-success" 
+                } Search
   .row
     h3
-      - if color_name != {}
+      - if color_name != ''
         span.type.name
-          = color_name
-      - if type_name != {}
+          = color_name + " "
+      - if type_name != ''
         span.type.name
-          = type_name
-      - if habitat_name != {}
+          = type_name + " "
+      - if habitat_name != ''
         span.type.name
-          = habitat_name
+          = habitat_name + " "
+      - if height1 != ''
+        span.type.name
+          = height1 + " ~ "
+      - if height1 != ''
+        span.type.name
+          = height2 + "(m) "
+      - if weight1 != ''
+        span.type.name
+          = weight1 + " ~ "
+      - if weight1 != ''
+        span.type.name
+          = weight2 + "(kg) "
   / .row
   /   .col-md-12.blank-row
   - if pokemon.any?

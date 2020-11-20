@@ -18,10 +18,7 @@ module MerciDanke
         rebuild_entity(db_pokemon)
       end
 
-      def self.find_type_name(type_name)
-        # SELECT * FROM `projects` LEFT JOIN `members`
-        # ON (`members`.`id` = `projects`.`owner_id`)
-        # WHERE ((`username` = 'owner_name') AND (`name` = 'project_name'))
+      def self.find_type(type_name)
         db_pokemons = Database::PokemonOrm
           .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
           .where(type_name: type_name)
@@ -31,10 +28,7 @@ module MerciDanke
         end
       end
 
-      def self.find_color_name(color_name)
-        # SELECT * FROM `projects` LEFT JOIN `members`
-        # ON (`members`.`id` = `projects`.`owner_id`)
-        # WHERE ((`username` = 'owner_name') AND (`name` = 'project_name'))
+      def self.find_color(color_name)
         db_pokemons = Database::PokemonOrm
           .where(color: color_name)
           .all
@@ -43,10 +37,40 @@ module MerciDanke
         end
       end
 
-      def self.find_color_and_type_name(color_name, type_name)
-        # SELECT * FROM `projects` LEFT JOIN `members`
-        # ON (`members`.`id` = `projects`.`owner_id`)
-        # WHERE ((`username` = 'owner_name') AND (`name` = 'project_name'))
+      def self.find_habitat(habitat_name)
+        db_pokemons = Database::PokemonOrm
+          .where(habitat: habitat_name)
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
+      def self.find_height(low, high)
+        # SELECT * FROM clients WHERE (clients.created_at BETWEEN '2008-12-21 00:00:00' AND '2008-12-22 00:00:00')
+        # Client.where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight)
+        low = low.to_f * 10
+        high = high.to_f * 10
+        db_pokemons = Database::PokemonOrm
+          .where(height: (low..high))
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
+      def self.find_weight(low, high)
+        low = low.to_f * 100
+        high = high.to_f * 100
+        db_pokemons = Database::PokemonOrm
+          .where(weight: (low..high))
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
+      def self.find_color_and_type(color_name, type_name)
         db_pokemons = Database::PokemonOrm
           .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
           .where(color: color_name, type_name: type_name)
@@ -56,12 +80,94 @@ module MerciDanke
         end
       end
 
-      def self.find_habitat_name(habitat_name)
-        # SELECT * FROM `projects` LEFT JOIN `members`
-        # ON (`members`.`id` = `projects`.`owner_id`)
-        # WHERE ((`username` = 'owner_name') AND (`name` = 'project_name'))
+      def self.find_color_and_habitat(color_name, habitat_name)
         db_pokemons = Database::PokemonOrm
-          .where(habitat: habitat_name)
+          .where(color: color_name, habitat: habitat_name)
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
+      def self.find_type_and_habitat(type_name, habitat_name)
+        db_pokemons = Database::PokemonOrm
+          .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
+          .where(type_name: type_name, habitat: habitat_name)
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
+      def self.find_height_and_type(low, high, type_name)
+        db_pokemons = Database::PokemonOrm
+          .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
+          .where(height: (low..high), type_name: type_name)
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
+      def self.find_height_and_color(low, high, color_name)
+        db_pokemons = Database::PokemonOrm
+          .where(height: (low..high), color: color_name)
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
+      def self.find_height_and_habitat(low, high, habitat_name)
+        db_pokemons = Database::PokemonOrm
+          .where(height: (low..high), habitat: habitat_name)
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
+      def self.find_weight_and_type(low, high, type_name)
+        db_pokemons = Database::PokemonOrm
+          .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
+          .where(weight: (low..high), type_name: type_name)
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
+      def self.find_weight_and_color(low, high, color_name)
+        db_pokemons = Database::PokemonOrm
+          .where(weight: (low..high), color: color_name)
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
+      def self.find_weight_and_habitat(low, high, habitat_name)
+        db_pokemons = Database::PokemonOrm
+          .where(weight: (low..high), habitat: habitat_name)
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
+      def self.find_height_and_weight(low, high, low_w, high_w)
+        db_pokemons = Database::PokemonOrm
+          .where(height: (low..high), weight: (low_w..high_w))
+          .all
+        db_pokemons.map do |db_pokemon|
+          rebuild_entity(db_pokemon)
+        end
+      end
+
+      def self.find_type_and_color_and_habitat(type_name, color_name, habitat_name)
+        db_pokemons = Database::PokemonOrm
+          .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
+          .where(type_name: type_name, color: color_name, habitat: habitat_name)
           .all
         db_pokemons.map do |db_pokemon|
           rebuild_entity(db_pokemon)
