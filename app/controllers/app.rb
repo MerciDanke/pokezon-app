@@ -100,15 +100,14 @@ module MerciDanke
 
       routing.on 'type' do
         routing.is do
-          # GET /products/
           routing.post do
             color_name = routing.params['color_name'].nil? ? '' : routing.params['color_name'].downcase
-            type_name = routing.params['type_name'].downcase
-            habitat_name = routing.params['habitat_name'].downcase
-            low_h = routing.params['low_h'].downcase
-            high_h = routing.params['high_h'].downcase
-            low_w = routing.params['low_w'].downcase
-            high_w = routing.params['high_w'].downcase
+            type_name = routing.params['type_name'].nil? ? '' : routing.params['type_name'].downcase
+            habitat_name = routing.params['habitat_name'].nil? ? '' : routing.params['habitat_name'].downcase
+            low_h = routing.params['low_h'].nil? ? '' : routing.params['low_h'].downcase
+            high_h = routing.params['high_h'].nil? ? '' : routing.params['high_h'].downcase
+            low_w = routing.params['low_w'].nil? ? '' : routing.params['low_w'].downcase
+            high_w = routing.params['high_w'].nil? ? '' : routing.params['high_w'].downcase
             # 1 situations(5)
             if type_name != ''
               pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
