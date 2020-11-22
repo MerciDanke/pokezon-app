@@ -60,8 +60,8 @@ module MerciDanke
       end
 
       def self.find_weight(low, high)
-        low = low.to_f * 100
-        high = high.to_f * 100
+        low = low.to_f * 10
+        high = high.to_f * 10
         db_pokemons = Database::PokemonOrm
           .where(weight: (low..high))
           .all
@@ -134,8 +134,8 @@ module MerciDanke
       end
 
       def self.find_weight_type(low, high, type)
-        low = low.to_f * 100
-        high = high.to_f * 100
+        low = low.to_f * 10
+        high = high.to_f * 10
         db_pokemons = Database::PokemonOrm
           .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
           .where(weight: (low..high), type_name: type)
@@ -146,8 +146,8 @@ module MerciDanke
       end
 
       def self.find_weight_color(low, high, color)
-        low = low.to_f * 100
-        high = high.to_f * 100
+        low = low.to_f * 10
+        high = high.to_f * 10
         db_pokemons = Database::PokemonOrm
           .where(weight: (low..high), color: color)
           .all
@@ -157,8 +157,8 @@ module MerciDanke
       end
 
       def self.find_weight_habitat(low, high, habitat)
-        low = low.to_f * 100
-        high = high.to_f * 100
+        low = low.to_f * 10
+        high = high.to_f * 10
         db_pokemons = Database::PokemonOrm
           .where(weight: (low..high), habitat: habitat)
           .all
@@ -170,8 +170,8 @@ module MerciDanke
       def self.find_height_weight(low, high, low_w, high_w)
         low = low.to_f * 10
         high = high.to_f * 10
-        low_w = low_w.to_f * 100
-        high_w = high_w.to_f * 100
+        low_w = low_w.to_f * 10
+        high_w = high_w.to_f * 10
         db_pokemons = Database::PokemonOrm
           .where(height: (low..high), weight: (low_w..high_w))
           .all
@@ -202,8 +202,8 @@ module MerciDanke
       end
 
       def self.find_habitat_color_weight(habitat, color, low, high)
-        low = low.to_f * 100
-        high = high.to_f * 100
+        low = low.to_f * 10
+        high = high.to_f * 10
         db_pokemons = Database::PokemonOrm
           .where(habitat: habitat, color: color, weight: (low..high))
           .all
@@ -225,8 +225,8 @@ module MerciDanke
       end
 
       def self.find_habitat_type_weight(habitat, type, low, high)
-        low = low.to_f * 100
-        high = high.to_f * 100
+        low = low.to_f * 10
+        high = high.to_f * 10
         db_pokemons = Database::PokemonOrm
           .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
           .where(habitat: habitat, type_name: type, weight: (low..high))
@@ -249,8 +249,8 @@ module MerciDanke
       end
 
       def self.find_color_type_weight(color, type, low, high)
-        low = low.to_f * 100
-        high = high.to_f * 100
+        low = low.to_f * 10
+        high = high.to_f * 10
         db_pokemons = Database::PokemonOrm
           .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
           .where(color: color, type_name: type, weight: (low..high))
@@ -263,8 +263,8 @@ module MerciDanke
       def self.find_type_height_weight(type, low, high, low_w, high_w)
         low = low.to_f * 10
         high = high.to_f * 10
-        low_w = low_w.to_f * 100
-        high_w = high_w.to_f * 100
+        low_w = low_w.to_f * 10
+        high_w = high_w.to_f * 10
         db_pokemons = Database::PokemonOrm
           .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
           .where(type_name: type, height: (low..high), weight: (low_w..high_w))
@@ -277,8 +277,8 @@ module MerciDanke
       def self.find_color_height_weight(color, low, high, low_w, high_w)
         low = low.to_f * 10
         high = high.to_f * 10
-        low_w = low_w.to_f * 100
-        high_w = high_w.to_f * 100
+        low_w = low_w.to_f * 10
+        high_w = high_w.to_f * 10
         db_pokemons = Database::PokemonOrm
           .where(color: color, height: (low..high), weight: (low_w..high_w))
           .all
@@ -290,8 +290,8 @@ module MerciDanke
       def self.find_habitat_height_weight(habitat, low, high, low_w, high_w)
         low = low.to_f * 10
         high = high.to_f * 10
-        low_w = low_w.to_f * 100
-        high_w = high_w.to_f * 100
+        low_w = low_w.to_f * 10
+        high_w = high_w.to_f * 10
         db_pokemons = Database::PokemonOrm
           .where(habitat: habitat, height: (low..high), weight: (low_w..high_w))
           .all
@@ -303,8 +303,8 @@ module MerciDanke
       def self.find_habitat_type_height_weight(habitat, type, low, high, low_w, high_w)
         low = low.to_f * 10
         high = high.to_f * 10
-        low_w = low_w.to_f * 100
-        high_w = high_w.to_f * 100
+        low_w = low_w.to_f * 10
+        high_w = high_w.to_f * 10
         db_pokemons = Database::PokemonOrm
           .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
           .where(habitat: habitat, type_name: type, height: (low..high), weight: (low_w..high_w))
@@ -317,8 +317,8 @@ module MerciDanke
       def self.find_habitat_color_height_weight(habitat, color, low, high, low_w, high_w)
         low = low.to_f * 10
         high = high.to_f * 10
-        low_w = low_w.to_f * 100
-        high_w = high_w.to_f * 100
+        low_w = low_w.to_f * 10
+        high_w = high_w.to_f * 10
         db_pokemons = Database::PokemonOrm
           .where(habitat: habitat, color: color, height: (low..high), weight: (low_w..high_w))
           .all
@@ -330,8 +330,8 @@ module MerciDanke
       def self.find_type_color_height_weight(type, color, low, high, low_w, high_w)
         low = low.to_f * 10
         high = high.to_f * 10
-        low_w = low_w.to_f * 100
-        high_w = high_w.to_f * 100
+        low_w = low_w.to_f * 10
+        high_w = high_w.to_f * 10
         db_pokemons = Database::PokemonOrm
           .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
           .where(type_name: type, color: color, height: (low..high), weight: (low_w..high_w))
@@ -354,8 +354,8 @@ module MerciDanke
       end
 
       def self.find_type_color_habitat_weight(type, color, habitat, low, high)
-        low = low.to_f * 100
-        high = high.to_f * 100
+        low = low.to_f * 10
+        high = high.to_f * 10
         db_pokemons = Database::PokemonOrm
           .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
           .where(type_name: type, color: color, habitat: habitat, weight: (low..high))
@@ -368,8 +368,8 @@ module MerciDanke
       def self.find_type_color_habitat_height_weight(type, color, habitat, low, high, low_w, high_w)
         low = low.to_f * 10
         high = high.to_f * 10
-        low_w = low_w.to_f * 100
-        high_w = high_w.to_f * 100
+        low_w = low_w.to_f * 10
+        high_w = high_w.to_f * 10
         db_pokemons = Database::PokemonOrm
           .left_join(Database::TypeOrm.left_join(:pokemons_types, type_id: :id), poke_id: :id)
           .where(type_name: type, color: color, habitat: habitat, height: (low..high), weight: (low_w..high_w))
