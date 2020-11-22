@@ -388,6 +388,12 @@ module MerciDanke
         rebuild_entity(db_record)
       end
 
+      # update the num of poke_likes
+      def self.plus_like(origin_id)
+        poke_like_num = Database::PokemonOrm.where(origin_id: origin_id).first.poke_likes
+        Database::PokemonOrm.where(origin_id: origin_id).first.update(poke_likes: poke_like_num + 1)
+      end
+
       def self.create(entity)
         db_new_pokemon = PersistPokemon.new(entity).call unless find(entity)
         rebuild_entity(db_new_pokemon)

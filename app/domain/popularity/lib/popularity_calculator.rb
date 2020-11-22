@@ -4,11 +4,10 @@ module MerciDanke
   module Calculate
     # each pokemon's popularity calculation method
     module PopularityCalculator
-      # 老師有attr_reader :file_path, :lines在entities/file_contributions.rb
       # one pokemon's all products average rating
       def cal_average_rating(products)
         return 0 if products.length.zero?
-        
+
         all_ratings = []
         products.map { |product| all_ratings.push(product.rating) }
         total_rating = all_ratings.reduce { |l, r| l + r }

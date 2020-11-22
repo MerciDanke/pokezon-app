@@ -33,7 +33,7 @@ module MerciDanke
       # mapper should call popularity_level_hash
       def popularity_level_hash
         Value::PopularityLevels.new(
-          @pokemon.id,
+          @pokemon.origin_id,
           average_rating,
           products_num,
           poke_likes_num,

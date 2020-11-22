@@ -62,7 +62,7 @@ module MerciDanke
                                 popularities: popularities }
       end
 
-      routing.on '/' do
+      routing.on 'plus_like' do
         routing.is do
           routing.post do
             color_name = ''
@@ -73,9 +73,10 @@ module MerciDanke
             low_w = ''
             high_w = ''
             poke_id = routing.params['poke_id']
-            puts poke_id
+            SearchRecord::ForPoke.klass(Entity::Pokemon).plus_like(poke_id)
+            pokemon_all = SearchRecord::ForPoke.klass(Entity::Pokemon).all
             popularities = []
-            pokemon.map do |poke|
+            pokemon_all.map do |poke|
               products = SearchRecord::For.klass(Entity::Product)
                 .find_full_name(poke.poke_name)
 
@@ -85,7 +86,7 @@ module MerciDanke
               popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
             end
             view 'home', locals: { color_name: color_name,
-                                   pokemon: pokemon,
+                                   pokemon: pokemon_all,
                                    type_name: type_name,
                                    habitat_name: habitat_name,
                                    low_h: low_h,
@@ -269,7 +270,6 @@ module MerciDanke
             amazon_products = Amazon::ProductMapper.new.find(poke_name, MerciDanke::App.config.API_KEY)
             pokemon_pokemon = Pokemon::PokemonMapper.new.find(poke_name)
 
-            puts amazon_products
             # ADD product to DataBase
             amazon_products.map do |product|
               SearchRecord::For.entity(product).create(product)
@@ -285,6 +285,17 @@ module MerciDanke
           # GET /products/poke_name, apikey
           routing.get do
             # amazon_products = Amazon::ProductMapper.new.find(poke_name, API_KEY)
+            amazon_products = SearchRecord::For.klass(Entity::Product)
+              .find_full_name(poke_name)
+            # pokemon_pokemon = Pokemon::PokemonMapper.new.find(poke_name)
+            pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
+              .find_full_name(poke_name)
+            view 'products', locals: { search_name: poke_name, products: amazon_products, pokemon: pokemon_pokemon }
+          end
+
+          routing.post do
+            product_id = routing.params['product_id']
+            product_like = SearchRecord::For.klass(Entity::Product).plus_like(product_id)
             amazon_products = SearchRecord::For.klass(Entity::Product)
               .find_full_name(poke_name)
             # pokemon_pokemon = Pokemon::PokemonMapper.new.find(poke_name)

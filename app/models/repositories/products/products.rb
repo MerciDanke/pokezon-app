@@ -21,6 +21,12 @@ module MerciDanke
         end
       end
 
+      # update the num of product_likes
+      def self.plus_like(origin_id)
+        product_like_num = Database::ProductOrm.where(origin_id: origin_id).first.product_likes
+        Database::ProductOrm.where(origin_id: origin_id).first.update(product_likes: product_like_num + 1)
+      end
+
       def self.find(entity)
         find_origin_id(entity.origin_id)
       end
