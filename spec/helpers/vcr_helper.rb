@@ -9,16 +9,16 @@ class VcrHelper
   CASSETTE_FILE = 'product_api'.freeze
 
   def self.setup_vcr
-    VCR.configure do |c|
-      c.cassette_library_dir = CASSETTES_FOLDER
-      c.hook_into :webmock
+    VCR.configure do |vcr|
+      vcr.cassette_library_dir = CASSETTES_FOLDER
+      vcr.hook_into :webmock
     end
   end
 
   def self.configure_vcr_for_apikey
-    VCR.configure do |c|
-      c.filter_sensitive_data('<API_KEY>') { API_KEY }
-      c.filter_sensitive_data('<API_KEY_ESC>') { CGI.escape(API_KEY) }
+    VCR.configure do |vcr|
+      vcr.filter_sensitive_data('<API_KEY>') { API_KEY }
+      vcr.filter_sensitive_data('<API_KEY_ESC>') { CGI.escape(API_KEY) }
     end
 
     VCR.insert_cassette(

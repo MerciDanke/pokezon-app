@@ -11,8 +11,8 @@
 #   end
 
 #   def self.wipe_database
-#     MerciDanke::App.DB.run('PRAGMA foreign_keys = OFF')
+#     MerciDanke::App.DataBase.run('PRAGMA foreign_keys = OFF')
 #     DatabaseCleaner.clean
-#     MerciDanke::App.DB.run('PRAGMA foreign_keys = ON')
+#     MerciDanke::App.DataBase.run('PRAGMA foreign_keys = ON')
 #   end
 # end

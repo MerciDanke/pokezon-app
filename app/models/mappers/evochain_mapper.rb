@@ -51,10 +51,10 @@ module MerciDanke
         def evolves_to_second
           evo_to = @evo_data['chain']['evolves_to'][0]
           if evo_to
-            ev_second = @evo_data['chain']['evolves_to'][0]['evolves_to'][0]
+            ev_second = evo_to['evolves_to'][0]
             return ev_second['species']['name'] if ev_second
           else
-            return nil
+            nil
           end
         end
       end

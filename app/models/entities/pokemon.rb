@@ -28,6 +28,7 @@ module MerciDanke
       attribute :evochain, Evochain
       # Ability
       attribute :abilities, Strict::Array.of(Ability)
+      attribute :poke_likes, Integer.optional
 
       def to_attr_hash
         to_hash.reject { |key, _| %i[id evochain abilities types].include? key }

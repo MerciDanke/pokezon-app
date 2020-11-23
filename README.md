@@ -1,5 +1,5 @@
 # Shopping with Pokémon
-Currently, there are more than 800 types of Pokemon.
+Currently, there are more than 800 types of Pokémon.
 We list all Pokémon’s information(attributes, features, abilities, etc). Besides, we will also list related products(based on price and rating) that sells on Amazon. For example, if you are browsing Pikachu's information, you can also see the products of Pikachu in the same page.
 ## Our features(Domain value)
 Problems to be solved:
@@ -30,11 +30,11 @@ Amazon products
 - prices/price -> **prices/price**
 
 ## Short-term usability goals
-- Pull data from Amazon API and Pokemon API
-- Classify Pokemon data by type, color, habitat, height and weight
-- Map different type, color, habitat, height and weight of pokemons to products
+- Pull data from Amazon API and Pokémon API
+- Classify Pokémon data by type, color, habitat, height and weight
+- Map different type, color, habitat, height and weight of pokémons to products
 - Filter the products by different conditions
-- Display Pokemon details with related products at the same time
+- Display Pokémon details with related products at the same time
 
 ## Long-term goals
 - Perform static analysis of folders/files: e.g., flog, rubocop, reek for Ruby

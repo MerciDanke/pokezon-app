@@ -39,7 +39,7 @@ namespace :db do
   task :migrate => :config do
     Sequel.extension :migration
     puts "Migrating #{app.environment} database to latest"
-    Sequel::Migrator.run(app.DB, 'app/infrastructure/database/migrations')
+    Sequel::Migrator.run(app.DataBase, 'app/infrastructure/database/migrations')
   end
 
   desc 'Wipe records from all tables'

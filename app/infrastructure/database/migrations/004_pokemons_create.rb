@@ -22,6 +22,7 @@ Sequel.migration do
       String      :color
       String      :flavor_text_entries
       String      :genera
+      Integer     :poke_likes
 
       DateTime :created_at
       DateTime :updated_at
