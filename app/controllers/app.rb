@@ -100,7 +100,7 @@ module MerciDanke
 
       routing.on 'type' do
         routing.is do
-          routing.post do
+          routing.get do
             color_name = routing.params['color_name'].nil? ? '' : routing.params['color_name'].downcase
             type_name = routing.params['type_name'].nil? ? '' : routing.params['type_name'].downcase
             habitat_name = routing.params['habitat_name'].nil? ? '' : routing.params['habitat_name'].downcase
@@ -108,6 +108,20 @@ module MerciDanke
             high_h = routing.params['high_h'].nil? ? '' : routing.params['high_h'].downcase
             low_w = routing.params['low_w'].nil? ? '' : routing.params['low_w'].downcase
             high_w = routing.params['high_w'].nil? ? '' : routing.params['high_w'].downcase
+
+            hash = {
+              "color_name" => color_name,
+              "type_name" => type_name,
+              "habitat_name" => habitat_name,
+              "low_h" => low_h,
+              "high_h" => high_h,
+              "low_w" => low_w,
+              "high_w" => high_w
+            }
+            newhash = hash.select { |key, value| value != '' }
+            # pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
+            #     .find_all_types(newhash)
+
             # 1 situations(5)
             if type_name != ''
               pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)

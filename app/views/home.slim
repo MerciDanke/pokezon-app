@@ -10,12 +10,12 @@
           option selected=""  Pokémon Name
           option value="1"  Product Type
         input.form-control.mr-sm-2 aria-label="Search" placeholder="e.g. pikachu" style=("width: 25rem;") type="text" name='poke_name' /
-      button.btn.btn-outline-warning.my-2.my-sm-0 type="submit"  Search
+      button.btn.btn-outline-warning.my-2.my-sm-0 type="submit"  Find a pokémon
     button.btn.btn-outline-primary.mt-2 aria-controls="collapseExample" aria-expanded="false" data-target="#collapseExample" data-toggle="collapse" type="button" style=("display: inline-block;")
       | Advance
     #collapseExample.collapse.my-2
       .card.card-body
-          form role="form" action="type" method='POST' id='show-pokemon-product'
+          form role="form" action="type" method='GET' id='show-pokemon-product'
             .row.vertical-align.my-3
               .col-md-2.col-sm-3
                 .text-right Type name:
@@ -68,6 +68,7 @@
                 input type='radio' name='color_name' value='purple' &nbsp;Purple &nbsp;
                 input type='radio' name='color_name' value='gray' &nbsp;Gray &nbsp; 
                 input type='radio' name='color_name' value='brown' &nbsp;Brown &nbsp;
+                input type='radio' name='color_name' value='blue' &nbsp;Blue &nbsp;
             .row.vertical-align.my-3
               .col-md-2.col-sm-3
                 .text-right Height:
