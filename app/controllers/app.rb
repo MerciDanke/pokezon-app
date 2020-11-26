@@ -2,13 +2,18 @@
 
 require 'roda'
 require 'slim'
+require 'slim/include'
 
 module MerciDanke
   # Web App
   class App < Roda
+    plugin :flash
+    plugin :all_verbs # allows DELETE and other HTTP verbs beyond GET/POST
     plugin :render, engine: 'slim', views: 'app/views'
     plugin :assets, css: 'style.css', path: 'app/views/assets'
     plugin :halt
+
+    use Rack::MethodOverride # for other HTTP verbs (with plugin all_verbs)
 
     route do |routing|
       routing.assets # load CSS
@@ -110,13 +115,13 @@ module MerciDanke
             high_w = routing.params['high_w'].nil? ? '' : routing.params['high_w'].downcase
 
             hash = {
-              "color_name" => color_name,
-              "type_name" => type_name,
-              "habitat_name" => habitat_name,
-              "low_h" => low_h,
-              "high_h" => high_h,
-              "low_w" => low_w,
-              "high_w" => high_w
+              'color_name' => color_name,
+              'type_name' => type_name,
+              'habitat_name' => habitat_name,
+              'low_h' => low_h,
+              'high_h' => high_h,
+              'low_w' => low_w,
+              'high_w' => high_w
             }
             newhash = hash.select { |key, value| value != '' }
             # pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
@@ -280,38 +285,71 @@ module MerciDanke
           routing.post do
             poke_name = routing.params['poke_name'].downcase
             # GET product from amazon
-            amazon_products = Amazon::ProductMapper.new.find(poke_name, MerciDanke::App.config.API_KEY)
-            pokemon_pokemon = Pokemon::PokemonMapper.new.find(poke_name)
+            begin
+              pokemon_pokemon = Pokemon::PokemonMapper
+                .new.find(poke_name)
+            rescue StandardError
+              flash[:error] = 'Could not find that pokemon!'
+              routing.redirect '/'
+            end
+            begin
+              amazon_products = Amazon::ProductMapper
+                .new.find(poke_name, MerciDanke::App.config.API_KEY)
+            rescue StandardError
+              flash[:error] = 'Amazon products have some unknown problems. Please try again!'
+              routing.redirect '/'
+            end
 
             # ADD product to DataBase
-            amazon_products.map do |product|
-              SearchRecord::For.entity(product).create(product)
+            begin
+              amazon_products.map do |product|
+                SearchRecord::For.entity(product).create(product)
+              end
+              SearchRecord::ForPoke.entity(pokemon_pokemon).create(pokemon_pokemon)
+            rescue StandardError => error
+              puts error.backtrace.join("\n")
+              flash[:error] = 'Having trouble accessing the database'
             end
-            SearchRecord::ForPoke.entity(pokemon_pokemon).create(pokemon_pokemon)
-            # Redirect viewer to product page
             routing.redirect "products/#{poke_name}"
-            # routing.redirect "product/#{product.title}"
           end
         end
 
         routing.on String do |poke_name|
           # GET /products/poke_name, apikey
           routing.get do
-            # amazon_products = Amazon::ProductMapper.new.find(poke_name, API_KEY)
-            amazon_products = SearchRecord::For.klass(Entity::Product)
-              .find_full_name(poke_name)
-            # pokemon_pokemon = Pokemon::PokemonMapper.new.find(poke_name)
-            pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
-              .find_full_name(poke_name)
+            # Get pokemon and products from database
+            begin
+              pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
+                .find_full_name(poke_name)
+              SearchRecord::ForPoke.entity(pokemon_pokemon).create(pokemon_pokemon)
+              amazon_products = SearchRecord::For.klass(Entity::Product)
+                .find_full_name(poke_name)
+              if amazon_products.length.zero?
+                pokemon_pokemon = Pokemon::PokemonMapper
+                  .new.find(poke_name)
+                begin
+                  amazon_products = Amazon::ProductMapper
+                    .new.find(poke_name, MerciDanke::App.config.API_KEY)
+                  amazon_products.map do |product|
+                    SearchRecord::For.entity(product).create(product)
+                  end
+                rescue StandardError
+                  flash[:error] = 'Amazon products have some unknown problems. Please try again!'
+                  routing.redirect '/'
+                end
+              end
+            rescue StandardError
+              flash[:error] = 'Having trouble accessing the database'
+              routing.redirect '/'
+            end
             view 'products', locals: { search_name: poke_name, products: amazon_products, pokemon: pokemon_pokemon }
           end
 
           routing.post do
             product_id = routing.params['product_id']
-            product_like = SearchRecord::For.klass(Entity::Product).plus_like(product_id)
+            SearchRecord::For.klass(Entity::Product).plus_like(product_id)
             amazon_products = SearchRecord::For.klass(Entity::Product)
               .find_full_name(poke_name)
-            # pokemon_pokemon = Pokemon::PokemonMapper.new.find(poke_name)
             pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
               .find_full_name(poke_name)
             view 'products', locals: { search_name: poke_name, products: amazon_products, pokemon: pokemon_pokemon }
