@@ -69,7 +69,7 @@ module MerciDanke
 
       routing.on 'plus_like' do
         routing.is do
-          routing.post do
+          routing.get do
             color_name = ''
             type_name = ''
             habitat_name = ''
@@ -78,6 +78,7 @@ module MerciDanke
             low_w = ''
             high_w = ''
             poke_id = routing.params['poke_id']
+            puts poke_id
             SearchRecord::ForPoke.klass(Entity::Pokemon).plus_like(poke_id)
             pokemon_all = SearchRecord::ForPoke.klass(Entity::Pokemon).all
             popularities = []
