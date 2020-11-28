@@ -16,13 +16,13 @@ describe 'Tests Product API library' do
     it 'HAPPY: should provide correct product datatype' do
       producttests = MerciDanke::Amazon::ProductMapper.new.find(POKENAME, API_KEY)
       producttests.each do |producttest|
+        _(producttest.origin_id.class).must_equal String
+        _(producttest.poke_name.class).must_equal String
         _(producttest.title.class).must_equal String
         _(producttest.link.class).must_equal String
         _(producttest.image.class).must_equal String
         _(producttest.rating.class).must_equal Float
         _(producttest.ratings_total.class).must_equal Integer
-        _(producttest.price.class).must_equal Float
-        _(producttest.currency.class).must_equal String
       end
     end
   end
