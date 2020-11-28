@@ -102,18 +102,18 @@
         - if habitat_name != ''
           span.type.name
             = habitat_name + " "
-        - if low_h != ''
+        - if low_h != 0.0
           span.type.name
-            = low_h + " ~ "
-        - if high_h != ''
+            = (low_h.to_f/10).to_s + " ~ "
+        - if high_h != 0.0
           span.type.name
-            = high_h + "(m) "
-        - if low_w != ''
+            = (high_h.to_f/10).to_s + "(m) "
+        - if low_w != 0.0
           span.type.name
-            = low_w + " ~ "
-        - if high_w != ''
+            = (low_w.to_f/10).to_s + " ~ "
+        - if high_w != 0.0
           span.type.name
-            = high_w + "(kg) "
+            = (high_w.to_f/10).to_s + "(kg) "
   / .row
   /   .col-md-12.blank-row
   - if pokemon.any?
