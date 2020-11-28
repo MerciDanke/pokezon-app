@@ -116,20 +116,20 @@
             = (high_w.to_f/10).to_s + "(kg) "
   / .row
   /   .col-md-12.blank-row
-  - if pokemon.any?
+  - if pokemons.any?
     .row
-      - pokemon.length.times do |index|
+      - pokemons.each do |pokemon|
         .col-lg-2.col-md-4.col-sm-8.mt-2 
           .card-deck
             .card  
               .card-header.text-center
-                a href="products/#{pokemon[index].poke_name}"  #{pokemon[index].poke_name} 
-              img.card-img-top alt="founding img" src="#{pokemon[index].front_default}" /
+                a href="#{pokemon.poke_link}" #{pokemon.poke_name}
+              img.card-img-top alt="founding img" src="#{pokemon.picture}" /
               .card-body.align-middle
-                span.badge.badge-secondary.my-2 #{popularities[index].popularity_level}              
+                / span.badge.badge-secondary.my-2 #{popularities[index].popularity_level}              
                 / button.btn.btn-outline-danger.float-right style=("border: none; border-radius: 10%;")
-                i.far.fa-heart.float-right.btn.btn-outline-danger.align-bottom.px-1 onclick='plus_like("#{pokemon[index].id}")' style=("margin:0;")
-                  input.ml-2.float-right.btn-outline-danger type="button" id="#{pokemon[index].id}" value="#{pokemon[index].poke_likes}" style=("background-color: transparent; border: none; width:1rem; margin: 0; padding: 0;")
+                i.far.fa-heart.float-right.btn.btn-outline-danger.align-bottom.px-1 onclick='plus_like("#{pokemon.id}")' style=("margin:0;")
+                  input.ml-2.float-right.btn-outline-danger type="button" id="#{pokemon.id}" value="#{pokemon.likes}" style=("background-color: transparent; border: none; width:1rem; margin: 0; padding: 0;")
 
 javascript:
   function plus_like(id) {

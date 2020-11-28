@@ -9,8 +9,8 @@ module MerciDanke
   class App < Roda
     plugin :flash
     plugin :all_verbs # allows DELETE and other HTTP verbs beyond GET/POST
-    plugin :render, engine: 'slim', views: 'app/views'
-    plugin :assets, css: 'style.css', path: 'app/views/assets'
+    plugin :render, engine: 'slim', views: 'app/presentation/view_html'
+    plugin :assets, css: 'style.css', path: 'app/presentation/assets'
     plugin :halt
 
     use Rack::MethodOverride # for other HTTP verbs (with plugin all_verbs)
@@ -31,8 +31,8 @@ module MerciDanke
         20.times do |num|
           break if Database::PokemonOrm.find(id: 20)
 
-          pokemon = Pokemon::PokemonMapper.new.find((num + 1).to_s)
-          SearchRecord::ForPoke.entity(pokemon).create(pokemon)
+          pokemons = Pokemon::PokemonMapper.new.find((num + 1).to_s)
+          SearchRecord::ForPoke.entity(pokemons).create(pokemons)
         end
 
         pokemon_all = SearchRecord::ForPoke.klass(Entity::Pokemon).all
@@ -56,7 +56,8 @@ module MerciDanke
           popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
         end
 
-        view 'home', locals: {  pokemon: pokemon_all,
+        viewable_pokemons = Views::PokemonsList.new(pokemon_all)
+        view 'home', locals: {  pokemons: viewable_pokemons,
                                 color_name: color_name,
                                 type_name: type_name,
                                 habitat_name: habitat_name,
@@ -90,8 +91,9 @@ module MerciDanke
 
               popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
             end
+            viewable_pokemons = Views::PokemonsList.new(pokemon_all)
             view 'home', locals: { color_name: color_name,
-                                   pokemon: pokemon_all,
+                                   pokemons: viewable_pokemons,
                                    type_name: type_name,
                                    habitat_name: habitat_name,
                                    low_h: low_h,
@@ -122,16 +124,11 @@ module MerciDanke
               :'height' => (low_h..high_h)
             }
 
-            newhash = hash.select { |key, value| value != ""}
+            newhash = hash.select { |key, value| value != "" }
             newnewhash = newhash.select { |key, value| value != (0.0..0.0) }
-            puts newnewhash
+
             pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
                 .find_all_advances(newnewhash)
-
-            # if low_w != '' && high_w != ''
-            #   pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
-            #     .find_weight(low_w, high_w)
-            # end
 
             popularities = []
             pokemon.map do |poke|
@@ -144,8 +141,9 @@ module MerciDanke
               popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
             end
 
+            viewable_pokemons = Views::PokemonsList.new(pokemon)
             view 'home', locals: { color_name: color_name,
-                                   pokemon: pokemon,
+                                   pokemons: viewable_pokemons,
                                    type_name: type_name,
                                    habitat_name: habitat_name,
                                    low_h: low_h,

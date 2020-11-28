@@ -15,7 +15,6 @@ module MerciDanke
         db_products = Database::ProductOrm
           .where(poke_name: poke_name)
           .all
-        # puts db_product.all
         db_products.map do |db_product|
           rebuild_entity(db_product)
         end
