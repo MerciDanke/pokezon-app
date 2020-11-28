@@ -25,7 +25,6 @@ describe 'Tests Pokemon API library' do
       _(pokemontest.id).must_equal CORRECT['id']
       _(pokemontest.name).must_equal CORRECT['name']
       _(pokemontest.type).must_equal CORRECT['type']
-      # _(pokemontest.abilities).must_equal CORRECT['abilities']
       _(pokemontest.abilities).must_be_kind_of Array
       _(pokemontest.evo_chains).must_be_kind_of MerciDanke::Entity::EvoChain
       _(pokemontest.height).must_equal CORRECT['height']
