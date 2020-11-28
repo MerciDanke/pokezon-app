@@ -46,7 +46,6 @@ module MerciDanke
 
         def get(url)
           http_response = HTTP.get(url)
-
           Response.new(http_response).tap do |response|
             # raise(response.error) unless response.successful?
             fail(response.error) unless response.successful?

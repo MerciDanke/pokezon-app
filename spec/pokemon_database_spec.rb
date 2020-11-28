@@ -9,7 +9,7 @@ describe 'Integration Tests of Pokemon API and Database' do
   DatabaseHelper.setup_database_cleaner
 
   before do
-    VcrHelper.configure_vcr_for_github
+    VcrHelper.configure_vcr_for_apikey
   end
 
   after do
@@ -22,7 +22,7 @@ describe 'Integration Tests of Pokemon API and Database' do
     end
 
     it 'HAPPY: should be able to save pokemon from Pokemon API to database' do
-      pokemon = MerciDanke::Pokemon::PokemonMapper.new.find(ID)
+      pokemon = MerciDanke::Pokemon::PokemonMapper.new.find(POKE_NAME)
 
       rebuilt = MerciDanke::SearchRecord::ForPoke.entity(pokemon).create(pokemon)
 
@@ -38,10 +38,9 @@ describe 'Integration Tests of Pokemon API and Database' do
       _(rebuilt.color).must_equal(pokemon.color)
       _(rebuilt.flavor_text_entries).must_equal(pokemon.flavor_text_entries)
       _(rebuilt.genera).must_equal(pokemon.genera)
-      _(rebuilt.types).must_equal(pokemon.types)
       _(rebuilt.poke_likes).must_equal(pokemon.poke_likes)
-      _(rebuilt.abilities.count).must_equal(pokemon.abilities.count)
-      _(rebuilt.evochain.count).must_equal(pokemon.evochain.count)
+      _(rebuilt.evochain.origin_id).must_equal(pokemon.evochain.origin_id)
+      _(rebuilt.evochain.chain_species_name).must_equal(pokemon.evochain.chain_species_name)
 
       pokemon.abilities.each do |ability|
         found = rebuilt.abilities.find do |potential|
@@ -50,6 +49,12 @@ describe 'Integration Tests of Pokemon API and Database' do
 
         _(found.ability_name).must_equal ability.ability_name
         _(found.flavor_text_entries).must_equal ability.flavor_text_entries
+      end
+      pokemon.types.each do |type|
+        found = rebuilt.types.find do |potential|
+          potential.type_name == type.type_name
+        end
+        _(found.type_name).must_equal type.type_name
       end
     end
   end
