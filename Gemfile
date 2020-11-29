@@ -39,6 +39,7 @@ group :test do
   gem 'vcr', '~> 6.0'
   gem 'webmock', '~> 3.0'
 
+  gem 'webdrivers'
   gem 'headless', '~> 2.3'
   gem 'watir', '~> 6.17'
 end

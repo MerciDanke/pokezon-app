@@ -22,3 +22,8 @@ CASSETTES_FOLDER = 'spec/fixtures/cassettes'.freeze
 CASSETTE_FILE = 'pokemon_api'.freeze
 
 API_KEY = MerciDanke::App.config.API_KEY
+
+# Helper methods
+def homepage
+  MerciDanke::App.config.APP_HOST
+end
