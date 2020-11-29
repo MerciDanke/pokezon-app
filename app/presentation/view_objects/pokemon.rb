@@ -20,10 +20,6 @@ module Views
       @pokemon.poke_name
     end
 
-    def index_str
-      "pokemon[#{@index}]"
-    end
-
     def picture
       @pokemon.front_default
     end
@@ -34,6 +30,14 @@ module Views
 
     def likes
       @pokemon.poke_likes
+    end
+
+    def indexx
+      Popularities.new(@pokemon, @index)
+    end
+
+    def index
+      @index
     end
   end
 end

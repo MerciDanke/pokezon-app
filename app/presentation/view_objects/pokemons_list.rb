@@ -3,7 +3,7 @@
 require_relative 'pokemon'
 
 module Views
-  # View for a a list of project entities
+  # View for a a list of pokemon entities
   class PokemonsList
     def initialize(pokemons)
       @pokemons = pokemons.map.with_index { |poke, i| Pokemon.new(poke, i) }

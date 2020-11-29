@@ -102,16 +102,16 @@
         - if habitat_name != ''
           span.type.name
             = habitat_name + " "
-        - if low_h != 0.0
+        - if low_h != '' && low_h != 0.0
           span.type.name
             = (low_h.to_f/10).to_s + " ~ "
-        - if high_h != 0.0
+        - if high_h != '' && high_h != 0.0
           span.type.name
             = (high_h.to_f/10).to_s + "(m) "
-        - if low_w != 0.0
+        - if low_w != '' && low_w != 0.0
           span.type.name
             = (low_w.to_f/10).to_s + " ~ "
-        - if high_w != 0.0
+        - if high_w != '' && high_w != 0.0
           span.type.name
             = (high_w.to_f/10).to_s + "(kg) "
   / .row
@@ -126,7 +126,9 @@
                 a href="#{pokemon.poke_link}" #{pokemon.poke_name}
               img.card-img-top alt="founding img" src="#{pokemon.picture}" /
               .card-body.align-middle
-                / span.badge.badge-secondary.my-2 #{popularities[index].popularity_level}              
+                / - level = popularities[pokemon.index { |x| x } ].level
+                / span.badge.badge-secondary.my-2 #{popularities.level}
+                span.badge.badge-secondary.my-2 #{pokemon.index} 
                 / button.btn.btn-outline-danger.float-right style=("border: none; border-radius: 10%;")
                 i.far.fa-heart.float-right.btn.btn-outline-danger.align-bottom.px-1 onclick='plus_like("#{pokemon.id}")' style=("margin:0;")
                   input.ml-2.float-right.btn-outline-danger type="button" id="#{pokemon.id}" value="#{pokemon.likes}" style=("background-color: transparent; border: none; width:1rem; margin: 0; padding: 0;")
