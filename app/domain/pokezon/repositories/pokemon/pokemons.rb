@@ -54,12 +54,8 @@ module MerciDanke
         rebuild_entity(db_new_pokemon)
       end
 
-      private
-
       def self.rebuild_entity(db_record)
         return nil unless db_record
-
-        # db_record[:type] = JSON.parse(db_record[:type])
 
         MerciDanke::Entity::Pokemon.new(
           db_record.to_hash.merge(
@@ -78,7 +74,6 @@ module MerciDanke
 
         def create_pokemon
           entity_hash = @entity.to_attr_hash
-          # entity_hash[:type] = entity_hash[:type].to_s
           Database::PokemonOrm.create(entity_hash)
         end
 

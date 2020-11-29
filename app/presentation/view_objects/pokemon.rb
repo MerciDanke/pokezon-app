@@ -32,10 +32,6 @@ module Views
       @pokemon.poke_likes
     end
 
-    def indexx
-      Popularities.new(@pokemon, @index)
-    end
-
     def index
       @index
     end

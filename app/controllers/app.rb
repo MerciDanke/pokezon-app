@@ -50,7 +50,6 @@ module MerciDanke
           SearchRecord::ForPoke.entity(pokemons).create(pokemons)
         end
 
-        # pokemon_all = SearchRecord::ForPoke.klass(Entity::Pokemon).all
         pokemon_all = SearchRecord::ForPoke.klass(Entity::Pokemon).all
         2.times do |num|
           break unless SearchRecord::For.klass(Entity::Product).all.length.zero?
@@ -71,18 +70,8 @@ module MerciDanke
           popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
         end
 
-        viewable_popularities = Views::PopularitiesList.new(popularities)
-        viewable_pokemons = Views::PokemonsList.new(pokemon_all)
-
-        view 'home', locals: {  pokemons: viewable_pokemons,
-                                color_name: color_name,
-                                type_name: type_name,
-                                habitat_name: habitat_name,
-                                low_h: low_h,
-                                high_h: high_h,
-                                low_w: low_w,
-                                high_w: high_w,
-                                popularities: viewable_popularities }
+        viewable_pokemons = Views::PokemonsList.new(pokemon_all, color_name, type_name, habitat_name, low_h, high_h, low_w, high_w, popularities)
+        view 'home', locals: { pokemons: viewable_pokemons }
       end
 
       routing.on 'plus_like' do
@@ -109,18 +98,8 @@ module MerciDanke
               popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
             end
 
-            viewable_popularities = Views::PopularitiesList.new(popularities)
-            viewable_pokemons = Views::PokemonsList.new(pokemon_all)
-
-            view 'home', locals: { color_name: color_name,
-                                   pokemons: viewable_pokemons,
-                                   type_name: type_name,
-                                   habitat_name: habitat_name,
-                                   low_h: low_h,
-                                   high_h: high_h,
-                                   low_w: low_w,
-                                   high_w: high_w,
-                                   popularities: viewable_popularities }
+            viewable_pokemons = Views::PokemonsList.new(pokemon_all, color_name, type_name, habitat_name, low_h, high_h, low_w, high_w, popularities)
+            view 'home', locals: { pokemons: viewable_pokemons }
           end
         end
       end
@@ -128,9 +107,9 @@ module MerciDanke
       routing.on 'type' do
         routing.is do
           routing.get do
-            color_name = routing.params['color_name'].nil? ? '' : routing.params['color_name'].downcase
-            type_name = routing.params['type_name'].nil? ? '' : routing.params['type_name'].downcase
-            habitat_name = routing.params['habitat_name'].nil? ? '' : routing.params['habitat_name'].downcase
+            color_name = routing.params['color'].nil? ? '' : routing.params['color'].downcase
+            type_name = routing.params['type'].nil? ? '' : routing.params['type'].downcase
+            habitat_name = routing.params['habitat'].nil? ? '' : routing.params['habitat'].downcase
             low_h = routing.params['low_h'].nil? ? '' : (routing.params['low_h'].downcase).to_f * 10
             high_h = routing.params['high_h'].nil? ? '' : (routing.params['high_h'].downcase).to_f * 10
             low_w = routing.params['low_w'].nil? ? '' : (routing.params['low_w'].downcase).to_f * 10
@@ -144,8 +123,8 @@ module MerciDanke
               :'height' => (low_h..high_h)
             }
 
-            newhash = hash.select { |key, value| value != "" }
-            newnewhash = newhash.select { |key, value| value != (0.0..0.0) }
+            newhash = hash.select { |_key, value| value != '' }
+            newnewhash = newhash.select { |_key, value| value != (0.0..0.0) }
 
             pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
                 .find_all_advances(newnewhash)
@@ -161,16 +140,8 @@ module MerciDanke
               popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
             end
 
-            viewable_pokemons = Views::PokemonsList.new(pokemon)
-            view 'home', locals: { color_name: color_name,
-                                   pokemons: viewable_pokemons,
-                                   type_name: type_name,
-                                   habitat_name: habitat_name,
-                                   low_h: low_h,
-                                   high_h: high_h,
-                                   low_w: low_w,
-                                   high_w: high_w,
-                                   popularities: popularities }
+            viewable_pokemons = Views::PokemonsList.new(pokemon, color_name, type_name, habitat_name, low_h, high_h, low_w, high_w, popularities)
+            view 'home', locals: { pokemons: viewable_pokemons }
           end
         end
       end
@@ -241,8 +212,8 @@ module MerciDanke
               routing.redirect '/'
             end
 
-            viewable_products = Views::ProductsList.new(amazon_products)
-            view 'products', locals: { search_name: poke_name, products: viewable_products, pokemon: pokemon_pokemon }
+            viewable_products = Views::ProductsList.new(amazon_products, poke_name, pokemon_pokemon)
+            view 'products', locals: { products: viewable_products }
           end
 
           routing.post do
@@ -253,8 +224,8 @@ module MerciDanke
             pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
               .find_full_name(poke_name)
 
-            viewable_products = Views::ProductsList.new(amazon_products)
-            view 'products', locals: { search_name: poke_name, products: viewable_products, pokemon: pokemon_pokemon }
+            viewable_products = Views::ProductsList.new(amazon_products, poke_name, pokemon_pokemon)
+            view 'products', locals: { products: viewable_products }
           end
         end
       end
