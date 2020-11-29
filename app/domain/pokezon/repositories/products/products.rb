@@ -20,6 +20,12 @@ module MerciDanke
         end
       end
 
+      def self.find_full_names(poke_names)
+        poke_names.map do |pokename|
+          find_full_name(pokename)
+        end.compact
+      end
+
       # update the num of product_likes
       def self.plus_like(origin_id)
         product_like_num = Database::ProductOrm.where(origin_id: origin_id).first.product_likes

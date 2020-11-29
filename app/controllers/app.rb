@@ -28,6 +28,21 @@ module MerciDanke
         low_w = ''
         high_w = ''
 
+        session[:watching] ||= []
+        if session[:watching].count > 40
+          session[:watching] = session[:watching][0..39]
+        end
+
+        products = SearchRecord::For.klass(Entity::Product)
+          .find_full_names(session[:watching])
+        products.each do |product|
+          session[:watching] = product.map{ |pro| pro.origin_id}
+        end
+
+        if products.none?
+          flash.now[:notice] = 'Add a amazon product to get started'
+        end
+
         20.times do |num|
           break if Database::PokemonOrm.find(id: 20)
 
@@ -35,8 +50,8 @@ module MerciDanke
           SearchRecord::ForPoke.entity(pokemons).create(pokemons)
         end
 
+        # pokemon_all = SearchRecord::ForPoke.klass(Entity::Pokemon).all
         pokemon_all = SearchRecord::ForPoke.klass(Entity::Pokemon).all
-
         2.times do |num|
           break unless SearchRecord::For.klass(Entity::Product).all.length.zero?
           amazon_products = Amazon::ProductMapper.new.find(pokemon_all[num].poke_name, MerciDanke::App.config.API_KEY)
@@ -56,7 +71,9 @@ module MerciDanke
           popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
         end
 
+        viewable_popularities = Views::PopularitiesList.new(popularities)
         viewable_pokemons = Views::PokemonsList.new(pokemon_all)
+
         view 'home', locals: {  pokemons: viewable_pokemons,
                                 color_name: color_name,
                                 type_name: type_name,
@@ -65,7 +82,7 @@ module MerciDanke
                                 high_h: high_h,
                                 low_w: low_w,
                                 high_w: high_w,
-                                popularities: popularities }
+                                popularities: viewable_popularities }
       end
 
       routing.on 'plus_like' do
@@ -91,7 +108,10 @@ module MerciDanke
 
               popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
             end
+
+            viewable_popularities = Views::PopularitiesList.new(popularities)
             viewable_pokemons = Views::PokemonsList.new(pokemon_all)
+
             view 'home', locals: { color_name: color_name,
                                    pokemons: viewable_pokemons,
                                    type_name: type_name,
@@ -100,7 +120,7 @@ module MerciDanke
                                    high_h: high_h,
                                    low_w: low_w,
                                    high_w: high_w,
-                                   popularities: popularities }
+                                   popularities: viewable_popularities }
           end
         end
       end
@@ -185,6 +205,7 @@ module MerciDanke
               puts error.backtrace.join("\n")
               flash[:error] = 'Having trouble accessing the database'
             end
+
             routing.redirect "products/#{poke_name}"
           end
         end
@@ -207,6 +228,8 @@ module MerciDanke
                     .new.find(poke_name, MerciDanke::App.config.API_KEY)
                   amazon_products.map do |product|
                     SearchRecord::For.entity(product).create(product)
+
+                    session[:watching].insert(0, product.poke_name).uniq!
                   end
                 rescue StandardError
                   flash[:error] = 'Amazon products have some unknown problems. Please try again!'
@@ -217,7 +240,9 @@ module MerciDanke
               flash[:error] = 'Having trouble accessing the database'
               routing.redirect '/'
             end
-            view 'products', locals: { search_name: poke_name, products: amazon_products, pokemon: pokemon_pokemon }
+
+            viewable_products = Views::ProductsList.new(amazon_products)
+            view 'products', locals: { search_name: poke_name, products: viewable_products, pokemon: pokemon_pokemon }
           end
 
           routing.post do
@@ -227,7 +252,9 @@ module MerciDanke
               .find_full_name(poke_name)
             pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
               .find_full_name(poke_name)
-            view 'products', locals: { search_name: poke_name, products: amazon_products, pokemon: pokemon_pokemon }
+
+            viewable_products = Views::ProductsList.new(amazon_products)
+            view 'products', locals: { search_name: poke_name, products: viewable_products, pokemon: pokemon_pokemon }
           end
         end
       end
