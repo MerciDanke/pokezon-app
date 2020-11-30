@@ -1,6 +1,6 @@
 .container-fluid
   .jumbotron.bg-light
-    h1.display-4 PokéZon
+    h1.display-4 id='main_header' PokéZon
     p.lead There are more than 800 types of Pokémon. We list all Pokémon's information and related products that sells on Amazon.
     hr.my-4/
     p If you are browsing Pikachu's information, you can also see the products of Pikachu in the same page.
@@ -9,9 +9,9 @@
         select#inputGroupSelect02.custom-select style=("width: 10rem;") 
           option selected=""  Pokémon Name
           option value="1"  Product Type
-        input.form-control.mr-sm-2 aria-label="Search" placeholder="e.g. pikachu" style=("width: 25rem;") type="text" name='poke_name' /
-      button.btn.btn-outline-warning.my-2.my-sm-0 type="submit"  Find a pokémon
-    button.btn.btn-outline-primary.mt-2 aria-controls="collapseExample" aria-expanded="false" data-target="#collapseExample" data-toggle="collapse" type="button" style=("display: inline-block;")
+        input.form-control.mr-sm-2 aria-label="Search" placeholder="e.g. pikachu" style=("width: 25rem;") type="text" name='poke_name' id='pokemon_input' /
+      button.btn.btn-outline-warning.my-2.my-sm-0 type="submit" id='products_form_submit' Find a pokémon
+    button.btn.btn-outline-primary.mt-2 aria-controls="collapseExample" aria-expanded="false" data-target="#collapseExample" data-toggle="collapse" type="button" style=("display: inline-block;") id='advance_button'
       | Advance
     #collapseExample.collapse.my-2
       .card.card-body
@@ -20,7 +20,7 @@
               .col-md-2.col-sm-3
                 .text-right Type name:
               .col-md-2.col-sm-6
-                select.form-control name='type_name' id='type_name_select'
+                select.form-control name='type' id='type_name_select'
                   option value=''
                   option value='normal'Normal
                   option value='fire'Fire
@@ -43,7 +43,7 @@
               .col-md-2.col-sm-3
                 .text-right Habitat name:
               .col-md-2.col-sm-6
-                select.form-control name='habitat_name' id='habitat_name_select'
+                select.form-control name='habitat' id='habitat_name_select'
                   option value=''
                   option value='cave'Cave
                   option value='forest'Forest
@@ -58,17 +58,16 @@
               .col-md-2.col-sm-3
                 .text-right Color name:
               .col-md-auto.col-sm-3
-                input type='radio' name='color_name' value='yellow' &nbsp;Yellow &nbsp; 
-                input type='radio' name='color_name' value='red' &nbsp;Red &nbsp;
-                input type='radio' name='color_name' value='white' &nbsp;White &nbsp;
-                input type='radio' name='color_name' value='red' &nbsp;Red &nbsp;
-                input type='radio' name='color_name' value='black' &nbsp;Black &nbsp;
-                input type='radio' name='color_name' value='pink' &nbsp;Pink &nbsp;
-                input type='radio' name='color_name' value='green' &nbsp;Green &nbsp; 
-                input type='radio' name='color_name' value='purple' &nbsp;Purple &nbsp;
-                input type='radio' name='color_name' value='gray' &nbsp;Gray &nbsp; 
-                input type='radio' name='color_name' value='brown' &nbsp;Brown &nbsp;
-                input type='radio' name='color_name' value='blue' &nbsp;Blue &nbsp;
+                input type='radio' name='color' value='red' &nbsp;Red &nbsp;
+                input type='radio' name='color' value='white' &nbsp;White &nbsp;
+                input type='radio' name='color' value='yellow' &nbsp;Yellow &nbsp;
+                input type='radio' name='color' value='black' &nbsp;Black &nbsp;
+                input type='radio' name='color' value='pink' &nbsp;Pink &nbsp;
+                input type='radio' name='color' value='green' &nbsp;Green &nbsp; 
+                input type='radio' name='color' value='purple' &nbsp;Purple &nbsp;
+                input type='radio' name='color' value='gray' &nbsp;Gray &nbsp; 
+                input type='radio' name='color' value='brown' &nbsp;Brown &nbsp;
+                input type='radio' name='color' value='blue' &nbsp;Blue &nbsp;
             .row.vertical-align.my-3
               .col-md-2.col-sm-3
                 .text-right Height:
@@ -93,29 +92,27 @@
   .row
     .col
       h3
-        - if color_name != ''
+        - if pokemons.color != ''
           span.type.name
-            = color_name + " "
-        - if type_name != ''
+            = pokemons.color + " "
+        - if pokemons.type != ''
           span.type.name
-            = type_name + " "
-        - if habitat_name != ''
+            = pokemons.type + " "
+        - if pokemons.habitat != ''
           span.type.name
-            = habitat_name + " "
-        - if low_h != '' && low_h != 0.0
+            = pokemons.habitat + " "
+        - if pokemons.low_h != '' && pokemons.low_h != 0.0
           span.type.name
-            = (low_h.to_f/10).to_s + " ~ "
-        - if high_h != '' && high_h != 0.0
+            = (pokemons.low_h.to_f/10).to_s + " ~ "
+        - if pokemons.high_h != '' && pokemons.high_h != 0.0
           span.type.name
-            = (high_h.to_f/10).to_s + "(m) "
-        - if low_w != '' && low_w != 0.0
+            = (pokemons.high_h.to_f/10).to_s + "(m) "
+        - if pokemons.low_w != '' && pokemons.low_w != 0.0
           span.type.name
-            = (low_w.to_f/10).to_s + " ~ "
-        - if high_w != '' && high_w != 0.0
+            = (pokemons.low_w.to_f/10).to_s + " ~ "
+        - if pokemons.high_w != '' && pokemons.high_w != 0.0
           span.type.name
-            = (high_w.to_f/10).to_s + "(kg) "
-  / .row
-  /   .col-md-12.blank-row
+            = (pokemons.high_w.to_f/10).to_s + "(kg) "
   - if pokemons.any?
     .row
       - pokemons.each do |pokemon|
@@ -127,8 +124,8 @@
               img.card-img-top alt="founding img" src="#{pokemon.picture}" /
               .card-body.align-middle
                 / - level = popularities[pokemon.index { |x| x } ].level
-                / span.badge.badge-secondary.my-2 #{popularities.level}
-                span.badge.badge-secondary.my-2 #{pokemon.index} 
+                span.badge.badge-secondary.my-2 #{pokemon.popularity_level}
+                / span.badge.badge-secondary.my-2 #{pokemon.index} 
                 / button.btn.btn-outline-danger.float-right style=("border: none; border-radius: 10%;")
                 i.far.fa-heart.float-right.btn.btn-outline-danger.align-bottom.px-1 onclick='plus_like("#{pokemon.id}")' style=("margin:0;")
                   input.ml-2.float-right.btn-outline-danger type="button" id="#{pokemon.id}" value="#{pokemon.likes}" style=("background-color: transparent; border: none; width:1rem; margin: 0; padding: 0;")

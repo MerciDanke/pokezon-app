@@ -12,28 +12,13 @@ require 'headless'
 require 'watir'
 require 'selenium-webdriver'
 
-# Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"binary" => "/usr/lib/chromium-browser/chromedriver"})
-# @drive = Selenium::WebDriver.for :chrome, options: options
 describe 'Acceptance Tests' do
   DatabaseHelper.setup_database_cleaner
 
   before do
-    # args = ['--disable-dev-shm-usage', '--no-sandbox']
     DatabaseHelper.wipe_database
-    # @headless = Headless.new
-    # @headless.start
-    # options = Selenium::WebDriver::Chrome::Options.new
-    # options.add_argument("--disable-dev-shm-usage");
-    # options.add_argument('--no-sandbox')
-    # options.add_argument('--headless')
-    # caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"binary" => "/usr/lib/chromedriver"})
-    # driver = Selenium::WebDriver::Driver.for :chrome, options: options, desired_capabilities: caps
-    # driver = Selenium::WebDriver::Driver.for(:remote, url: "http://localhost:9292")
     @browser = Watir::Browser.new :firefox, headless: true
     @homepage = 'http://localhost:9292/'
-    # @browser = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"binary" => "/usr/lib/chromium-browser/chromedriver"})
-    # @browser = Selenium::WebDriver.for :chrome, options: options, binary:"/usr/lib/chromedriver"
-    # @browser = Selenium::WebDriver.for :chrome, options: options, desired_capabilities: caps
   end
 
   after do
@@ -43,20 +28,53 @@ describe 'Acceptance Tests' do
 
   describe 'Homepage' do
     describe 'Visit Home page' do
-      it '(HAPPY) should not see projects if none created' do
-        # GIVEN: user is on the home page without any projects
+      it '(HAPPY) should not see advance search selections if not click' do
+        # GIVEN: user is on the home page
         @browser.goto @homepage
 
-        pokemon = MerciDanke::Pokemon::PokemonMapper.new.find(POKE_NAME)
-        # rebuilt = MerciDanke::SearchRecord::ForPoke.entity(pokemon).create(pokemon)
-        # THEN: user should see basic headers, no projects and a welcome message
-        # _(@browser.select(id: 'type_name_select').present?).must_equal true
-        # _(@browser.select(id: 'habitat_name_select').present?).must_equal true
-        # _(@browser.button(id: 'repo-form-submit').present?).must_equal true
-        # pokemon likes
-        _(@browser.input(id: "#{pokemon.id}").present?).must_equal true
+        # THEN: user should see basic headers and a welcome message
+        _(@browser.h1(id: 'main_header').text).must_equal 'PokéZon'
+        _(@browser.text_field(id: 'pokemon_input').present?).must_equal true
+        _(@browser.button(id: 'products_form_submit').present?).must_equal true
+        _(@browser.button(id: 'advance_button').present?).must_equal true
         _(@browser.div(id: 'flash_bar_success').present?).must_equal true
         _(@browser.div(id: 'flash_bar_success').text.downcase).must_include 'start'
+      end
+
+      it '(HAPPY) should be able to see advance search selections' do
+        # GIVEN: user is on the home page
+        @browser.goto homepage
+
+        # WHEN: they click the advance button
+        @browser.button(id: 'advance_button').click
+        _(@browser.button(id: 'repo-form-submit').present?).must_equal true
+      end
+    end
+    describe 'Add Product' do
+      it '(HAPPY) should be able to request a product' do
+        # GIVEN: user is on the home page
+        @browser.goto homepage
+
+        # WHEN: they add a pokemon name and submit
+        good_url = "#{POKE_NAME}"
+        @browser.text_field(id: 'pokemon_input').set(good_url)
+        @browser.button(id: 'products_form_submit').click
+
+        # THEN: they should find the pokemon on the product's page
+        @browser.url.include? POKE_NAME
+      end
+
+      it '(BAD) should not be able to add an invalid pokemon name' do
+        # GIVEN: user is on the home page
+        @browser.goto homepage
+
+        # WHEN: they request a product with an invalid pokemon name
+        bad_name = 'foobar'
+        @browser.text_field(id: 'pokemon_input').set(bad_name)
+        @browser.button(id: 'products_form_submit').click
+
+        # THEN: they should see a warning message
+        _(@browser.div(id: 'flash_bar_danger').text.downcase).must_include 'could not find'
       end
     end
   end

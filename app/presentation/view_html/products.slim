@@ -3,7 +3,7 @@
     .col
       h1
         span.products.name
-          = search_name
+          = products.search
   .row
     .col-12
       .card.mb-3
@@ -17,13 +17,13 @@
                 li[data-target="#carouselExampleIndicators" data-slide-to="3"]
               .carousel-inner
                 .carousel-item.active
-                  img.d-block.w-100[src="#{pokemon.front_default}" alt="..."]
+                  img.d-block.w-100[src="#{products.front_img}" alt="..."]
                 .carousel-item
-                  img.d-block.w-100[src="#{pokemon.back_default}" alt="..."]
+                  img.d-block.w-100[src="#{products.back_img}" alt="..."]
                 .carousel-item
-                  img.d-block.w-100[src="#{pokemon.front_shiny}" alt="..."]
+                  img.d-block.w-100[src="#{products.front_img2}" alt="..."]
                 .carousel-item
-                  img.d-block.w-100[src="#{pokemon.back_shiny}" alt="..."]
+                  img.d-block.w-100[src="#{products.back_img2}" alt="..."]
               a.carousel-control-prev[href="#carouselExampleIndicators" role="button" data-slide="prev"]
                 span.carousel-control-prev-icon[aria-hidden="true"]
                 span.sr-only
@@ -50,13 +50,13 @@
                 tbody
                   tr
                     td
-                      = (pokemon.height).to_f/10 
+                      = (products.height).to_f/10 
                     td
-                      = (pokemon.weight).to_f/10
+                      = (products.weight).to_f/10
                     td
-                      = pokemon.color
+                      = products.color
                     td
-                      = pokemon.habitat
+                      = products.habitat
   .row
     .col
       ul.nav.nav-tabs.nav-fill role="tablist" 
@@ -82,18 +82,18 @@
                     th[scope="row"]
                       | GENERA
                     td
-                      = pokemon.genera
+                      = products.genera
                   tr
                     th[scope="row"]
                       | TYPES
                     td
-                      - pokemon.types.each do |type|
+                      - products.types.each do |type|
                         p.type = type.type_name
                   tr
                     th[scope="row"]
                       | INFOMATION
                     td
-                      = pokemon.flavor_text_entries
+                      = products.text
         #ability.tab-pane role="tabpanel"  
           .card style=("border-top: none;")
             .card-body
@@ -110,7 +110,7 @@
                       | INFORMATION
                 tbody
                   - i = 0
-                  - pokemon.abilities.each do |ability|
+                  - products.abilities.each do |ability|
                     tr
                       - i = i + 1
                       th.index[scope="row"] = i
@@ -121,14 +121,14 @@
             .card-body
               h5.card-title
                 | EVOLUTION CHAIN
-              a.card-link[href="../products/#{pokemon.evochain.chain_species_name}"]
-                = pokemon.evochain.chain_species_name
+              a.card-link[href="../products/#{products.evochain1}"]
+                = products.evochain1
               |  >> 
-              a.card-link[href="../products/#{pokemon.evochain.evolves_to}"]
-                = pokemon.evochain.evolves_to
+              a.card-link[href="../products/#{products.evochain2}"]
+                = products.evochain2
               |  >> 
-              a.card-link[href="../products/#{pokemon.evochain.evolves_to_second}"]
-                = pokemon.evochain.evolves_to_second
+              a.card-link[href="../products/#{products.evochain3}"]
+                = products.evochain3
   .row.mt-3
     - products.each do |product|
       .col-lg-3.col-md-6.col-sm-12.mt-3 
