@@ -4,7 +4,7 @@ development:
 
 test:
   DB_FILENAME: app/infrastructure/database/local/test.db
-  APP_HOST: http://localhost:9000
+  APP_HOST: http://localhost:9292
 
 app_test:
   # Infrastructure
