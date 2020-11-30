@@ -12,7 +12,7 @@ require 'minitest/rg'
 # require 'vcr'
 # require 'webmock'
 
-require_relative '../init'
+require_relative '../../init'
 
 POKENAME = 'Pikachu'.freeze
 API_KEY = MerciDanke::App.config.API_KEY

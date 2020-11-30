@@ -15,10 +15,15 @@ module MerciDanke
         db_products = Database::ProductOrm
           .where(poke_name: poke_name)
           .all
-        # puts db_product.all
         db_products.map do |db_product|
           rebuild_entity(db_product)
         end
+      end
+
+      def self.find_full_names(poke_names)
+        poke_names.map do |pokename|
+          find_full_name(pokename)
+        end.compact
       end
 
       # update the num of product_likes

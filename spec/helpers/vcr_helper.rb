@@ -5,13 +5,14 @@ require 'webmock'
 
 # Setting up VCR
 class VcrHelper
-  CASSETTES_FOLDER = 'spec/fixtures/cassettes'.freeze
-  CASSETTE_FILE = 'product_api'.freeze
+  CASSETTES_FOLDER = 'spec/fixtures/cassettes'
+  CASSETTE_FILE = 'product_api'
 
   def self.setup_vcr
     VCR.configure do |vcr|
       vcr.cassette_library_dir = CASSETTES_FOLDER
       vcr.hook_into :webmock
+      vcr.ignore_localhost = true
     end
   end
 
@@ -24,7 +25,8 @@ class VcrHelper
     VCR.insert_cassette(
       CASSETTE_FILE,
       record: :new_episodes,
-      match_requests_on: %i[method uri headers]
+      match_requests_on: %i[method uri headers],
+      allow_playback_repeats: true
     )
   end
 

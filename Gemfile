@@ -6,6 +6,7 @@ source 'https://rubygems.org'
 # Web Application
 gem 'econfig', '~> 2.1'
 gem 'puma', '~> 3.11'
+gem 'rack', '~> 2'
 gem 'roda', '~> 3.8'
 gem 'slim', '~> 3.0'
 
@@ -27,7 +28,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 1.2'
 end
 
 # Testing
@@ -37,6 +38,10 @@ group :test do
   gem 'simplecov', '~> 0'
   gem 'vcr', '~> 6.0'
   gem 'webmock', '~> 3.0'
+
+  gem 'webdrivers'
+  gem 'headless', '~> 2.3'
+  gem 'watir', '~> 6.17'
 end
 
 group :development, :test do
@@ -55,4 +60,4 @@ group :development, :test do
 end
 
 # Utilities
-gem 'rake'
+gem 'rake', '~> 13.0'

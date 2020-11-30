@@ -3,7 +3,7 @@
     .col
       h1
         span.products.name
-          = search_name
+          = products.search
   .row
     .col-12
       .card.mb-3
@@ -17,13 +17,13 @@
                 li[data-target="#carouselExampleIndicators" data-slide-to="3"]
               .carousel-inner
                 .carousel-item.active
-                  img.d-block.w-100[src="#{pokemon.front_default}" alt="..."]
+                  img.d-block.w-100[src="#{products.front_img}" alt="..."]
                 .carousel-item
-                  img.d-block.w-100[src="#{pokemon.back_default}" alt="..."]
+                  img.d-block.w-100[src="#{products.back_img}" alt="..."]
                 .carousel-item
-                  img.d-block.w-100[src="#{pokemon.front_shiny}" alt="..."]
+                  img.d-block.w-100[src="#{products.front_img2}" alt="..."]
                 .carousel-item
-                  img.d-block.w-100[src="#{pokemon.back_shiny}" alt="..."]
+                  img.d-block.w-100[src="#{products.back_img2}" alt="..."]
               a.carousel-control-prev[href="#carouselExampleIndicators" role="button" data-slide="prev"]
                 span.carousel-control-prev-icon[aria-hidden="true"]
                 span.sr-only
@@ -50,13 +50,13 @@
                 tbody
                   tr
                     td
-                      = (pokemon.height).to_f/10 
+                      = (products.height).to_f/10 
                     td
-                      = (pokemon.weight).to_f/10
+                      = (products.weight).to_f/10
                     td
-                      = pokemon.color
+                      = products.color
                     td
-                      = pokemon.habitat
+                      = products.habitat
   .row
     .col
       ul.nav.nav-tabs.nav-fill role="tablist" 
@@ -82,18 +82,18 @@
                     th[scope="row"]
                       | GENERA
                     td
-                      = pokemon.genera
+                      = products.genera
                   tr
                     th[scope="row"]
                       | TYPES
                     td
-                      - pokemon.types.each do |type|
+                      - products.types.each do |type|
                         p.type = type.type_name
                   tr
                     th[scope="row"]
                       | INFOMATION
                     td
-                      = pokemon.flavor_text_entries
+                      = products.text
         #ability.tab-pane role="tabpanel"  
           .card style=("border-top: none;")
             .card-body
@@ -110,7 +110,7 @@
                       | INFORMATION
                 tbody
                   - i = 0
-                  - pokemon.abilities.each do |ability|
+                  - products.abilities.each do |ability|
                     tr
                       - i = i + 1
                       th.index[scope="row"] = i
@@ -121,28 +121,28 @@
             .card-body
               h5.card-title
                 | EVOLUTION CHAIN
-              a.card-link[href="../products/#{pokemon.evochain.chain_species_name}"]
-                = pokemon.evochain.chain_species_name
+              a.card-link[href="../products/#{products.evochain1}"]
+                = products.evochain1
               |  >> 
-              a.card-link[href="../products/#{pokemon.evochain.evolves_to}"]
-                = pokemon.evochain.evolves_to
+              a.card-link[href="../products/#{products.evochain2}"]
+                = products.evochain2
               |  >> 
-              a.card-link[href="../products/#{pokemon.evochain.evolves_to_second}"]
-                = pokemon.evochain.evolves_to_second
+              a.card-link[href="../products/#{products.evochain3}"]
+                = products.evochain3
   .row.mt-3
-    - products.each do |item|
+    - products.each do |product|
       .col-lg-3.col-md-6.col-sm-12.mt-3 
         .card
-          img.card-img-top style=("height: 15rem;object-fit: contain;") alt="founding img" src="#{item.image}"/
+          img.card-img-top style=("height: 15rem;object-fit: contain;") alt="founding img" src="#{product.image}"/
           .card-body
-            h6.card-title style=("display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;white-space: normal;overflow:hidden;") #{item.title}
-            span.card-text US $#{item.price} 
+            h6.card-title style=("display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;white-space: normal;overflow:hidden;") #{product.title}
+            span.card-text US $#{product.price} 
             span.card-text.text-warning.float-right
-              i.fas.fa-star #{item.rating}
+              i.fas.fa-star #{product.rating}
             br
-            a.btn.btn-outline-primary.mt-3 target="_blank" href="#{item.link}"  see more
-            form role="form" action="#{item.poke_name}" method='POST' id='plus-product-like' style=("display: inline;")
-              button.btn.btn-outline-danger.float-right.mt-3 name='product_id' value="#{item.origin_id}" type="submit" style=("border: none; border-radius: 10%;")
+            a.btn.btn-outline-primary.mt-3 target="_blank" href="#{product.link}"  see more
+            form role="form" action="#{product.poke_name}" method='POST' id='plus-product-like' style=("display: inline;")
+              button.btn.btn-outline-danger.float-right.mt-3 name='product_id' value="#{product.origin_id}" type="submit" style=("border: none; border-radius: 10%;")
                 svg.bi.bi-suit-heart fill="currentColor" height="1em" viewbox=("0 0 16 16") width="1em" xmlns="http://www.w3.org/2000/svg" 
                   path d=("M8 6.236l.894-1.789c.222-.443.607-1.08 1.152-1.595C10.582 2.345 11.224 2 12 2c1.676 0 3 1.326 3 2.92 0 1.211-.554 2.066-1.868 3.37-.337.334-.721.695-1.146 1.093C10.878 10.423 9.5 11.717 8 13.447c-1.5-1.73-2.878-3.024-3.986-4.064-.425-.398-.81-.76-1.146-1.093C1.554 6.986 1 6.131 1 4.92 1 3.326 2.324 2 4 2c.776 0 1.418.345 1.954.852.545.515.93 1.152 1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z") fill-rule="evenodd" /
-                span.ml-2 #{item.product_likes}
+                span.ml-2 #{product.likes}
