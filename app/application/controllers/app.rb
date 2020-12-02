@@ -29,22 +29,28 @@ module MerciDanke
         high_w = ''
 
         session[:watching] ||= []
+
+        result = Service::ListProducts.new.call(session[:watching])
+
+        if result.failure?
+          flash[:error] = result.failure
+        else
+          products = result.value!
+          if products.none?
+            flash.now[:notice] = 'Add a Amazon product to get started'
+          end
+
+          products.each do |product|
+            session[:watching] = product.map{ |pro| pro.origin_id}
+          end
+        end
+
         if session[:watching].count > 40
           session[:watching] = session[:watching][0..39]
         end
 
-        products = SearchRecord::For.klass(Entity::Product)
-          .find_full_names(session[:watching])
-        products.each do |product|
-          session[:watching] = product.map{ |pro| pro.origin_id}
-        end
-
-        if products.none?
-          flash.now[:notice] = 'Add a amazon product to get started'
-        end
-
-        800.times do |num|
-          break if Database::PokemonOrm.find(id: 800)
+        5.times do |num|
+          break if Database::PokemonOrm.find(id: 5)
 
           pokemons = Pokemon::PokemonMapper.new.find((num + 1).to_s)
           SearchRecord::ForPoke.entity(pokemons).create(pokemons)
@@ -149,34 +155,16 @@ module MerciDanke
         routing.is do
           # GET /products/
           routing.post do
-            poke_name = routing.params['poke_name'].downcase
-            # GET product from amazon
-            begin
-              pokemon_pokemon = Pokemon::PokemonMapper
-                .new.find(poke_name)
-            rescue StandardError
-              flash[:error] = 'Could not find that pokemon!'
+            # poke_name = routing.params['poke_name'].downcase
+            poke_request = MerciDanke::Forms::SearchProduct.new.call(routing.params)
+            product_show = Service::ShowProducts.new.call(poke_request)
+            puts "3", product_show
+
+            if product_show.failure?
+              flash[:error] = product_show.failure
               routing.redirect '/'
             end
-            begin
-              amazon_products = Amazon::ProductMapper
-                .new.find(poke_name, MerciDanke::App.config.API_KEY)
-            rescue StandardError
-              flash[:error] = 'Amazon products have some unknown problems. Please try again!'
-              routing.redirect '/'
-            end
-
-            # ADD product to DataBase
-            begin
-              amazon_products.map do |product|
-                SearchRecord::For.entity(product).create(product)
-              end
-              SearchRecord::ForPoke.entity(pokemon_pokemon).create(pokemon_pokemon)
-            rescue StandardError => error
-              puts error.backtrace.join("\n")
-              flash[:error] = 'Having trouble accessing the database'
-            end
-
+            poke_name = product_show.value!
             routing.redirect "products/#{poke_name}"
           end
         end
