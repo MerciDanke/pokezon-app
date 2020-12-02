@@ -6,7 +6,7 @@ module Views
   # View for a a list of product entities
   class ProductsList
     def initialize(products, search, pokemon)
-      @products = products.map { |prod| Product.new(prod) }
+      @products = products.map.with_index { |prod, i| Product.new(prod, i) }
       @search = search
       @pokemon = pokemon
     end

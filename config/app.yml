@@ -9,6 +9,5 @@ test:
 app_test:
   # Infrastructure
   DB_FILENAME:    app/infrastructure/database/local/test.db
-  # REPOSTORE_PATH: app/infrastructure/git/repostore
-  # Application
+  APP_HOST: http://localhost:9292
   

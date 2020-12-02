@@ -29,9 +29,9 @@ module Views
       @pokemon.id
     end
 
-    # def origin_id
-    #   @pokemon.origin_id
-    # end
+    def index_str
+      "pokemon[#{@index}]"
+    end
 
     def likes
       @pokemon.poke_likes

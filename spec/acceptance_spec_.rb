@@ -23,7 +23,6 @@ describe 'Acceptance Tests' do
 
   after do
     @browser.close
-    # @headless.destroy
   end
 
   describe 'Homepage' do

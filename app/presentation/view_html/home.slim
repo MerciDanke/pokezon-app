@@ -120,8 +120,8 @@
           .card-deck
             .card  
               .card-header.text-center
-                a href="#{pokemon.poke_link}" #{pokemon.poke_name}
-              img.card-img-top alt="founding img" src="#{pokemon.picture}" /
+                a href="#{pokemon.poke_link}" id="#{pokemon.index_str}.poke_link" =pokemon.poke_name
+              img.card-img-top alt="founding img" src="#{pokemon.picture}" id="#{pokemon.index_str}.picture" /
               .card-body.align-middle
                 / - level = popularities[pokemon.index { |x| x } ].level
                 span.badge.badge-secondary.my-2 #{pokemon.popularity_level}
