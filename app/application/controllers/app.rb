@@ -153,8 +153,8 @@ module MerciDanke
         routing.is do
           # GET /products/
           routing.post do
-            # poke_name = routing.params['poke_name'].downcase
             poke_name = routing.params['poke_name'].downcase
+            routing.params['poke_name'] = routing.params['poke_name'].downcase
             poke_request = Forms::SearchProduct.new.call(routing.params)
             products_show = Service::ShowProducts.new.call(poke_request)
 
@@ -175,9 +175,6 @@ module MerciDanke
             # Get pokemon and products from database
             pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
               .find_full_name(poke_name)
-            # SearchRecord::ForPoke.entity(pokemon).create(pokemon)
-            # result = Service::ListProducts.new.call(poke_name)
-            # products = result.value!
             products = Service::ShowProducts.new
               .products_in_database(poke_name)
 

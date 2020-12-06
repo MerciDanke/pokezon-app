@@ -23,10 +23,11 @@ module MerciDanke
 
       def find_products(input)
         get_products = Array.new(2)
-        if (products = products_in_database(input[:poke_name]))
-          get_products[0] = products
-        else
+        products = products_in_database(input[:poke_name])
+        if products.length.zero?
           get_products[1] = products_in_amazon(input[:poke_name])
+        else
+          get_products[0] = products
         end
         Success(get_products)
       rescue StandardError
