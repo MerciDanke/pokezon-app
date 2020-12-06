@@ -92,27 +92,26 @@
   .row
     .col
       h3
-        - if pokemons.color != ''
+        - if pokemons.advance_hash[:color] != ''
           span.type.name
-            = pokemons.color + " "
-        - if pokemons.type != ''
+            = pokemons.advance_hash[:color]
+          span &nbsp
+        - if pokemons.advance_hash[:type] != ''
           span.type.name
-            = pokemons.type + " "
-        - if pokemons.habitat != ''
+            = pokemons.advance_hash[:type]
+          span &nbsp
+        - if pokemons.advance_hash[:habitat] != ''
           span.type.name
-            = pokemons.habitat + " "
-        - if pokemons.low_h != '' && pokemons.low_h != 0.0
+            = pokemons.advance_hash[:habitat]
+          span &nbsp
+        - if pokemons.advance_hash[:height] != ''
           span.type.name
-            = (pokemons.low_h.to_f/10).to_s + " ~ "
-        - if pokemons.high_h != '' && pokemons.high_h != 0.0
+            = pokemons.advance_hash[:height]
+          span &nbsp(m)&nbsp
+        - if pokemons.advance_hash[:weight] != ''
           span.type.name
-            = (pokemons.high_h.to_f/10).to_s + "(m) "
-        - if pokemons.low_w != '' && pokemons.low_w != 0.0
-          span.type.name
-            = (pokemons.low_w.to_f/10).to_s + " ~ "
-        - if pokemons.high_w != '' && pokemons.high_w != 0.0
-          span.type.name
-            = (pokemons.high_w.to_f/10).to_s + "(kg) "
+            = pokemons.advance_hash[:weight]
+          span &nbsp(kg)
   - if pokemons.any?
     .row
       - pokemons.each do |pokemon|
