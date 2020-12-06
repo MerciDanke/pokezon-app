@@ -3,8 +3,9 @@
 module Views
   # View for a single pokemon entity
   class Product
-    def initialize(product)
+    def initialize(product, index = nil)
       @product = product
+      @index = index
     end
 
     def entity
@@ -41,6 +42,10 @@ module Views
 
     def image
       @product.image
+    end
+
+    def index_str
+      "product[#{@index}]"
     end
   end
 end

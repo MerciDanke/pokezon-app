@@ -16,7 +16,7 @@ class VcrHelper
     end
   end
 
-  def self.configure_vcr_for_apikey
+  def self.configure_vcr_for_apikey(recording: :new_episodes)
     VCR.configure do |vcr|
       vcr.filter_sensitive_data('<API_KEY>') { API_KEY }
       vcr.filter_sensitive_data('<API_KEY_ESC>') { CGI.escape(API_KEY) }
@@ -24,7 +24,7 @@ class VcrHelper
 
     VCR.insert_cassette(
       CASSETTE_FILE,
-      record: :new_episodes,
+      record: recording,
       match_requests_on: %i[method uri headers],
       allow_playback_repeats: true
     )
