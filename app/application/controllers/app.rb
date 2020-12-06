@@ -3,10 +3,13 @@
 require 'roda'
 require 'slim'
 require 'slim/include'
+require_relative 'helpers.rb'
 
 module MerciDanke
   # Web App
   class App < Roda
+    include RouteHelpers
+
     plugin :flash
     plugin :all_verbs # allows DELETE and other HTTP verbs beyond GET/POST
     plugin :render, engine: 'slim', views: 'app/presentation/view_html'
@@ -62,17 +65,7 @@ module MerciDanke
             SearchRecord::For.entity(product).create(product)
           end
         end
-
-        popularities = []
-        pokemon_all.map do |pokemon|
-          products = SearchRecord::For.klass(Entity::Product)
-            .find_full_name(pokemon.poke_name)
-
-          pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
-            .find_full_name(pokemon.poke_name)
-
-          popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
-        end
+        popularities = Popularities.new(pokemon_all).call
 
         viewable_pokemons = Views::PokemonsList.new(pokemon_all, color_name, type_name, habitat_name, low_h, high_h, low_w, high_w, popularities)
         view 'home', locals: { pokemons: viewable_pokemons }
@@ -91,16 +84,7 @@ module MerciDanke
             poke_id = routing.params['poke_id']
             SearchRecord::ForPoke.klass(Entity::Pokemon).plus_like(poke_id)
             pokemon_all = SearchRecord::ForPoke.klass(Entity::Pokemon).all
-            popularities = []
-            pokemon_all.map do |poke|
-              products = SearchRecord::For.klass(Entity::Product)
-                .find_full_name(poke.poke_name)
-
-              pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
-                .find_full_name(poke.poke_name)
-
-              popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
-            end
+            popularities = Popularities.new(pokemon_all).call
 
             viewable_pokemons = Views::PokemonsList.new(pokemon_all, color_name, type_name, habitat_name, low_h, high_h, low_w, high_w, popularities)
             view 'home', locals: { pokemons: viewable_pokemons }
@@ -132,17 +116,7 @@ module MerciDanke
 
             pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
                 .find_all_advances(newnewhash)
-
-            popularities = []
-            pokemon.map do |poke|
-              products = SearchRecord::For.klass(Entity::Product)
-                .find_full_name(poke.poke_name)
-
-              pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
-                .find_full_name(poke.poke_name)
-
-              popularities.push(Mapper::Popularities.new(pokemon_pokemon, products).build_entity)
-            end
+            popularities = Popularities.new(pokemon).call
 
             viewable_pokemons = Views::PokemonsList.new(pokemon, color_name, type_name, habitat_name, low_h, high_h, low_w, high_w, popularities)
             view 'home', locals: { pokemons: viewable_pokemons }
