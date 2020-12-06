@@ -9,38 +9,38 @@ module MerciDanke
       include Dry::Transaction
 
       step :find_pokemon
-      step :find_product
-      step :store_product
+      step :find_products
+      step :store_products
 
       private
 
       def find_pokemon(input)
-        pokemon_pokemon = pokemon_in_database(input)
-        Success(pokemon_pokemon)
+        pokemon = correct_pokemon_name(input)
+        Success(pokemon)
       rescue StandardError
         Failure('Could not find that pokemon!')
       end
 
-      def find_product(input)
-        puts input[:poke_name]
-        input[:remote_products] = Amazon::ProductMapper.new.find(input[:poke_name], MerciDanke::App.config.API_KEY)
-
-        Success(input)
+      def find_products(input)
+        get_products = Array.new(2)
+        if (products = products_in_database(input[:poke_name]))
+          get_products[0] = products
+        else
+          get_products[1] = products_in_amazon(input[:poke_name])
+        end
+        Success(get_products)
       rescue StandardError
         Failure('Amazon products have some unknown problems. Please try again!')
       end
 
-      def store_product(input)
-        product =
-          if (new_prods = input[:remote_products])
-            new_prods.map do |prod|
-              SearchRecord::For.entity(prod).create(prod)
-            end
-            pokemon_pokemon = pokemon_in_database(input)
-            SearchRecord::ForPoke.entity(pokemon_pokemon).create(pokemon_pokemon)
+      def store_products(input)
+        products =
+          if (new_prods = input[1])
+            new_prods.map { |prod| SearchRecord::For.entity(prod).create(prod) }
+          else
+            input[0]
           end
-        puts "3", product
-        Success(product)
+        Success(products)
       rescue StandardError => error
         puts error.backtrace.join("\n")
         Failure('Having trouble accessing the database')
@@ -48,17 +48,19 @@ module MerciDanke
 
       # following are support methods that other services could use
 
-      # def product_from_amazon(input)
-      #   products = []
-      #   products.push(Amazon::ProductMapper
-      #     .new.find(input[:poke_name], MerciDanke::App.config.API_KEY))
-      #   return products
-      # rescue StandardError
-      #   raise 'Could not find that product on Amazon'
-      # end
+      def products_in_amazon(input)
+        Amazon::ProductMapper.new.find(input, MerciDanke::App.config.API_KEY)
+      end
 
-      def pokemon_in_database(input)
+      def correct_pokemon_name(input)
         Pokemon::PokemonMapper.new.find(input[:poke_name])
+      end
+
+      public
+
+      def products_in_database(input)
+        SearchRecord::For.klass(Entity::Product)
+          .find_full_name(input)
       end
     end
   end

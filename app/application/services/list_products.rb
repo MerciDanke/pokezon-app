@@ -8,13 +8,13 @@ module MerciDanke
     class ListProducts
       include Dry::Monads::Result::Mixin
 
-      def call(products_list)
+      def call(pokenames)
         products = SearchRecord::For.klass(Entity::Product)
-          .find_full_names(products_list)
+          .find_full_names(pokenames)
 
         Success(products)
       rescue StandardError
-        Failure('Could not access database')
+        Failure('list_products:Could not access database')
       end
     end
   end

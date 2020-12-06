@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: false
 
 require 'roda'
 require 'slim'
@@ -29,7 +29,10 @@ module MerciDanke
         high_w = ''
 
         session[:watching] ||= []
-
+        puts 'session: ', session[:watching]
+        if session[:watching].count > 40
+          session[:watching] = session[:watching][0..39]
+        end
         result = Service::ListProducts.new.call(session[:watching])
 
         if result.failure?
@@ -39,14 +42,9 @@ module MerciDanke
           if products.none?
             flash.now[:notice] = 'Add a Amazon product to get started'
           end
-
-          products.each do |product|
-            session[:watching] = product.map{ |pro| pro.origin_id}
-          end
-        end
-
-        if session[:watching].count > 40
-          session[:watching] = session[:watching][0..39]
+          # products.each do |product|
+          #   session[:watching] = product.map{ |pro| pro.origin_id}
+          # end
         end
 
         5.times do |num|
@@ -156,15 +154,17 @@ module MerciDanke
           # GET /products/
           routing.post do
             # poke_name = routing.params['poke_name'].downcase
-            poke_request = MerciDanke::Forms::SearchProduct.new.call(routing.params)
-            product_show = Service::ShowProducts.new.call(poke_request)
-            puts "3", product_show
+            poke_name = routing.params['poke_name'].downcase
+            poke_request = Forms::SearchProduct.new.call(routing.params)
+            products_show = Service::ShowProducts.new.call(poke_request)
 
-            if product_show.failure?
-              flash[:error] = product_show.failure
+            if products_show.failure?
+              flash[:error] = products_show.failure
               routing.redirect '/'
             end
-            poke_name = product_show.value!
+
+            session[:watching].insert(0, poke_name).uniq!
+            flash[:notice] = 'Pokemon added to your list'
             routing.redirect "products/#{poke_name}"
           end
         end
@@ -173,37 +173,19 @@ module MerciDanke
           # GET /products/poke_name, apikey
           routing.get do
             # Get pokemon and products from database
-            begin
-              pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
-                .find_full_name(poke_name)
-              SearchRecord::ForPoke.entity(pokemon_pokemon).create(pokemon_pokemon)
-              amazon_products = SearchRecord::For.klass(Entity::Product)
-                .find_full_name(poke_name)
-              if amazon_products.length.zero?
-                pokemon_pokemon = Pokemon::PokemonMapper
-                  .new.find(poke_name)
-                begin
-                  amazon_products = Amazon::ProductMapper
-                    .new.find(poke_name, MerciDanke::App.config.API_KEY)
-                  amazon_products.map do |product|
-                    SearchRecord::For.entity(product).create(product)
+            pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
+              .find_full_name(poke_name)
+            # SearchRecord::ForPoke.entity(pokemon).create(pokemon)
+            # result = Service::ListProducts.new.call(poke_name)
+            # products = result.value!
+            products = Service::ShowProducts.new
+              .products_in_database(poke_name)
 
-                    session[:watching].insert(0, product.poke_name).uniq!
-                  end
-                rescue StandardError
-                  flash[:error] = 'Amazon products have some unknown problems. Please try again!'
-                  routing.redirect '/'
-                end
-              end
-            rescue StandardError
-              flash[:error] = 'Having trouble accessing the database'
-              routing.redirect '/'
-            end
-
-            viewable_products = Views::ProductsList.new(amazon_products, poke_name, pokemon_pokemon)
+            viewable_products = Views::ProductsList.new(products, poke_name, pokemon)
             view 'products', locals: { products: viewable_products }
           end
 
+          # plus product's like
           routing.post do
             product_id = routing.params['product_id']
             SearchRecord::For.klass(Entity::Product).plus_like(product_id)
