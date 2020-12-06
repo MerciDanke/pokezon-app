@@ -32,7 +32,6 @@ module MerciDanke
         }
 
         session[:watching] ||= []
-        puts 'session: ', session[:watching]
         if session[:watching].count > 40
           session[:watching] = session[:watching][0..39]
         end
@@ -45,9 +44,6 @@ module MerciDanke
           if products.none?
             flash.now[:notice] = 'Add a Amazon product to get started'
           end
-          # products.each do |product|
-          #   session[:watching] = product.map{ |pro| pro.origin_id}
-          # end
         end
 
         5.times do |num|
@@ -74,6 +70,14 @@ module MerciDanke
       routing.on 'plus_like' do
         routing.is do
           routing.get do
+            poke_id = routing.params['poke_id']
+            if poke_id.nil?
+              product_id = routing.params['product_id']
+              SearchRecord::For.klass(Entity::Product).plus_like(product_id)
+            else
+              SearchRecord::ForPoke.klass(Entity::Pokemon).plus_like(poke_id)
+            end
+
             advance_hash = {
               :'color' => '',
               :'type_name' => '',
@@ -81,8 +85,6 @@ module MerciDanke
               :'weight' => '',
               :'height' => ''
             }
-            poke_id = routing.params['poke_id']
-            SearchRecord::ForPoke.klass(Entity::Pokemon).plus_like(poke_id)
             pokemon_all = SearchRecord::ForPoke.klass(Entity::Pokemon).all
             popularities = Popularities.new(pokemon_all).call
 
@@ -153,19 +155,6 @@ module MerciDanke
               .products_in_database(poke_name)
 
             viewable_products = Views::ProductsList.new(products, poke_name, pokemon)
-            view 'products', locals: { products: viewable_products }
-          end
-
-          # plus product's like
-          routing.post do
-            product_id = routing.params['product_id']
-            SearchRecord::For.klass(Entity::Product).plus_like(product_id)
-            amazon_products = SearchRecord::For.klass(Entity::Product)
-              .find_full_name(poke_name)
-            pokemon_pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
-              .find_full_name(poke_name)
-
-            viewable_products = Views::ProductsList.new(amazon_products, poke_name, pokemon_pokemon)
             view 'products', locals: { products: viewable_products }
           end
         end

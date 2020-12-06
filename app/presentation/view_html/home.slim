@@ -122,10 +122,7 @@
                 a href="#{pokemon.poke_link}" id="#{pokemon.index_str}.poke_link" =pokemon.poke_name
               img.card-img-top alt="founding img" src="#{pokemon.picture}" id="#{pokemon.index_str}.picture" /
               .card-body.align-middle
-                / - level = popularities[pokemon.index { |x| x } ].level
                 span.badge.badge-secondary.my-2 #{pokemon.popularity_level}
-                / span.badge.badge-secondary.my-2 #{pokemon.index} 
-                / button.btn.btn-outline-danger.float-right style=("border: none; border-radius: 10%;")
                 i.far.fa-heart.float-right.btn.btn-outline-danger.align-bottom.px-1 onclick='plus_like("#{pokemon.id}")' style=("margin:0;")
                   input.ml-2.float-right.btn-outline-danger type="button" id="#{pokemon.id}" value="#{pokemon.likes}" style=("background-color: transparent; border: none; width:1rem; margin: 0; padding: 0;")
 
