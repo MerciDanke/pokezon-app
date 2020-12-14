@@ -1,13 +1,17 @@
 ---
 development:
-  DB_FILENAME: app/infrastructure/database/local/dev.db
+  # Infrastructure
+  API_HOST: http://localhost:9090
 
 test:
-  DB_FILENAME: app/infrastructure/database/local/test.db
-  APP_HOST: http://localhost:9292
+  # Infrastructure
+  API_HOST: http://localhost:9090
 
 app_test:
+  # Application
+  APP_HOST: http://localhost:9000
+  API_HOST: http://localhost:9090
+
+production:
   # Infrastructure
-  DB_FILENAME:    app/infrastructure/database/local/test.db
-  APP_HOST: http://localhost:9292
-  
+  API_HOST: https://mercidanke2020-api.herokuapp.com
