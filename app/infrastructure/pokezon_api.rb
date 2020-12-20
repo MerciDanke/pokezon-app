@@ -20,13 +20,25 @@ module MerciDanke
         @request.add_product(poke_name)
       end
 
-      # Gets appraisal of a project folder rom API
-      # - req: ProjectRequestPath
-      #        with #owner_name, #project_name, #folder_name, #project_fullname
-      # def appraise(req)
-      #   @request.get_appraisal(req)
-      # end
+      def like_product(origin_id)
+        @request.like_product(origin_id)
+      end
 
+      def all_pokemon
+        @request.all_pokemon
+      end
+
+      def add_pokemon(poke_id)
+        @request.add_pokemon(poke_id)
+      end
+
+      def like_pokemon(id)
+        @request.like_pokemon(id)
+      end
+
+      def products_list(list)
+        @request.products_list(list)
+      end
       # HTTP request transmitter
       class Request
         def initialize(config)
@@ -39,13 +51,29 @@ module MerciDanke
         end
 
         def add_product(poke_name)
-          call_api('post', ['products', poke_name])
+          call_api('get', ['products', poke_name])
         end
 
-        # def get_appraisal(req)
-        #   call_api('get', ['products',
-        #                    req.owner_name, req.project_name, req.folder_name])
-        # end
+        def like_product(origin_id)
+          call_api('put', ['product/likes', origin_id])
+        end
+
+        def all_pokemon
+          call_api('get', ['pokemon'])
+        end
+
+        def add_pokemon(poke_id)
+          call_api('get', ['pokemon', poke_id])
+        end
+
+        def like_pokemon(id)
+          call_api('put', ['pokemon/likes', id])
+        end
+
+        def products_list(list)
+          call_api('get', ['products'],
+                   'list' => Value::WatchedList.to_encoded(list))
+        end
 
         private
 

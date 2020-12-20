@@ -2,11 +2,12 @@
 
 require 'roar/decorator'
 require 'roar/json'
+require_relative 'popularity_representer'
 
 module MerciDanke
   module Representer
-    # Represents about pokemons' product
-    class Product < Roar::Decorator
+    # Represents about basic pokemon info
+    class BasicPokemon < Roar::Decorator
       include Roar::JSON
       include Roar::Hypermedia
       include Roar::Decorator::HypermediaConsumer
@@ -14,22 +15,16 @@ module MerciDanke
       property :id
       property :origin_id
       property :poke_name
-      property :title
-      property :link
-      property :image
-      property :rating
-      property :ratings_total
-      property :price
-      property :product_likes
+      property :front_default
 
       link :self do
-        "#{App.config.API_HOST}/api/v1/products/#{poke_name}"
+        "#{App.config.API_HOST}/api/v1/pokemon/#{poke_id}"
       end
 
       private
 
-      def poke_name
-        represented.poke_name
+      def poke_id
+        represented.origin_id
       end
     end
   end

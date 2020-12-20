@@ -4,7 +4,7 @@ require 'dry/transaction'
 
 module MerciDanke
   module Service
-    # Transaction to store product from Amazon API to database
+    # Transaction to store products from Products API to database
     class ShowProducts
       include Dry::Transaction
 
@@ -16,7 +16,7 @@ module MerciDanke
 
       def validate_input(input)
         if input.success?
-          poke_name = input[:remote_url].split('/')
+          poke_name = input[:poke_name]
           Success(poke_name: poke_name)
         else
           Failure(input.errors.values.join('; '))

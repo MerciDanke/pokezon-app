@@ -15,6 +15,7 @@ module MerciDanke
       include Roar::Hypermedia
       include Roar::Decorator::HypermediaConsumer
 
+      property :id
       property :origin_id
       property :poke_name
       collection :types, extend: Representer::Type, class: OpenStruct
@@ -35,13 +36,13 @@ module MerciDanke
       property :poke_likes
 
       link :self do
-        "#{App.config.API_HOST}/api/v1/pokemons/#{poke_name}"
+        "#{App.config.API_HOST}/api/v1/pokemon/#{poke_name}"
       end
 
       private
 
-      def poke_name
-        represented.poke_name
+      def poke_id
+        represented.origin_id
       end
     end
   end

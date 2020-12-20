@@ -18,7 +18,7 @@ describe 'Acceptance Tests' do
   before do
     DatabaseHelper.wipe_database
     @browser = Watir::Browser.new :firefox, headless: true
-    @homepage = 'http://localhost:9292/'
+    @homepage = 'http://localhost:9090/'
   end
 
   after do

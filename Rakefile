@@ -33,7 +33,7 @@ end
 
 namespace :run do
   task :dev do
-    sh 'rerun -c "rackup -p 9292"'
+    sh 'rerun -c "rackup -p 9090"'
   end
 
   task :test do
