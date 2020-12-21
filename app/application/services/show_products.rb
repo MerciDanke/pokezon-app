@@ -15,11 +15,11 @@ module MerciDanke
       private
 
       def validate_input(input)
-        if input.success?
-          poke_name = input[:poke_name]
+        if input
+          poke_name = input
           Success(poke_name: poke_name)
         else
-          Failure(input.errors.values.join('; '))
+          Failure('Could not find that pokemon!')
         end
       end
 
@@ -34,7 +34,7 @@ module MerciDanke
       end
 
       def reify_products(products_json)
-        Representer::Product.new(OpenStruct.new)
+        Representer::ProductsList.new(OpenStruct.new)
           .from_json(products_json)
           .then { |product| Success(product) }
       rescue StandardError

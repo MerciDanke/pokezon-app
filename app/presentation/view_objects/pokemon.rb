@@ -34,7 +34,6 @@ module Views
     end
 
     def likes
-      puts @pokemon.poke_likes
       @pokemon.poke_likes
     end
 

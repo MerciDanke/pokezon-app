@@ -14,8 +14,7 @@ module MerciDanke
       private
 
       def validate_input(input)
-        if input.success?
-          puts "id", input[:id]
+        if input
           id = input[:id]
           Success(id: id)
         else

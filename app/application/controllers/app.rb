@@ -62,8 +62,6 @@ module MerciDanke
               product_id = routing.params['product_id']
               Service::ProductLike.new.call(product_id)
             else
-              puts "poke_id", poke_id
-              puts "a", Service::PokeomonLike.new.call(poke_id)
               Service::PokeomonLike.new.call(poke_id)
             end
 
@@ -84,7 +82,7 @@ module MerciDanke
         end
       end
 
-      routing.on 'type' do
+      routing.on 'pokemon' do
         routing.is do
           routing.get do
             color_name = routing.params['color'].nil? ? '' : routing.params['color'].downcase
@@ -103,14 +101,11 @@ module MerciDanke
               :'height' => (low_h..high_h)
             }
 
-            newhash = advance_hash.select { |_key, value| value != '' }
-            newnewhash = newhash.select { |_key, value| value != (0.0..0.0) }
+            pokemon_popularity = Service::Advance.new.call(routing.query_string)
+            pokemon_all = pokemon_popularity.value!.pokemon_list
+            popularity_all = pokemon_popularity.value!.popularity_list
 
-            pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
-                .find_all_advances(newnewhash)
-            popularities = Popularities.new(pokemon).call
-
-            viewable_pokemons = Views::PokemonsList.new(pokemon, advance_hash, popularities)
+            viewable_pokemons = Views::PokemonsList.new(pokemon_all, advance_hash, popularity_all)
             view 'home', locals: { pokemons: viewable_pokemons }
           end
         end
@@ -123,8 +118,7 @@ module MerciDanke
             poke_name = routing.params['poke_name'].downcase
             routing.params['poke_name'] = routing.params['poke_name'].downcase
             poke_request = Forms::SearchProduct.new.call(routing.params)
-            products_show = Service::ShowProducts.new.call(poke_request)
-            puts "products_show", products_show
+            products_show = Service::ShowProducts.new.call(poke_request[:poke_name])
 
             if products_show.failure?
               flash[:error] = products_show.failure
@@ -142,11 +136,12 @@ module MerciDanke
           routing.get do
             # Get pokemon and products from database
             pokemon = Service::PokemonPopularity.new.call(poke_name)
-            puts "pokemon", pokemon
             products = Service::ShowProducts.new.call(poke_name)
-            puts "products", products
 
-            viewable_products = Views::ProductsList.new(products, poke_name, pokemon)
+            pokemon_all = pokemon.value!.pokemon
+            products_all = products.value!.products
+
+            viewable_products = Views::ProductsList.new(products_all, poke_name, pokemon_all)
             view 'products', locals: { products: viewable_products }
           end
         end

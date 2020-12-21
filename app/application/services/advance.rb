@@ -4,37 +4,36 @@ require 'dry/transaction'
 
 module MerciDanke
   module Service
-    # Transaction to store pokemons from Pokemons API to database
-    class PokemonPopularity
+    # Transaction to store product from Amazon API to database
+    class Advance
       include Dry::Transaction
 
       step :validate_input
       step :request_pokemons
-      step :reify_pokemons
+      step :reify_products
 
       private
 
       def validate_input(input)
         if input
-          poke_name = input
-          Success(poke_name: poke_name)
+          advance_list = input
+          Success(advance_list: advance_list)
         else
-          Failure(input.errors.values.join('; '))
+          Failure('Could not find that advance list!')
         end
       end
 
       def request_pokemons(input)
         result = Gateway::Api.new(MerciDanke::App.config)
-          .add_pokemon(input[:poke_name])
-
+          .advance_list(input[:advance_list])
         result.success? ? Success(result.payload) : Failure(result.message)
       rescue StandardError => e
         puts e.inspect + '\n' + e.backtrace
-        Failure('Cannot add pokemons right now; please try again later')
+        Failure('Cannot add products right now; please try again later')
       end
 
-      def reify_pokemons(pokemons_json)
-        Representer::PokemonPopularity.new(OpenStruct.new)
+      def reify_products(pokemons_json)
+        Representer::BasicPokemonList.new(OpenStruct.new)
           .from_json(pokemons_json)
           .then { |pokemon| Success(pokemon) }
       rescue StandardError

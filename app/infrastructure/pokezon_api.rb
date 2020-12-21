@@ -28,8 +28,8 @@ module MerciDanke
         @request.all_pokemon
       end
 
-      def add_pokemon(poke_id)
-        @request.add_pokemon(poke_id)
+      def add_pokemon(poke_name)
+        @request.add_pokemon(poke_name)
       end
 
       def like_pokemon(id)
@@ -38,6 +38,10 @@ module MerciDanke
 
       def products_list(list)
         @request.products_list(list)
+      end
+
+      def advance_list(list)
+        @request.advance_list(list)
       end
       # HTTP request transmitter
       class Request
@@ -62,8 +66,8 @@ module MerciDanke
           call_api('get', ['pokemon'])
         end
 
-        def add_pokemon(poke_id)
-          call_api('get', ['pokemon', poke_id])
+        def add_pokemon(poke_name)
+          call_api('get', ['pokemon', poke_name])
         end
 
         def like_pokemon(id)
@@ -73,6 +77,10 @@ module MerciDanke
         def products_list(list)
           call_api('get', ['products'],
                    'list' => Value::WatchedList.to_encoded(list))
+        end
+
+        def advance_list(list)
+          call_api('get', ["pokemon?#{list}"])
         end
 
         private
