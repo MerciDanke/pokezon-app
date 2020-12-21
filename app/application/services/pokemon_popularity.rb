@@ -4,13 +4,13 @@ require 'dry/transaction'
 
 module MerciDanke
   module Service
-    # Transaction to store products from Products API to database
-    class ShowProducts
+    # Transaction to store pokemons from Pokemons API to database
+    class PokemonPopularity
       include Dry::Transaction
 
       step :validate_input
-      step :request_products
-      step :reify_products
+      step :request_pokemons
+      step :reify_pokemons
 
       private
 
@@ -19,26 +19,26 @@ module MerciDanke
           poke_name = input
           Success(poke_name: poke_name)
         else
-          Failure('Could not find that pokemon!')
+          Failure(input.errors.values.join('; '))
         end
       end
 
-      def request_products(input)
+      def request_pokemons(input)
         result = Gateway::Api.new(MerciDanke::App.config)
-          .add_product(input[:poke_name])
+          .add_pokemon(input[:poke_name])
 
         result.success? ? Success(result.payload) : Failure(result.message)
       rescue StandardError => e
         puts e.inspect + '\n' + e.backtrace
-        Failure('Cannot add products right now; please try again later')
+        Failure('Cannot add pokemons right now; please try again later')
       end
 
-      def reify_products(products_json)
-        Representer::ProductsList.new(OpenStruct.new)
-          .from_json(products_json)
-          .then { |product| Success(product) }
+      def reify_pokemons(pokemons_json)
+        Representer::PokemonPopularity.new(OpenStruct.new)
+          .from_json(pokemons_json)
+          .then { |pokemon| Success(pokemon) }
       rescue StandardError
-        Failure('Error in the product -- please try again')
+        Failure('Error in the pokemon -- please try again')
       end
     end
   end

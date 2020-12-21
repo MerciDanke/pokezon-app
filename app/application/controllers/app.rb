@@ -46,36 +46,23 @@ module MerciDanke
           end
         end
 
-        5.times do |num|
-          break if Database::PokemonOrm.find(id: 5)
+        pokemon_popularity = Service::BasicPokemonPopularity.new.call
+        pokemon_all = pokemon_popularity.value!.pokemon_list
+        popularity_all = pokemon_popularity.value!.popularity_list
 
-          pokemons = Pokemon::PokemonMapper.new.find((num + 1).to_s)
-          SearchRecord::ForPoke.entity(pokemons).create(pokemons)
-        end
-
-        pokemon_all = SearchRecord::ForPoke.klass(Entity::Pokemon).all
-        2.times do |num|
-          break unless SearchRecord::For.klass(Entity::Product).all.length.zero?
-          amazon_products = Amazon::ProductMapper.new.find(pokemon_all[num].poke_name, MerciDanke::App.config.API_KEY)
-          amazon_products.map do |product|
-            SearchRecord::For.entity(product).create(product)
-          end
-        end
-        popularities = Popularities.new(pokemon_all).call
-
-        viewable_pokemons = Views::PokemonsList.new(pokemon_all, advance_hash, popularities)
+        viewable_pokemons = Views::PokemonsList.new(pokemon_all, advance_hash, popularity_all)
         view 'home', locals: { pokemons: viewable_pokemons }
       end
 
       routing.on 'plus_like' do
         routing.is do
-          routing.get do
+          routing.put do
             poke_id = routing.params['poke_id']
             if poke_id.nil?
               product_id = routing.params['product_id']
-              SearchRecord::For.klass(Entity::Product).plus_like(product_id)
+              Service::ProductLike.new.call(product_id)
             else
-              SearchRecord::ForPoke.klass(Entity::Pokemon).plus_like(poke_id)
+              Service::PokeomonLike.new.call(poke_id)
             end
 
             advance_hash = {
@@ -85,16 +72,17 @@ module MerciDanke
               :'weight' => '',
               :'height' => ''
             }
-            pokemon_all = SearchRecord::ForPoke.klass(Entity::Pokemon).all
-            popularities = Popularities.new(pokemon_all).call
+            pokemon_popularity = Service::BasicPokemonPopularity.new.call
+            pokemon_all = pokemon_popularity.value!.pokemon_list
+            popularity_all = pokemon_popularity.value!.popularity_list
 
-            viewable_pokemons = Views::PokemonsList.new(pokemon_all, advance_hash, popularities)
+            viewable_pokemons = Views::PokemonsList.new(pokemon_all, advance_hash, popularity_all)
             view 'home', locals: { pokemons: viewable_pokemons }
           end
         end
       end
 
-      routing.on 'type' do
+      routing.on 'pokemon' do
         routing.is do
           routing.get do
             color_name = routing.params['color'].nil? ? '' : routing.params['color'].downcase
@@ -113,18 +101,16 @@ module MerciDanke
               :'height' => (low_h..high_h)
             }
 
-            newhash = advance_hash.select { |_key, value| value != '' }
-            newnewhash = newhash.select { |_key, value| value != (0.0..0.0) }
+            pokemon_popularity = Service::Advance.new.call(routing.query_string)
+            pokemon_all = pokemon_popularity.value!.pokemon_list
+            popularity_all = pokemon_popularity.value!.popularity_list
 
-            pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
-                .find_all_advances(newnewhash)
-            popularities = Popularities.new(pokemon).call
-
-            viewable_pokemons = Views::PokemonsList.new(pokemon, advance_hash, popularities)
+            viewable_pokemons = Views::PokemonsList.new(pokemon_all, advance_hash, popularity_all)
             view 'home', locals: { pokemons: viewable_pokemons }
           end
         end
       end
+
       routing.on 'products' do
         routing.is do
           # GET /products/
@@ -132,7 +118,7 @@ module MerciDanke
             poke_name = routing.params['poke_name'].downcase
             routing.params['poke_name'] = routing.params['poke_name'].downcase
             poke_request = Forms::SearchProduct.new.call(routing.params)
-            products_show = Service::ShowProducts.new.call(poke_request)
+            products_show = Service::ShowProducts.new.call(poke_request[:poke_name])
 
             if products_show.failure?
               flash[:error] = products_show.failure
@@ -149,12 +135,13 @@ module MerciDanke
           # GET /products/poke_name, apikey
           routing.get do
             # Get pokemon and products from database
-            pokemon = SearchRecord::ForPoke.klass(Entity::Pokemon)
-              .find_full_name(poke_name)
-            products = Service::ShowProducts.new
-              .products_in_database(poke_name)
+            pokemon = Service::PokemonPopularity.new.call(poke_name)
+            products = Service::ShowProducts.new.call(poke_name)
 
-            viewable_products = Views::ProductsList.new(products, poke_name, pokemon)
+            pokemon_all = pokemon.value!.pokemon
+            products_all = products.value!.products
+
+            viewable_products = Views::ProductsList.new(products_all, poke_name, pokemon_all)
             view 'products', locals: { products: viewable_products }
           end
         end
