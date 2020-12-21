@@ -59,7 +59,7 @@ module MerciDanke
         end
 
         def like_product(origin_id)
-          call_api('put', ['product/likes', origin_id])
+          call_api('put', ["product/#{origin_id}/likes"])
         end
 
         def all_pokemon
@@ -71,7 +71,7 @@ module MerciDanke
         end
 
         def like_pokemon(id)
-          call_api('put', ['pokemon/likes', id])
+          call_api('put', ["pokemon/#{id}/likes"])
         end
 
         def products_list(list)

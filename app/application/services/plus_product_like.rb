@@ -14,8 +14,8 @@ module MerciDanke
       private
 
       def validate_input(input)
-        if input.success?
-          origin_id = input[:origin_id]
+        if input
+          origin_id = input
           Success(origin_id: origin_id)
         else
           Failure(input.errors.values.join('; '))

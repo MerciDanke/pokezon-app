@@ -15,7 +15,7 @@ module MerciDanke
 
       def validate_input(input)
         if input
-          id = input[:id]
+          id = input
           Success(id: id)
         else
           Failure(input.errors.values.join('; '))
@@ -25,7 +25,6 @@ module MerciDanke
       def request_pokeomonlike(input)
         result = Gateway::Api.new(MerciDanke::App.config)
           .like_pokemon(input[:id])
-
         result.success? ? Success(result.payload) : Failure(result.message)
       rescue StandardError => e
         puts e.inspect + '\n' + e.backtrace
