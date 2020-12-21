@@ -15,6 +15,7 @@ module MerciDanke
     plugin :render, engine: 'slim', views: 'app/presentation/view_html'
     plugin :assets, css: 'style.css', path: 'app/presentation/assets'
     plugin :halt
+    plugin :caching
 
     use Rack::MethodOverride # for other HTTP verbs (with plugin all_verbs)
 
@@ -50,6 +51,7 @@ module MerciDanke
         pokemon_all = pokemon_popularity.value!.pokemon_list
         popularity_all = pokemon_popularity.value!.popularity_list
 
+        response.expires 60, public: true
         viewable_pokemons = Views::PokemonsList.new(pokemon_all, advance_hash, popularity_all)
         view 'home', locals: { pokemons: viewable_pokemons }
       end
@@ -141,6 +143,7 @@ module MerciDanke
             pokemon_all = pokemon.value!.pokemon
             products_all = products.value!.products
 
+            response.expires 60, public: true
             viewable_products = Views::ProductsList.new(products_all, poke_name, pokemon_all)
             view 'products', locals: { products: viewable_products }
           end
