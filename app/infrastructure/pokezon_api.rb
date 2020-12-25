@@ -75,8 +75,7 @@ module MerciDanke
         end
 
         def products_list(list)
-          call_api('get', ['products'],
-                   'list' => Value::WatchedList.to_encoded(list))
+          call_api('get', ['products', list])
         end
 
         def advance_list(list)
