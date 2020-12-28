@@ -3,7 +3,7 @@
 require 'roda'
 require 'slim'
 require 'slim/include'
-require_relative 'helpers.rb'
+require_relative 'helpers'
 
 module MerciDanke
   # Web App
@@ -149,7 +149,6 @@ module MerciDanke
 
             pokemon_all = pokemon.value!.pokemon
             products_all = search_product.response.products
-            puts "products_all", products_all
 
             response.expires 60, public: true
             viewable_products = Views::ProductsList.new(products_all, poke_name, pokemon_all)

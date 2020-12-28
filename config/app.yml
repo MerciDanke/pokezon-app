@@ -14,4 +14,4 @@ app_test:
 
 production:
   # Infrastructure
-  API_HOST: https://mercidanke2020-api.herokuapp.com
+  API_HOST: https://pokezon-api.herokuapp.com
