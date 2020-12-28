@@ -129,6 +129,19 @@
               |  >> 
               a.card-link[href="../products/#{products.evochain3}"]
                 = products.evochain3
+  form.form-inline.my-2.my-lg-0 role="form" action="#{products.search}" method='GET'
+    .row.vertical-align.my-3
+      .col-2 Sorted by:
+      .col-9    
+        input type='radio' name='sort' value='id' &nbsp;ID &nbsp;
+        input type='radio' name='sort' value='price_DESC' &nbsp;Price ↓ &nbsp;
+        input type='radio' name='sort' value='price_ASC' &nbsp;Price ↑ &nbsp;
+        input type='radio' name='sort' value='rating_DESC' &nbsp;Rating ↓ &nbsp;
+        input type='radio' name='sort' value='rating_ASC' &nbsp;Rating ↑ &nbsp;
+        input type='radio' name='sort' value='likes_DESC' &nbsp;Likes ↓ &nbsp; 
+        input type='radio' name='sort' value='likes_ASC' &nbsp;Likes ↑ &nbsp;
+      .col-1
+        button.btn.btn-outline-secondary type="submit" id='products_form_submit' Sort
   .row.mt-3
     - products.each do |product|
       .col-lg-3.col-md-6.col-sm-12.mt-3 
