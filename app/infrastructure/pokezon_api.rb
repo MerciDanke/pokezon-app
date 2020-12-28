@@ -75,8 +75,7 @@ module MerciDanke
         end
 
         def products_list(list)
-          call_api('get', ['products'],
-                   'list' => Value::WatchedList.to_encoded(list))
+          call_api('get', ['products', list])
         end
 
         def advance_list(list)
@@ -110,8 +109,25 @@ module MerciDanke
           code.between?(SUCCESS_CODES.first, SUCCESS_CODES.last)
         end
 
+        def failure?
+          !success?
+        end
+
+        def ok?
+          code == 200
+        end
+
+        def added?
+          code == 201
+        end
+
+        def processing?
+          code == 202
+        end
+
         def message
           payload['message']
+          JSON.parse(payload)['message']
         end
 
         def payload

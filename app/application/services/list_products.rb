@@ -14,6 +14,8 @@ module MerciDanke
       private
 
       def get_api_list(products_list)
+        return Success(products_list) if products_list.length.zero?
+
         Gateway::Api.new(MerciDanke::App.config)
           .products_list(products_list)
           .then do |result|
@@ -24,6 +26,8 @@ module MerciDanke
       end
 
       def reify_list(products_json)
+        return Success(products_json) if products_json.length.zero?
+
         Representer::ProductsList.new(OpenStruct.new)
           .from_json(products_json)
           .then { |products| Success(products) }

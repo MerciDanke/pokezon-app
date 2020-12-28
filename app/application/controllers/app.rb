@@ -140,8 +140,16 @@ module MerciDanke
             pokemon = Service::PokemonPopularity.new.call(poke_name)
             products = Service::ShowProducts.new.call(poke_name)
 
+            search_product = OpenStruct.new(products.value!)
+            if search_product.response.processing?
+              flash[:notice] = 'Product is being searched; '\
+                               'please try again in a bit'
+              routing.redirect '/'
+            end
+
             pokemon_all = pokemon.value!.pokemon
-            products_all = products.value!.products
+            products_all = search_product.response.products
+            puts "products_all", products_all
 
             response.expires 60, public: true
             viewable_products = Views::ProductsList.new(products_all, poke_name, pokemon_all)
