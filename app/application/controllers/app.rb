@@ -115,7 +115,7 @@ module MerciDanke
 
       routing.on 'products' do
         routing.is do
-          # GET /products/
+          # POST /products/
           routing.post do
             poke_name = routing.params['poke_name'].downcase
             routing.params['poke_name'] = routing.params['poke_name'].downcase
@@ -138,7 +138,16 @@ module MerciDanke
           routing.get do
             # Get pokemon and products from database
             pokemon = Service::PokemonPopularity.new.call(poke_name)
-            products = Service::ShowProducts.new.call(poke_name)
+
+            if routing.query_string.length.zero?
+              products = Service::ShowProducts.new.call(poke_name)
+            else
+              input = {
+                :'poke_name' => poke_name,
+                :'query_string' => routing.query_string
+              }
+              products = Service::ProductSort.new.call(input)
+            end
 
             search_product = OpenStruct.new(products.value!)
             if search_product.response.processing?

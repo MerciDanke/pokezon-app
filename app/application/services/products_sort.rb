@@ -4,8 +4,8 @@ require 'dry/transaction'
 
 module MerciDanke
   module Service
-    # Transaction to store products from Products API to database
-    class ShowProducts
+    # Transaction to sort product from Amazon API to database
+    class ProductSort
       include Dry::Transaction
 
       step :validate_input
@@ -16,15 +16,16 @@ module MerciDanke
 
       def validate_input(input)
         if input
-          poke_name = input
-          Success(poke_name: poke_name)
+          poke_name = input[:poke_name]
+          query_string = input[:query_string]
+          Success(poke_name: poke_name, query_string: query_string)
         else
-          Failure('Could not find that pokemon!')
+          Failure('Could not find that sort!')
         end
       end
 
       def request_products(input)
-        input[:response] = Gateway::Api.new(MerciDanke::App.config).add_product(input[:poke_name])
+        input[:response] = Gateway::Api.new(MerciDanke::App.config).products_filter(input[:poke_name], input[:query_string])
         input[:response].success? ? Success(input) : Failure(input[:response].message)
       rescue StandardError
         Failure('Cannot add products right now; please try again later')

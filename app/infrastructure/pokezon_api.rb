@@ -43,6 +43,11 @@ module MerciDanke
       def advance_list(list)
         @request.advance_list(list)
       end
+
+      def products_filter(poke_name, list)
+        @request.products_filter(poke_name, list)
+      end
+
       # HTTP request transmitter
       class Request
         def initialize(config)
@@ -82,11 +87,15 @@ module MerciDanke
           call_api('get', ["pokemon?#{list}"])
         end
 
+        def products_filter(poke_name, list)
+          call_api('get', ["products/#{poke_name}?#{list}"])
+        end
+
         private
 
         def params_str(params)
           params.map { |key, value| "#{key}=#{value}" }.join('&')
-            .then { |str| str ? '?' + str : '' }
+            .then { |str| str ? str : '' }
         end
 
         def call_api(method, resources = [], params = {})
