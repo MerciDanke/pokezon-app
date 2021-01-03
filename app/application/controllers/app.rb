@@ -151,17 +151,23 @@ module MerciDanke
 
             search_product = OpenStruct.new(products.value!)
             if search_product.response.processing?
-              flash[:notice] = 'Product is being searched; '\
-                               'please try again in a bit'
-              routing.redirect '/'
+              puts "1"
+              flash.now[:notice] = 'The Products are being searched'
+            else
+              puts "2"
+              pokemon_all = pokemon.value!.pokemon
+              products_all = search_product.response.products
+              viewable_products = Views::ProductsList.new(products_all, poke_name, pokemon_all)
+              response.expires(60, public: true) if App.environment == :produciton
             end
 
-            pokemon_all = pokemon.value!.pokemon
-            products_all = search_product.response.products
+            processing = Views::ProductsProcessing.new(
+              App.config, search_product.response
+            )
+            puts "processing", processing
 
-            response.expires 60, public: true
-            viewable_products = Views::ProductsList.new(products_all, poke_name, pokemon_all)
-            view 'products', locals: { products: viewable_products }
+            # Show viewer the products
+            view 'products', locals: { products: viewable_products, processing: processing }
           end
         end
       end
