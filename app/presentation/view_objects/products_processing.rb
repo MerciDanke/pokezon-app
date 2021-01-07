@@ -13,7 +13,7 @@ module Views
     end
 
     def ws_channel_id
-      @response.message if in_progress?
+      @response.message['request_id'] if in_progress?
     end
 
     def ws_javascript
