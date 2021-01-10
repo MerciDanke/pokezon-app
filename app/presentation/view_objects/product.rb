@@ -28,8 +28,8 @@ module Views
       @product.link
     end
 
-    def origin_id
-      @product.origin_id
+    def id
+      @product.id
     end
 
     def likes
