@@ -196,19 +196,19 @@
               a.btn.btn-outline-primary.mt-3 target="_blank" href="#{product.link}" id='#{product.index_str}.link' see more
               i.far.fa-heart.float-right.btn.btn-outline-danger.align-bottom.px-1 onclick='plus_like("#{product.id}")' style=("margin:0;")
                 input.ml-2.float-right.btn-outline-danger type="button" id="#{product.id}" value="#{product.likes}" style=("background-color: transparent; border: none; width:1rem; margin: 0; padding: 0;")
-javascript:
-  function plus_like(id) {
-    
-    let val = document.getElementById(id).value;
-    document.getElementById(id).value = ++val
-    
-    $.ajax({
-      type:"PUT",
-      url:"/plus_like",
-      dataType:"json",
-      data: {product_id: id},
-      success:function(result){
-        alert(result);
-      }
-    }) 
-  }
+  javascript:
+    function plus_like(id) {
+      
+      let val = document.getElementById(id).value;
+      document.getElementById(id).value = ++val
+      
+      $.ajax({
+        type:"PUT",
+        url:"/plus_like",
+        dataType:"json",
+        data: {product_id: id},
+        success:function(result){
+          alert(result);
+        }
+      }) 
+    }

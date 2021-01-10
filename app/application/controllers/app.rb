@@ -151,10 +151,8 @@ module MerciDanke
 
             search_product = OpenStruct.new(products.value!)
             if search_product.response.processing?
-              puts "1"
               flash.now[:notice] = 'The Products are being searched'
             else
-              puts "2"
               pokemon_all = pokemon.value!.pokemon
               products_all = search_product.response.products
               viewable_products = Views::ProductsList.new(products_all, poke_name, pokemon_all)
@@ -164,7 +162,6 @@ module MerciDanke
             processing = Views::ProductsProcessing.new(
               App.config, search_product.response
             )
-            puts "processing", processing
 
             # Show viewer the products
             view 'products', locals: { products: viewable_products, processing: processing }
