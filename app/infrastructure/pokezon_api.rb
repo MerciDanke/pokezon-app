@@ -51,8 +51,9 @@ module MerciDanke
       # HTTP request transmitter
       class Request
         def initialize(config)
-          @api_host = config.API_HOST
-          @api_root = config.API_HOST + '/api/v1'
+          api_host = config.API_HOST
+          @api_host = api_host
+          @api_root = api_host + '/api/v1'
         end
 
         def get_root # rubocop:disable Naming/AccessorMethodName
@@ -110,6 +111,7 @@ module MerciDanke
 
       # Decorates HTTP responses with success/error
       class Response < SimpleDelegator
+        # HTTP is NotFound
         NotFound = Class.new(StandardError)
 
         SUCCESS_CODES = (200..299).freeze

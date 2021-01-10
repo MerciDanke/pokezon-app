@@ -4,7 +4,7 @@ require 'dry-validation'
 
 module MerciDanke
   module Forms
-    # SearchProduct
+    # Search product with params
     class SearchAdvance < Dry::Validation::Contract
       params do
         required(:color).filled(:string)

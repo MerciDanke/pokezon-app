@@ -6,7 +6,7 @@ module Views
   # View for a a list of product entities
   class ProductsList
     def initialize(products, search, pokemon)
-      @products = products.map.with_index { |prod, i| Product.new(prod, i) }
+      @products = products.map.with_index { |prod, index| Product.new(prod, index) }
       @search = search
       @pokemon = pokemon
     end
@@ -29,11 +29,11 @@ module Views
       @pokemon.back_default
     end
 
-    def front_img2
+    def front_img_second
       @pokemon.front_shiny
     end
 
-    def back_img2
+    def back_img_second
       @pokemon.back_shiny
     end
 
@@ -69,15 +69,15 @@ module Views
       @pokemon.abilities
     end
 
-    def evochain1
+    def evochain_first
       @pokemon.evochain.chain_species_name
     end
 
-    def evochain2
+    def evochain_second
       @pokemon.evochain.evolves_to
     end
 
-    def evochain3
+    def evochain_third
       @pokemon.evochain.evolves_to_second
     end
   end

@@ -25,15 +25,17 @@ module MerciDanke
 
       def request_products(input)
         input[:response] = Gateway::Api.new(MerciDanke::App.config).add_product(input[:poke_name])
-        input[:response].success? ? Success(input) : Failure(input[:response].message)
+        response = input[:response]
+        response.success? ? Success(input) : Failure(response.message)
       rescue StandardError
         Failure('Cannot add products right now; please try again later')
       end
 
       def reify_products(input)
-        unless input[:response].processing?
+        response = input[:response]
+        unless response.processing?
           Representer::ProductsList.new(OpenStruct.new)
-            .from_json(input[:response].payload)
+            .from_json(response.payload)
             .then { |product| input[:response] = product }
         end
 

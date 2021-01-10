@@ -2,8 +2,6 @@
 
 require 'rake/testtask'
 
-CODE = 'lib/poke_lib'
-
 task :default do
   puts `rake -T`
 end
