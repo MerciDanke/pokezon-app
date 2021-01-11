@@ -55,7 +55,7 @@ describe 'Acceptance Tests' do
         @browser.goto homepage
 
         # WHEN: they add a pokemon name and submit
-        good_url = "#{POKE_NAME}"
+        good_url = POKE_NAME.to_s
         @browser.text_field(id: 'pokemon_input').set(good_url)
         @browser.button(id: 'products_form_submit').click
 

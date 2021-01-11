@@ -21,11 +21,11 @@ describe 'Products page Acceptance Tests' do
   it '(HAPPY) should see products content if products exist' do
     # GIVEN: user adds a pokemon's name and submit, call the amazon products
     visit HomePage do |page|
-      good_poke_name = "#{POKE_NAME}"
+      good_poke_name = POKE_NAME.to_s
       page.add_new_products(good_poke_name)
     end
     # WHEN: they go to the product's page
-    visit(ProductsPage, using_params: { poke_name: POKE_NAME,}) do |page|
+    visit(ProductsPage, using_params: { poke_name: POKE_NAME }) do |page|
       # THEN: they should see the product details
       _(page.products_title).must_include POKE_NAME
       _(page.pokemon_intro_element.present?).must_equal true

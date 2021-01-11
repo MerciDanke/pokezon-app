@@ -14,5 +14,5 @@ require 'minitest/rg'
 
 require_relative '../../init'
 
-POKENAME = 'Pikachu'.freeze
+POKENAME = 'Pikachu'
 API_KEY = MerciDanke::App.config.API_KEY

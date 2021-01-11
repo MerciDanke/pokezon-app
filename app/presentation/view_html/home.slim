@@ -58,6 +58,7 @@
               .col-md-2.col-sm-3
                 .text-right Color name:
               .col-md-auto.col-sm-3
+                input checked="" type='radio' name='color' value='' &nbsp;ALL &nbsp;
                 input type='radio' name='color' value='red' &nbsp;Red &nbsp;
                 input type='radio' name='color' value='white' &nbsp;White &nbsp;
                 input type='radio' name='color' value='yellow' &nbsp;Yellow &nbsp;
@@ -96,9 +97,9 @@
           span.type.name
             = pokemons.advance_hash[:color]
           span &nbsp
-        - if pokemons.advance_hash[:type] != ''
+        - if pokemons.advance_hash[:type_name] != ''
           span.type.name
-            = pokemons.advance_hash[:type]
+            = pokemons.advance_hash[:type_name]
           span &nbsp
         - if pokemons.advance_hash[:habitat] != ''
           span.type.name
