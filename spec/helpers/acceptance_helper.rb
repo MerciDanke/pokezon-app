@@ -2,6 +2,7 @@
 
 ENV['RACK_ENV'] = 'app_test'
 
+require 'headless'
 require 'watir'
 require 'page-object'
 

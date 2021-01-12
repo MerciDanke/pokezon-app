@@ -26,18 +26,24 @@ Security/YAMLLoad:
   Exclude:
     - spec/**/*
 
-Style/HashSyntax:
-  Enabled: true
-  Exclude:
-    - Rakefile
-
 Style/SymbolArray:
   Enabled: true
   Exclude:
     - Rakefile
-    - app/infrastructure/database/migrations/*.rb
 
 Style/SingleLineMethods:
+  Enabled: false
+
+Style/HashSyntax:
+  Enabled: false
+
+Style/SymbolLiteral:
+  Enabled: false
+
+Style/StringConcatenation:
+  Enabled: false
+
+Style/ExplicitBlockArgument:
   Enabled: false
 
 Lint/ConstantDefinitionInBlock:
@@ -54,6 +60,4 @@ Layout/HashAlignment:
   EnforcedHashRocketStyle: table
 
 Lint/NonDeterministicRequireOrder:
-  Enabled: true
-  Exclude:
-    - init.rb
+  Enabled: false

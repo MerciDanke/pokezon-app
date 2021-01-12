@@ -13,12 +13,6 @@ require_relative '../../init'
 
 ID = '1'
 POKE_NAME = 'bulbasaur'
-CORRECT = YAML.safe_load(File.read('spec/fixtures/poke_data/poke1_results.yml'))
-
-CASSETTES_FOLDER = 'spec/fixtures/cassettes'
-CASSETTE_FILE = 'pokemon_api'
-
-API_KEY = MerciDanke::App.config.API_KEY
 
 # Helper methods
 def homepage

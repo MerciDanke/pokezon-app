@@ -6,13 +6,15 @@ require 'simplecov'
 SimpleCov.start
 
 require 'yaml'
-
 require 'minitest/autorun'
 require 'minitest/rg'
-# require 'vcr'
-# require 'webmock'
 
 require_relative '../../init'
 
-POKENAME = 'Pikachu'
-API_KEY = MerciDanke::App.config.API_KEY
+POKENAME = 'bulbasaur'
+PROD_ID = '1'
+
+# Helper methods
+def homepage
+  MerciDanke::App.config.APP_HOST
+end

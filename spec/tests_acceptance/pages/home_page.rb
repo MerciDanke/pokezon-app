@@ -27,6 +27,6 @@ class HomePage
 
   def add_new_products(remote_poke_name)
     self.poke_name_input = remote_poke_name
-    self.add_products_button
+    add_products_button
   end
 end

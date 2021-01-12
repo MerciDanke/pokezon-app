@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MerciDanke
   module RouteHelpers
     # call all pokemons popularities

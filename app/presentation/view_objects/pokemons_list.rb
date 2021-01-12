@@ -8,7 +8,7 @@ module Views
   class PokemonsList
     def initialize(pokemons, advance_hash, popularities)
       @popularities = popularities.map.with_index { |popu, index| Popularity.new(popu, index) }
-      @pokemons = pokemons.map.with_index { |poke, index| Pokemon.new(poke, index, @popularities) }
+      @pokemons = pokemons.map.with_index { |poke, index| Pokemon.new(poke, @popularities, index) }
       @advance_hash = advance_hash
     end
 
@@ -22,8 +22,6 @@ module Views
       @pokemons.any?
     end
 
-    def advance_hash
-      @advance_hash
-    end
+    attr_reader :advance_hash
   end
 end

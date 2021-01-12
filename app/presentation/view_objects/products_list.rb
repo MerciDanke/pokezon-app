@@ -17,9 +17,7 @@ module Views
       end
     end
 
-    def search
-      @search
-    end
+    attr_reader :search
 
     def front_img
       @pokemon.front_default
