@@ -25,26 +25,21 @@ module MerciDanke
       # GET /
       routing.root do
         advance_hash = {
-          :'color' => '',
+          :'color'     => '',
           :'type_name' => '',
-          :'habitat' => '',
-          :'weight' => '',
-          :'height' => ''
+          :'habitat'   => '',
+          :'weight'    => '',
+          :'height'    => ''
         }
-
         session[:watching] ||= []
-        if session[:watching].count > 40
-          session[:watching] = session[:watching][0..39]
-        end
+        session[:watching] = session[:watching][0..39] if session[:watching].count > 40
         result = Service::ListProducts.new.call(session[:watching])
 
         if result.failure?
           flash[:error] = result.failure
         else
           products = result.value!
-          if products.none?
-            flash.now[:notice] = 'Add a Amazon product to get started'
-          end
+          flash.now[:notice] = 'Add a Amazon product to get started' if products.none?
         end
 
         pokemon_popularity = Service::BasicPokemonPopularity.new.call
@@ -68,11 +63,11 @@ module MerciDanke
             end
 
             advance_hash = {
-              :'color' => '',
+              :'color'     => '',
               :'type_name' => '',
-              :'habitat' => '',
-              :'weight' => '',
-              :'height' => ''
+              :'habitat'   => '',
+              :'weight'    => '',
+              :'height'    => ''
             }
             pokemon_popularity = Service::BasicPokemonPopularity.new.call
             pokemon_all = pokemon_popularity.value!.pokemon_list
@@ -90,17 +85,16 @@ module MerciDanke
             color_name = routing.params['color'].nil? ? '' : routing.params['color'].downcase
             type_name = routing.params['type'].nil? ? '' : routing.params['type'].downcase
             habitat_name = routing.params['habitat'].nil? ? '' : routing.params['habitat'].downcase
-            low_h = routing.params['low_h'].nil? ? '' : (routing.params['low_h'].downcase).to_f * 10
-            high_h = routing.params['high_h'].nil? ? '' : (routing.params['high_h'].downcase).to_f * 10
-            low_w = routing.params['low_w'].nil? ? '' : (routing.params['low_w'].downcase).to_f * 10
-            high_w = routing.params['high_w'].nil? ? '' : (routing.params['high_w'].downcase).to_f * 10
-
+            low_h = routing.params['low_h'].nil? ? '' : routing.params['low_h'].to_f
+            high_h = routing.params['high_h'].nil? ? '' : routing.params['high_h'].to_f
+            low_w = routing.params['low_w'].nil? ? '' : routing.params['low_w'].to_f
+            high_w = routing.params['high_w'].nil? ? '' : routing.params['high_w'].to_f
             advance_hash = {
-              :'color' => color_name,
+              :'color'     => color_name,
               :'type_name' => type_name,
-              :'habitat' => habitat_name,
-              :'weight' => (low_w..high_w),
-              :'height' => (low_h..high_h)
+              :'habitat'   => habitat_name,
+              :'weight'    => (low_w..high_w),
+              :'height'    => (low_h..high_h)
             }
 
             pokemon_popularity = Service::Advance.new.call(routing.query_string)
@@ -143,7 +137,7 @@ module MerciDanke
               products = Service::ShowProducts.new.call(poke_name)
             else
               input = {
-                :'poke_name' => poke_name,
+                :'poke_name'    => poke_name,
                 :'query_string' => routing.query_string
               }
               products = Service::ProductSort.new.call(input)

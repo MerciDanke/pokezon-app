@@ -40,7 +40,7 @@ describe 'Homepage Acceptance Tests' do
       # GIVEN: user is on the home page
       visit HomePage do |page|
         # WHEN: they add a pokemon's name and submit
-        good_poke_name = "#{POKE_NAME}"
+        good_poke_name = POKE_NAME.to_s
         page.add_new_products(good_poke_name)
 
         # THEN: they should find the pokemon on the product's page

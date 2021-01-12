@@ -1,0 +1,13 @@
+---
+detectors:
+  UncommunicativeVariableName:
+    accept:
+      - e
+  TooManyMethods:
+    max_methods: 18
+  UtilityFunction:
+    enabled: false
+  RepeatedConditional:
+    enabled: false
+  TooManyStatements:
+    enabled: false

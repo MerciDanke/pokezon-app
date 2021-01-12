@@ -3,7 +3,7 @@
 module Views
   # View for a single pokemon entity
   class Pokemon
-    def initialize(pokemon, index = nil, popularities)
+    def initialize(pokemon, popularities, index = nil)
       @pokemon = pokemon
       @index = index
       @popularities = popularities
@@ -39,9 +39,7 @@ module Views
 
     def popularity_level
       popularity = @popularities[@index]
-      if popularity.poke_id == @pokemon.origin_id
-        popularity.level
-      end
+      popularity.level if popularity.poke_id == @pokemon.origin_id
     end
   end
 end

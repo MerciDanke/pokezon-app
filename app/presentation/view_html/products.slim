@@ -61,9 +61,9 @@
                   .carousel-item
                     img.d-block.w-100[src="#{products.back_img}" alt="..."]
                   .carousel-item
-                    img.d-block.w-100[src="#{products.front_img2}" alt="..."]
+                    img.d-block.w-100[src="#{products.front_img_second}" alt="..."]
                   .carousel-item
-                    img.d-block.w-100[src="#{products.back_img2}" alt="..."]
+                    img.d-block.w-100[src="#{products.back_img_second}" alt="..."]
                 a.carousel-control-prev[href="#carouselExampleIndicators" role="button" data-slide="prev"]
                   span.carousel-control-prev-icon[aria-hidden="true"]
                   span.sr-only
@@ -161,14 +161,14 @@
               .card-body
                 h5.card-title
                   | EVOLUTION CHAIN
-                a.card-link[href="../products/#{products.evochain1}"]
-                  = products.evochain1
+                a.card-link[href="../products/#{products.evochain_first}"]
+                  = products.evochain_first
                 |  >> 
-                a.card-link[href="../products/#{products.evochain2}"]
-                  = products.evochain2
+                a.card-link[href="../products/#{products.evochain_second}"]
+                  = products.evochain_second
                 |  >> 
-                a.card-link[href="../products/#{products.evochain3}"]
-                  = products.evochain3
+                a.card-link[href="../products/#{products.evochain_third}"]
+                  = products.evochain_third
     form.form-inline.my-2.my-lg-0 role="form" action="#{products.search}" method='GET'
       .row.vertical-align.my-3
         .col-2 Sorted by:

@@ -4,8 +4,7 @@
 class ProductsPage
   include PageObject
 
-  page_url MerciDanke::App.config.APP_HOST +
-        '/products/bulbasaur'
+  page_url MerciDanke::App.config.APP_HOST + '/products/bulbasaur'
 
   div(:warning_message, id: 'flash_bar_danger')
   div(:success_message, id: 'flash_bar_success')
