@@ -3,7 +3,7 @@
 require_relative 'product'
 
 module Views
-  # View for a a list of product entities
+  # View for a list of product entities
   class ProductsList
     def initialize(products, search, pokemon)
       @products = products.map.with_index { |prod, index| Product.new(prod, index) }
