@@ -40,4 +40,4 @@ Google Shopping products
 ## Long-term goals
 - Perform static analysis of folders/files: e.g., flog, rubocop, reek for Ruby
 
-![image](https://github.com/MerciDanke/pokezon-app/blob/master/%E6%93%B7%E5%8F%96.PNG)
+![image](https://github.com/MerciDanke/pokezon-app/blob/master/product_page.PNG)
