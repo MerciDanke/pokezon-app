@@ -34,7 +34,7 @@ Google Shopping products
 - Pull data from Google Shopping API and Pokémon API
 - Classify Pokémon data by type, color, habitat, height and weight
 - Map different type, color, habitat, height and weight of pokémon to products
-- Search the products by different conditions
+- Sort the products by different conditions
 - Display Pokémon details with related products at the same time
 
 ## Long-term goals
